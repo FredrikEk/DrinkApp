@@ -1,0 +1,19 @@
+Lv6:
+Ek och Sonny: 
+Bygger upp en grundläggande 
+databasdesign med de tabeller/klasser som behövs initialt.
+
+Martin och Michael
+Börja skissa upp de olika vyer som kommer behövas:
+*Startsida
+*Loginscreen (Authentication)
+*Profil/Settings
+*"My Drinks"
+*"Sökvy"
+
+
+Senare (Eventuellt):
+
+*"Favorit"-drinkar
+*Någon form av Chat
+*LiveFeed
