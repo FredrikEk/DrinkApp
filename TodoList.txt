@@ -17,3 +17,6 @@ Senare (Eventuellt):
 *"Favorit"-drinkar
 *Någon form av Chat
 *LiveFeed
+
+Ännu senare:
+Facebook connectivity
