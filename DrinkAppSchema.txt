@@ -1,0 +1,27 @@
+-- Database schema outline for DrinkApp project in the Web Applications course, DAT076.
+
+-- Table for storing userdata
+User(_id, name)
+
+-- Table for storing drink ingredients
+Ingredients(_name)
+
+-- Table for storing drinks and the user who added it
+Drinks(_name, _user)
+	user -> Users.id
+
+-- Table for storing different kinds of types of drinks; sweet, sour, bitter e.g	
+Types(_type)
+
+-- Table for storing the type of a certain drink. Drinks can, but must not have a type
+isType(_type, _drink, _user)
+	type -> types.type
+
+-- Table for storing the different steps of how to make a certain drink	
+Steps(_drink, _user, _stepNr, stepDescription)
+	(drink, user) -> Drinks.(name, user)
+
+-- Table for storing what ingredients are needed for a certain drink	
+isContaining(_ingredient, _drink, quantity)
+	ingredient -> Ingredients.name
+	drink      -> Drinks.name
