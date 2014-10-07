@@ -10,10 +10,10 @@ import com.DrinkApp.persistence.AbstractEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-/**
- *
- * @author Fredrik
+/*
+ * The Step model. Stores the different steps of how to make a certain drink.
  */
+
 @Entity
 public class Step extends AbstractEntity {
     

@@ -15,6 +15,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/*
+ * The Drink model. Stores drinks in the database with a user
+ * who submitted the drink, a name, a list of ingredients and a 
+ * list of steps of how to make the drink. 
+ */
+
 @Entity
 public class Drink extends AbstractEntity {
     

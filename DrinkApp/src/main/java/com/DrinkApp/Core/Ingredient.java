@@ -10,6 +10,10 @@ import com.DrinkApp.persistence.AbstractEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+/*
+ * The Ingredient model. Stores ingredients in the database.
+ */
+
 @Entity
 public class Ingredient extends AbstractEntity{
     

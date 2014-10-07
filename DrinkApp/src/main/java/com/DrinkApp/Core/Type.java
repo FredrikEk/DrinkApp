@@ -10,6 +10,11 @@ import com.DrinkApp.persistence.AbstractEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+/*
+ * The Type model. Stores different types that drinks can have
+ * e.g sour, sweet, strong etc
+ */
+
 @Entity
 public class Type extends AbstractEntity {
 
