@@ -1,0 +1,22 @@
+Git kommandon (för Michael)
+
+git pull ==> du hämtar den senaste versionen om några ändringar har skett
+
+git add <namnet på filen> ==> lägger till filen
+
+git commit -am "den text du vill committa" ==> kommentar på ändring eller när du lagt till en fil
+
+git push ==> du "pushar" det du har lagt till / ändrat
+
+----------------------------------------
+
+Lägga till exempelvis filen test.txt:
+
+Först lägger du dig i den katalog där du lagt till filen
+git add test.txt
+git commit -am "Lade till test.txt"
+git push
+
+-----------------------------------------
+
+Tänk på om du är osäker att alltid kolla "git status"
