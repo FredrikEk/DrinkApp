@@ -25,3 +25,4 @@
         <to-view-id>partials/login/login.xhtml</to-view-id>
     </navigation-case>       
 </navigation-rule>   
+</faces-config>
