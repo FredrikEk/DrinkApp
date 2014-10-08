@@ -24,7 +24,11 @@
     <navigation-case>
         <from-outcome>login</from-outcome>
         <to-view-id>partials/login/login.xhtml</to-view-id>
-    </navigation-case>       
+    </navigation-case>
+    <navigation-case>
+        <from-outcome>register</from-outcome>
+        <to-view-id>partials/login/register.xhtml</to-view-id>
+    </navigation-case>      
 </navigation-rule>   
 
 </faces-config>
