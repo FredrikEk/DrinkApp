@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        
+        <!-- Test, det under ska inte vara bortkommenterat -->
+    
+      <!--  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="bootstrap.css"  />
+        <h:outputStylesheet library="css" name="default.css"  /> -->
+        <title>DrinkApp</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <body>
+        <header>
+            <hgroup>
+                <h1>Welcome</h1>
+                <h2>Your guidence to make a drink!</h2>
+            </hgroup>
+        </header>
+        <nav class="navbar navbar-default" role="navigation">
+            <h:link value="Home" class="navbar-brand" outcome="home" />
+            <h:link value="DrinkList" class="navbar-brand" outcome="drinklist" />
+            <h:link value="Ingredients" class="navbar-brand" outcome="ingredients" />
+            <h:link value="Login" class="navbar-brand" outcome="login" />        
+        </nav>
+       
+        <div id="content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+        <footer>
+            <p> ImYourFooter</p> 
+        </footer>
+    </body>
+</html>
