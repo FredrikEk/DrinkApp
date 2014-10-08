@@ -8,6 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+    
     <h:head>
         
         <!-- Test, det under ska inte vara bortkommenterat -->
@@ -19,24 +20,40 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <body>
-        <header>
-            <hgroup>
-                <h1>DrinkApp</h1>
-                <h2>Your guidance to make a drink!</h2>
-            </hgroup>
-        </header>
-        <nav class="navbar navbar-default" role="navigation">
-            <h:link value="Home" class="navbar-brand" outcome="home" />
-            <h:link value="DrinkList" class="navbar-brand" outcome="drinklist" />
-            <h:link value="Ingredients" class="navbar-brand" outcome="ingredients" />
-            <h:link value="Login" class="navbar-brand" outcome="login" />        
+        
+        <nav role="navigation" class="navbar navbar-default">
+            
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="#"><span class="glyphicon glyphicon-glass"></span>Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 5px">
+                <li><a class="navbar-brand" href="#">Register</a></li>
+                <li><a class="navbar-brand" href="#"><span class="glyphicon glypicon-user"></span>Login</a></li>
+            </ul>
+            
         </nav>
-       
-        <div id="content">
-            <ui:insert name="content">Content</ui:insert>
+        
+        <div class="container">
+            
+            <header>
+                <hgroup>
+                    <h1>DrinkApp</h1>
+                    <h2>Your guidance to make a drink!</h2>
+                </hgroup>
+            </header>
+            <nav class="navbar navbar-default" role="navigation">
+                <h:link value="Home" class="navbar-brand" outcome="home" />
+                <h:link value="DrinkList" class="navbar-brand" outcome="drinklist" />
+                <h:link value="Ingredients" class="navbar-brand" outcome="ingredients" />
+                <h:link value="Login" class="navbar-brand" outcome="login" />        
+            </nav>
+            <div id="content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+
+            <footer>
+                <p><strong> Made by DrinkApp-team</strong></p> 
+            </footer>
         </div>
-        <footer>
-            <p><strong> Made by DrinkApp-team</strong></p> 
-        </footer>
     </body>
 </html>

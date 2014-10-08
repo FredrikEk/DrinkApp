@@ -3,12 +3,12 @@
 */
 
 root { 
-    display: block;
+    //display: block;
 }
 
 body {
-    margin: auto;
-    width : 50em;
+    //margin: auto;
+    //width : 50em;
 }
 
 #input{
