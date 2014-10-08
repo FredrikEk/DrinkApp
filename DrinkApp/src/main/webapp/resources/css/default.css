@@ -31,9 +31,9 @@ header h1{
     font-style: italic;
     font-weight: 900;
     font-variant: small-caps;
-    color: white;
+    color: black;
     text-align: left;
-    margin-left: 0.5em;
+   // margin-left: 0.5em;
     vertical-align: middle;
 }
 
@@ -42,6 +42,7 @@ footer {
     bottom:10px;
     height:30px;
     width: 50em;
+    margin-left: 37em;
 }
 
 #error {
