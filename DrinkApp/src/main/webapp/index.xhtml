@@ -7,9 +7,13 @@
         <title>You better DrinkApp</title>
     </h:head>
     <h:body>
-        <section>
-            <p>Welcome!</p>
-        </section>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content"> 
+                <section>
+                    <p>Welcome!</p>
+                </section>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
