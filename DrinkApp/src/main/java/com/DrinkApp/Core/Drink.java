@@ -34,30 +34,35 @@ public class Drink extends AbstractEntity {
     private List<Step> steps;
     @ManyToMany
     private List<Type> types;
-
+    @Column
+    private String comment;
+    
     public Drink() {
         this.user        = new User();
-        this.name        = "";
+        this.name        = null;
         this.ingredients = new ArrayList();
         this.steps       = new ArrayList();
         this.types       = new ArrayList();
+        this.comment     = null;
     }
     
-    public Drink(String name, User user, List<Ingredient> ingredients, List<Step> steps, List<Type> types) {
+    public Drink(String name, User user, List<Ingredient> ingredients, List<Step> steps, List<Type> types, String comment) {
         this.name        = name;
         this.user        = user;
         this.ingredients = ingredients;
         this.steps       = steps;
         this.types       = types;
+        this.comment     = comment;
         }
     
-    public Drink(Long id, String username, String name, User user, List<Ingredient> ingredients, List<Step> steps, List<Type> types) {
+    public Drink(Long id, String username, String name, User user, List<Ingredient> ingredients, List<Step> steps, List<Type> types, String comment) {
         super(id);
         this.name        = name;
         this.user        = user;
         this.ingredients = ingredients;
         this.steps       = steps;
         this.types       = types;
+        this.comment     = comment;
     }
 
     public User getUser() {
@@ -78,6 +83,10 @@ public class Drink extends AbstractEntity {
     
     public List<Type> getTypes() {
         return types;
+    }
+    
+    public String getComment() {
+        return comment;
     }
     
     @Override

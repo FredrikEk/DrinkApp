@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head>
         <title>Drinklist</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,6 +16,96 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>Drinklist</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Search drinks
+                                </h3>
+                            </div>
+                            <div class="panel-body bg-danger">
+                                <h:form id="drink-form">
+                                    <h:outputLabel for="id" value="Type your drinks name"/>
+                                    <h:inputText class="form-control" id="id"/>
+                                </h:form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Add ingredients
+                                </h3>
+                            </div>
+                            <div class="panel-body bg-danger">
+                                <h:form id="ingredient-form">
+                                    <h:outputLabel for="id" value="Input the ingredients you got home"/>
+                                    <h:inputText class="form-control" id="id"/>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                             <div class="panel-heading">
+                                 <h3 class="panel-title">
+                                     Drinks
+                                 </h3>
+                            </div>
+                            <div class="panel-body bg-success">
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-info">
+                                        Mojito
+                                    </li>
+                                    <li class="list-group-item">
+                                        Other drink
+                                    </li>
+                                    <li class="list-group-item">
+                                        Third drink
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                             <div class="panel-heading">
+                                 <h3 class="panel-title">
+                                     Chosen Drink
+                                 </h3>
+                            </div>
+                            <div class="panel-body bg-success">
+                                <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
+                                    <ui:define name="drinkname">
+                                        Mojito
+                                    </ui:define>
+                                    <ui:define name="types">
+                                        sweet,sour
+                                    </ui:define>
+                                    <ui:define name="user">
+                                        Ek Sonny
+                                    </ui:define>
+                                    <ui:define name="drinkdescription">
+                                        A sweet and refreshing drink.
+                                    </ui:define>
+                                    <ui:define name="drinksteps">
+                                        <ol class="list-group">
+                                            <li class="list-group-item" style="display: list-item">Crush the ice</li>
+                                            <li class="list-group-item" style="display: list-item">Poor some liqour</li>
+                                            <li class="list-group-item" style="display: list-item">Add mynta</li>
+                                        </ol>
+                                    </ui:define>
+                                </ui:decorate>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                
             </ui:define>
         </ui:composition>
     </body>

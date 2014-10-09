@@ -17,7 +17,7 @@ and open the template in the editor.
         <title>DrinkApp</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <body>
+    <body class="bg-info">
         
         <nav role="navigation" class="navbar navbar-default">
             
@@ -42,8 +42,7 @@ and open the template in the editor.
             <nav class="navbar navbar-default" role="navigation">
                 <h:link value="Home" class="navbar-brand" outcome="home" />
                 <h:link value="DrinkList" class="navbar-brand" outcome="drinklist" />
-                <h:link value="Ingredients" class="navbar-brand" outcome="ingredients" />
-                <h:link value="Login" class="navbar-brand" outcome="login" />        
+                <h:link value="Ingredients" class="navbar-brand" outcome="ingredients" />       
             </nav>
             <div id="content">
                 <ui:insert name="content">Content</ui:insert>
