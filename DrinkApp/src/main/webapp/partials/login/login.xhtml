@@ -17,18 +17,27 @@ and open the template in the editor.
             <ui:define name="content">
                 <h:link value="Register" outcome="register"/>
                 <h3>Login</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        
                 <h:form id="login-form">
-                    <h:panelGrid columns="3">
-                        <h:outputLabel for="id" value="Username:"/>
-                        <h:inputText id="id"/>
-                        <!--<h:message for="id" /> -->
-                        <h:outputLabel for="password" value="Password:"/>
-                        <h:inputSecret value="password" id="password"/>  
-                        <!--<h:message for="password" /> -->
-                    </h:panelGrid>
-                    <h:commandButton value="Cancel" immediate="true" action="home" />
-                    <h:commandButton id="button" value="Login"/> 
+                        <div class="form-group">
+                            <h:outputLabel for="id" value="Username:"/>
+                            <h:inputText class="form-control" id="id"/>
+                        </div>
+                            <!--<h:message for="id" /> -->
+                        <div class="form-group">
+                            <h:outputLabel for="password" value="Password:"/>
+                            <h:inputSecret class="form-control" value="password" id="password"/>  
+                        </div>
+                            <!--<h:message for="password" /> -->
+                        <h:commandButton class="btn btn-default" value="Cancel" immediate="true" action="home" />
+                        <h:commandButton class="btn btn-default" id="button" value="Login"/>
+                    
                 </h:form>
+                        
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
