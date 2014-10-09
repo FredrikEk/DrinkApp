@@ -15,8 +15,19 @@ and open the template in the editor.
     <body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h3>Login</h3>
                 <h:link value="Register" outcome="register"/>
+                <h3>Login</h3>
+                <h:form id="login-form">
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="id" value="Id"/>
+                        <h:inputText id="id"/>
+                        <!--<h:message for="id" /> -->
+                        <h:outputLabel for="password" value="Password"/>
+                        <h:inputSecret value="password" id="password"/>  
+                        <!--<h:message for="password" /> -->
+                    </h:panelGrid>
+                    <h:commandButton id="button" value="Login"/> 
+                </h:form>
             </ui:define>
         </ui:composition>
     </body>
