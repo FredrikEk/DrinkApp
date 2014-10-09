@@ -16,18 +16,19 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>Register</h3>
-                <h:form id="login-form">
-                    <h:panelGrid columns="3">
+                <h:form id="register-form">
+                    <h:panelGrid  columns="3">
                         <!-- More action to come when database is set... -->
-                        <h:outputLabel for="id" value="Id"/>
+                        <h:outputLabel for="id" value="Id:"/>
                         <h:inputText id="id"/>
                         <!--<h:message for="id" /> -->
-                        <h:outputLabel for="password" value="Password"/>
-                        <h:inputSecret id="password"/>  
-                        <h:outputLabel for="repassword" value="Re-enter Password"/>
-                        <h:inputSecret id="repassword"/>
+                        <h:outputLabel for="password" value="Password:"/>
+                        <h:inputSecret id="password"/>
                         <!--<h:message for="password" /> -->
+                        <h:outputLabel for="repassword" value="Confirm Password:"/>
+                        <h:inputSecret id="repassword"/>
                     </h:panelGrid>
+                    <h:commandButton id="button" value="Register"/>
                 </h:form>
             </ui:define>
         </ui:composition>
