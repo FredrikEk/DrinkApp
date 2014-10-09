@@ -14,6 +14,10 @@
         <to-view-id>index.xhtml</to-view-id>
     </navigation-case>
     <navigation-case>
+        <from-outcome>cancel</from-outcome>
+        <to-view-id>index.xhtml</to-view-id>
+    </navigation-case>
+    <navigation-case>
         <from-outcome>drinklist</from-outcome>
         <to-view-id>partials/drink/drinkList.xhtml</to-view-id>
     </navigation-case>
