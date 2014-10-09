@@ -28,7 +28,9 @@ and open the template in the editor.
                         <h:outputLabel for="repassword" value="Confirm Password:"/>
                         <h:inputSecret id="repassword"/>
                     </h:panelGrid>
-                    <h:commandButton id="button" value="Register"/>
+                    <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
+                                         action="login?faces-redirect=true" />
+                    <h:commandButton id="button" value="Register" class="btn btn-default"/>
                 </h:form>
             </ui:define>
         </ui:composition>
