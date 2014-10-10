@@ -48,4 +48,16 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
         TypedQuery<Drink> tq = em.createQuery("SELECT d FROM Drink d WHERE d.name = \"" + name + "\"", Drink.class);
         return tq.getResultList();
     }
+	
+	@Override
+	public List<Drink> getByUser(String username) {
+		TypedQuery<Drink> tq = em.createQuery("SELECT d FROM Drink d WHERE d.user = \"" + username + "\"", Drink.class);
+		return tq.getResultList();
+	}
+	
+	@Override
+	public List<Drink> getByIngredient(String ingredient) {
+		TypedQuery<Drink> tq = em.createQuery("SELECT d FROM DrinkIngredient di WHERE di.ingredient = \"" + ingredient + "\"", Drink.class);
+		return tq.getResultList();
+	}
 }

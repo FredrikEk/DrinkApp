@@ -44,7 +44,7 @@ public class Drink implements Serializable {
     
     public Drink() {
         this.user        = new User();
-        this.drinkname        = null;
+        this.drinkname   = null;
         this.ingredients = new ArrayList();
         this.steps       = new ArrayList();
         this.types       = new ArrayList();
