@@ -18,6 +18,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 
+
 /*
  * The User model. Stores users in the database with an email, 
  * username and password.
