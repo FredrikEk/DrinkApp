@@ -6,6 +6,7 @@
 
 package com.DrinkApp.Core;
 
+import com.DrinkApp.auth.User;
 import com.DrinkApp.persistence.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,8 @@ public class Drink extends AbstractEntity {
     private User user;
     @Column
     private String name;
-    @ManyToMany
-    private List<Ingredient> ingredients;
+    @OneToMany
+    private List<DrinkIngredient> ingredients;
     @OneToMany
     private List<Step> steps;
     @ManyToMany
@@ -46,7 +47,7 @@ public class Drink extends AbstractEntity {
         this.comment     = null;
     }
     
-    public Drink(String name, User user, List<Ingredient> ingredients, List<Step> steps, List<Type> types, String comment) {
+    public Drink(String name, User user, List<DrinkIngredient> ingredients, List<Step> steps, List<Type> types, String comment) {
         this.name        = name;
         this.user        = user;
         this.ingredients = ingredients;
@@ -55,7 +56,7 @@ public class Drink extends AbstractEntity {
         this.comment     = comment;
         }
     
-    public Drink(Long id, String username, String name, User user, List<Ingredient> ingredients, List<Step> steps, List<Type> types, String comment) {
+    public Drink(Long id, String username, String name, User user, List<DrinkIngredient> ingredients, List<Step> steps, List<Type> types, String comment) {
         super(id);
         this.name        = name;
         this.user        = user;
@@ -73,7 +74,7 @@ public class Drink extends AbstractEntity {
         return name;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<DrinkIngredient> getIngredients() {
         return ingredients;
     }
     

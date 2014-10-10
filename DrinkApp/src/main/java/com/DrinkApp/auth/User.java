@@ -30,7 +30,8 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "username"))
     @Enumerated(EnumType.STRING)
     protected List<Groups> groups = new ArrayList<>();
-
+    
+    
     public User() {
     }
 

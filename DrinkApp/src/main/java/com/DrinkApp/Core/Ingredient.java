@@ -7,8 +7,10 @@
 package com.DrinkApp.Core;
 
 import com.DrinkApp.persistence.AbstractEntity;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /*
  * The Ingredient model. Stores ingredients in the database.
@@ -19,6 +21,8 @@ public class Ingredient extends AbstractEntity{
     
     @Column
     private String name;
+    @OneToMany
+    private List<DrinkIngredient> drinks;
     
     public Ingredient(){
         this.name = "";
@@ -38,6 +42,10 @@ public class Ingredient extends AbstractEntity{
         return name;
     }
 
+    public List<DrinkIngredient> getDrinks() {
+        return drinks;
+    }
+    
     @Override
     public String toString() {
         return "Ingredient{" + "id=" + getId() + ", name=" + name  + '}';
