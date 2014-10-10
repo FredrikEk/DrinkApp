@@ -1,9 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.DrinkApp.auth;
 
-import java.io.Serializable;
+import com.DrinkApp.persistence.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -11,19 +16,19 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+
+/*
+ * The User model. Stores users in the database with an email, 
+ * username and password.
+ */
 
 @Entity
-@Table(name="USERS")
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Column(nullable = false)  // unique is implied
-    protected String username;
+public class User extends AbstractEntity {
+    
+   
     @Column(nullable = false)
+    private String username;
     protected String passwd;
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "USERS_GROUPS", 
@@ -32,60 +37,48 @@ public class User implements Serializable {
     protected List<Groups> groups = new ArrayList<>();
     
     
+    @Column(nullable = false)
+    private String email;
+    @Column(nullable = false)
+    private String password;
+
     public User() {
+        username = "";
+        email = "";
+        password = "";
     }
-
-    public User(String username, String passwd, Groups group) {
+    
+    public User(String username, String email, String password) {
         this.username = username;
-        this.passwd = passwd;
-        groups.add(group);
-    }
-
-    public void addGroup(Groups group) {
-        groups.add(group);
-    }
-
-    public void removeGroup(Groups group) {
-        groups.remove(group);
-    }
-
-    public List<Groups> getGroups() {
-        return groups;
+        this.email    = email;
+        this.password = password;
+        }
+    
+    public User(Long id, String username, String email, String password) {
+        super(id);
+        this.username = username;
+        this.email    = email;
+        this.password = password;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void set(String username) {
-        this.username = username;
+    public String getEmail() {
+        return email;
     }
-
-    public String getPasswd() {
-        return passwd;
-    }
-
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
+    
+    public String getPassword() {
+        return password;
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.username);
-        return hash;
+    public String toString() {
+        return "User{" + "id=" + getId() + ", username=" + username + ", email=" + email + '}';
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final User other = (User) obj;
-        return Objects.equals(this.username, other.username);
+    Object getPasswd() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
