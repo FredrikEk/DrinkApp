@@ -32,7 +32,7 @@ public class Drink implements Serializable {
     private User user;
     @Column
     @Id
-    private String name;
+    private String drinkname;
     @OneToMany(mappedBy = "drink")
     private List<DrinkIngredient> ingredients;
     @OneToMany(mappedBy = "drink")
@@ -44,7 +44,7 @@ public class Drink implements Serializable {
     
     public Drink() {
         this.user        = new User();
-        this.name        = null;
+        this.drinkname        = null;
         this.ingredients = new ArrayList();
         this.steps       = new ArrayList();
         this.types       = new ArrayList();
@@ -52,7 +52,7 @@ public class Drink implements Serializable {
     }
     
     public Drink(String name, User user, List<DrinkIngredient> ingredients, List<Step> steps, List<Type> types, String comment) {
-        this.name        = name;
+        this.drinkname   = name;
         this.user        = user;
         this.ingredients = ingredients;
         this.steps       = steps;
@@ -65,7 +65,7 @@ public class Drink implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return drinkname;
     }
 
     public List<DrinkIngredient> getIngredients() {
@@ -86,6 +86,6 @@ public class Drink implements Serializable {
     
     @Override
     public String toString() {
-        return "Drink{ name=" + name + "user: " + user.getUsername() + '}';
+        return "Drink{ name=" + drinkname + "user: " + user.getUsername() + '}';
     }
 }

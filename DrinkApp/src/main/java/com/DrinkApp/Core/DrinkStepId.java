@@ -9,10 +9,6 @@ package com.DrinkApp.Core;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Fredrik
- */
 public class DrinkStepId implements Serializable{
     DrinkUser drink;
     int stepNr;

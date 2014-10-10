@@ -17,11 +17,11 @@ import java.util.Objects;
 public class DrinkUser implements Serializable{
     
     String user;
-    String name;
+    String drinkname;
     
     @Override
     public int hashCode() {
-        return Integer.parseInt(name.hashCode() + "" + user.hashCode());
+        return Integer.parseInt(drinkname.hashCode() + "" + user.hashCode());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DrinkUser implements Serializable{
         if (!Objects.equals(this.user, other.user)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.drinkname, other.drinkname)) {
             return false;
         }
         return true;
