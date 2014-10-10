@@ -61,4 +61,8 @@ public class User extends AbstractEntity {
     public String toString() {
         return "User{" + "id=" + getId() + ", username=" + username + ", email=" + email + '}';
     }
+
+    Object getPasswd() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

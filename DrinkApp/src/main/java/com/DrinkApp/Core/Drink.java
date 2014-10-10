@@ -6,6 +6,7 @@
 
 package com.DrinkApp.Core;
 
+import com.DrinkApp.auth.User;
 import com.DrinkApp.persistence.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
