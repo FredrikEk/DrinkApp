@@ -7,8 +7,6 @@
 package com.DrinkApp.auth;
 
 import com.DrinkApp.persistence.AbstractEntity;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -30,18 +28,10 @@ public class User extends AbstractEntity {
    
     @Column(nullable = false)
     private String username;
-    protected String passwd;
-    @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "USERS_GROUPS", 
-            joinColumns = @JoinColumn(name = "username"))
-    @Enumerated(EnumType.STRING)
-    protected List<Groups> groups = new ArrayList<>();
-    
-    
+    @Column(nullable = false)
+    protected String password;
     @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
-    private String password;
 
     public User() {
         username = "";
