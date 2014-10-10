@@ -6,9 +6,10 @@
 
 package com.DrinkApp.Core;
 
-import com.DrinkApp.persistence.AbstractEntity;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /*
  * The Type model. Stores different types that drinks can have
@@ -16,9 +17,10 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Type extends AbstractEntity {
+public class Type implements Serializable {
 
     @Column
+    @Id
     private String name;
     
     public Type(){
@@ -30,17 +32,12 @@ public class Type extends AbstractEntity {
         this.name = name;
         }
     
-    public Type(Long id, String name) {
-        super(id);
-        this.name = name;
-    }
-    
     public String getName() {
         return name;
     }
 
     @Override
     public String toString() {
-        return "Type{" + "id=" + getId() + ", name=" + name  + '}';
+        return "Type{ name=" + name  + '}';
     }
 }

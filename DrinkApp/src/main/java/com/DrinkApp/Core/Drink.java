@@ -7,11 +7,13 @@
 package com.DrinkApp.Core;
 
 import com.DrinkApp.auth.User;
-import com.DrinkApp.persistence.AbstractEntity;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,16 +24,18 @@ import javax.persistence.OneToMany;
  * list of steps of how to make the drink. 
  */
 
-@Entity
-public class Drink extends AbstractEntity {
+@Entity @IdClass(DrinkUser.class)
+public class Drink implements Serializable {
     
     @ManyToOne
+    @Id
     private User user;
     @Column
+    @Id
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "drink")
     private List<DrinkIngredient> ingredients;
-    @OneToMany
+    @OneToMany(mappedBy = "drink")
     private List<Step> steps;
     @ManyToMany
     private List<Type> types;
@@ -56,16 +60,6 @@ public class Drink extends AbstractEntity {
         this.comment     = comment;
         }
     
-    public Drink(Long id, String username, String name, User user, List<DrinkIngredient> ingredients, List<Step> steps, List<Type> types, String comment) {
-        super(id);
-        this.name        = name;
-        this.user        = user;
-        this.ingredients = ingredients;
-        this.steps       = steps;
-        this.types       = types;
-        this.comment     = comment;
-    }
-
     public User getUser() {
         return user;
     }
@@ -92,6 +86,6 @@ public class Drink extends AbstractEntity {
     
     @Override
     public String toString() {
-        return "Drink{" + "id=" + getId() + ", name=" + name + '}';
+        return "Drink{ name=" + name + "user: " + user.getUsername() + '}';
     }
 }

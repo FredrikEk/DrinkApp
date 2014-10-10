@@ -6,21 +6,28 @@
 
 package com.DrinkApp.Core;
 
-import com.DrinkApp.persistence.AbstractEntity;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 
 /*
  * The Step model. Stores the different steps of how to make a certain drink.
  */
 
-@Entity
-public class Step extends AbstractEntity {
+@Entity @IdClass(DrinkStepId.class)
+public class Step implements Serializable {
     
     @Column
+    @Id
     private int stepNr;
     @Column
     private String description;
+    @ManyToOne
+    @Id
+    Drink drink;
     
     public Step(){
         this.description = "";
@@ -33,12 +40,6 @@ public class Step extends AbstractEntity {
         this.stepNr = stepNr;
         }
     
-    public Step(Long id, String name) {
-        super(id);
-        this.description = description;
-        this.stepNr = stepNr;
-    }
-    
     public int getStepNr() {
         return stepNr;
     }
@@ -49,7 +50,7 @@ public class Step extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Ingredient{" + "id=" + getId() + ", stepNr=" + stepNr + ", description=" + description + '}';
+        return "Ingredient{ stepNr=" + stepNr + ", description=" + description + '}';
     }
     
 }

@@ -6,21 +6,22 @@
 
 package com.DrinkApp.Core;
 
-import com.DrinkApp.persistence.AbstractEntity;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 
-/**
- *
- * @author Fredrik
- */
-@Entity
-public class DrinkIngredient extends AbstractEntity{
+
+@Entity @IdClass(DrinkIngredientId.class)
+public class DrinkIngredient implements Serializable{
     
     @ManyToOne
+    @Id
     private Drink drink;
     @ManyToOne
+    @Id
     private Ingredient ingredient;
     @Column
     private int quantity;
@@ -37,13 +38,6 @@ public class DrinkIngredient extends AbstractEntity{
         this.quantity   = quantity;
         }
     
-    public DrinkIngredient(Long id, Drink drink, Ingredient ingredient, int quantity) {
-        super(id);
-        this.drink      = drink;
-        this.ingredient = ingredient;
-        this.quantity   = quantity;
-    }
-    
     public Drink getDrink() {
         return drink;
     }
@@ -58,6 +52,6 @@ public class DrinkIngredient extends AbstractEntity{
     
     @Override
     public String toString() {
-        return "DrinkIngredient{" + "id=" + getId() + ", Ingredient=" + ingredient.getName() + ", Drink=" + drink.getName() + '}';
+        return "DrinkIngredient{ Ingredient=" + ingredient.getName() + ", Drink=" + drink.getName() + '}';
     }
 }

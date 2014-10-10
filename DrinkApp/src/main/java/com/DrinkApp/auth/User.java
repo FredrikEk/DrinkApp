@@ -6,15 +6,11 @@
 
 package com.DrinkApp.auth;
 
-import com.DrinkApp.persistence.AbstractEntity;
-import javax.persistence.CollectionTable;
+import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /*
@@ -23,10 +19,12 @@ import javax.persistence.JoinColumn;
  */
 
 @Entity
-public class User extends AbstractEntity {
+@Table(name = "Users")
+public class User implements Serializable {
     
    
     @Column(nullable = false)
+    @Id
     private String username;
     @Column(nullable = false)
     protected String password;
@@ -34,9 +32,9 @@ public class User extends AbstractEntity {
     private String email;
 
     public User() {
-        username = "";
-        email = "";
-        password = "";
+        this.username = "";
+        this.email = "";
+        this.password = "";
     }
     
     public User(String username, String email, String password) {
@@ -44,13 +42,6 @@ public class User extends AbstractEntity {
         this.email    = email;
         this.password = password;
         }
-    
-    public User(Long id, String username, String email, String password) {
-        super(id);
-        this.username = username;
-        this.email    = email;
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;
@@ -66,7 +57,7 @@ public class User extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + getId() + ", username=" + username + ", email=" + email + '}';
+        return "User{username=" + username + ", email=" + email + '}';
     }
 
     Object getPasswd() {

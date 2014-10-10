@@ -6,10 +6,11 @@
 
 package com.DrinkApp.Core;
 
-import com.DrinkApp.persistence.AbstractEntity;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /*
@@ -17,11 +18,12 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class Ingredient extends AbstractEntity{
+public class Ingredient implements Serializable{
     
     @Column
+    @Id
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "ingredient")
     private List<DrinkIngredient> drinks;
     
     public Ingredient(){
@@ -33,11 +35,6 @@ public class Ingredient extends AbstractEntity{
         this.name = name;
         }
     
-    public Ingredient(Long id, String name) {
-        super(id);
-        this.name = name;
-    }
-    
     public String getName() {
         return name;
     }
@@ -48,6 +45,6 @@ public class Ingredient extends AbstractEntity{
     
     @Override
     public String toString() {
-        return "Ingredient{" + "id=" + getId() + ", name=" + name  + '}';
+        return "Ingredient{name=" + name  + '}';
     }
 }
