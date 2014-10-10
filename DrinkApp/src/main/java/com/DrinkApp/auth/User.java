@@ -19,11 +19,11 @@ import javax.persistence.Entity;
 public class User extends AbstractEntity {
     
    
-    @Column
+    @Column(nullable = false)
     private String username;
-    @Column
+    @Column(nullable = false)
     private String email;
-    @Column
+    @Column(nullable = false)
     private String password;
 
     public User() {
