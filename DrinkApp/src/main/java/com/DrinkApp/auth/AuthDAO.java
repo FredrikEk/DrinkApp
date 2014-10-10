@@ -26,7 +26,7 @@ public class AuthDAO extends AbstractDAO<User, String> {
     }
     
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return em;
     }
     
