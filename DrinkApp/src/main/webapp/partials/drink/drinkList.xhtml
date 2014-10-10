@@ -21,7 +21,7 @@ and open the template in the editor.
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    Search drinks
+                                    Browse by name
                                 </h3>
                             </div>
                             <div class="panel-body bg-danger">
@@ -34,12 +34,12 @@ and open the template in the editor.
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    Add ingredients
+                                    Browse by ingredients
                                 </h3>
                             </div>
                             <div class="panel-body bg-danger">
                                 <h:form id="ingredient-form">
-                                    <h:outputLabel for="id" value="Enter ingredents"/>
+                                    <h:outputLabel for="id" value="Enter an ingredent"/>
                                     <h:inputText class="form-control" id="id"/>
                                 </h:form>
                             </div>
@@ -77,7 +77,7 @@ and open the template in the editor.
                                      Chosen Drink
                                  </h3>
                             </div>
-                            <div class="panel-body bg-success">
+                            <div class="panel-body bg-warning">
                                 <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
                                     <ui:define name="drinkname">
                                         Mojito
