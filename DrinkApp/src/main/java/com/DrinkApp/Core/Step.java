@@ -27,7 +27,7 @@ public class Step implements Serializable {
     private String description;
     @ManyToOne
     @Id
-    Drink drink;
+    private Drink drink;
     
     public Step(){
         this.description = "";
@@ -42,6 +42,10 @@ public class Step implements Serializable {
     
     public int getStepNr() {
         return stepNr;
+    }
+    
+    public Drink getDrink() {
+        return drink;
     }
     
     public String getDescription() {

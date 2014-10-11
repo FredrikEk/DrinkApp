@@ -10,10 +10,7 @@ import com.DrinkApp.auth.User;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Fredrik
- */
+
 public class DrinkUser implements Serializable{
     
     String user;
