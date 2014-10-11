@@ -34,7 +34,7 @@ public class RegisterCtrl {
         this.ub = ub;
     }
 
-    public void register() {
+    public String register() {
         FacesContext context = FacesContext.getCurrentInstance();
         if (existUsername()) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -43,11 +43,10 @@ public class RegisterCtrl {
                     + "' already exists!  ",
                     "Please choose a different username.");
             context.addMessage(null, message);
-        }
-        if (existEmail()) {
+        } else if (existEmail()) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email '"
-                    + ub.getUsername()
+                    + ub.getEmail()
                     + "' already exists!  ",
                     "Please enter a different email.");
             context.addMessage(null, message);
@@ -58,6 +57,7 @@ public class RegisterCtrl {
             User user = new User(ub.getUsername(), ub.getEmail(), ub.getPassword());
             try {
                 authDAO.create(user);
+                return "registerSuccess";
             } catch (Exception e) {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                         "Error creating user!",
@@ -68,6 +68,7 @@ public class RegisterCtrl {
                         e);
             }
         }
+        return "register"; //Returns to the register page, since it failed. Might change in faces-config to make String it more clear
     }
     /*
      * Help methods to check if a user with the same username and/or email already exists.

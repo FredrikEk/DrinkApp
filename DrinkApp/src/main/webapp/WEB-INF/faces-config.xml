@@ -1,34 +1,56 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <faces-config version="2.0"
-    xmlns="http://java.sun.com/xml/ns/javaee" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+              xmlns="http://java.sun.com/xml/ns/javaee" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
-<!-- Main router -->
+    <!-- Main router -->
 
-<navigation-rule>
-    <from-view-id>*</from-view-id>
-    <navigation-case>
-        <from-outcome>home</from-outcome>
-        <to-view-id>index.xhtml</to-view-id>
-    </navigation-case>
-    <navigation-case>
-        <from-outcome>drinklist</from-outcome>
-        <to-view-id>partials/drink/drinkList.xhtml</to-view-id>
-    </navigation-case>
-    <navigation-case>
-        <from-outcome>ingredients</from-outcome>
-        <to-view-id>partials/ingredients/ingredients.xhtml</to-view-id>
-    </navigation-case>
-    <navigation-case>
-        <from-outcome>login</from-outcome>
-        <to-view-id>partials/login/login.xhtml</to-view-id>
-    </navigation-case>
-    <navigation-case>
-        <from-outcome>register</from-outcome>
-        <to-view-id>partials/login/register.xhtml</to-view-id>
-    </navigation-case>      
-</navigation-rule>   
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>drinklist</from-outcome>
+            <to-view-id>partials/drink/drinkList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ingredients</from-outcome>
+            <to-view-id>partials/ingredients/ingredients.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>partials/login/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>register</from-outcome>
+            <to-view-id>partials/login/register.xhtml</to-view-id>
+        </navigation-case>    
+        <navigation-case>
+            <from-outcome>registerSuccess</from-outcome>
+            <to-view-id>partials/auth/registerSuccess.xhtml</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-action>#{authBean.login}</from-action>
+            <from-outcome>login-success</from-outcome>
+            <to-view-id>partials/login/welcome.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{authBean.login}</from-action>
+            <from-outcome>fail</from-outcome>
+            <to-view-id>partials/login/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{authBean.logout}</from-action>
+            <from-outcome>logout-success</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>   
 
 </faces-config>

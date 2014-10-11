@@ -6,9 +6,6 @@
 
 package com.DrinkApp.bb;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
@@ -28,14 +25,7 @@ public class RegisterBB {
     @NotNull
     private String password;
     @NotNull
-    private String rePassword;
-    
-    @PostConstruct
-    public void post(){
-        LOG.log(Level.INFO, "******alive ");
-    }
-    private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
-    
+    private String rePassword;    
     
     public void setUsername(String username){
         this.username = username;

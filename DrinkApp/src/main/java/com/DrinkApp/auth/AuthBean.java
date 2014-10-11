@@ -13,22 +13,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 
 @Named
 @RequestScoped
 public class AuthBean implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(AuthBean.class.getSimpleName());
-    private static final long serialVersionUID = 1L;
     
-    @NotNull
-    @Size(min = 4, max = 20, message="Must use 4-20 chars")
     private String id;
-    @NotNull
-    @Size(min = 4, max = 20, message="Must use 4-20 chars")
     private String password;
    
 
