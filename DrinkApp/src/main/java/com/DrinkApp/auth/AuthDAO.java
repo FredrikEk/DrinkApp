@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 public class AuthDAO extends AbstractDAO<User, String> {
     private static final Logger LOG = Logger.getLogger(AuthDAO.class.getName());
 
-    @PersistenceContext//(unitName = "jee_auth_pu")
+    @PersistenceContext
     protected EntityManager em;
 
     public AuthDAO() {

@@ -12,7 +12,7 @@ and open the template in the editor.
         <title>Register</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-        <body>
+    <body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>Register</h3>
@@ -21,19 +21,16 @@ and open the template in the editor.
 
                         <h:form id="register-form">
                             <div class="form-group">
-                                <!-- More action to come when database is set... -->
                                 <h:outputLabel for="username" value="Username:"/>
                                 <h:inputText class="form-control" id="username" value="#{registerBB.username}" required="true"/>
                                 <h:message for="register:username" style="color: red"/>
                             </div>
                             <div class="form-group">
-                                <!-- More action to come when database is set... -->
                                 <h:outputLabel for="email" value="Email:"/>
                                 <h:inputText class="form-control" id="email" value="#{registerBB.email}" required="true"/>
                                 <h:message for="register:email" style="color: red"/>
                             </div>
                             <div class="form-group">
-                                <!--<h:message for="id" /> -->
                                 <h:outputLabel for="password" value="Password:"/>
                                 <h:inputSecret class="form-control" id="password"
                                                value="#{registerBB.password}"
@@ -41,7 +38,6 @@ and open the template in the editor.
                                 <h:message for="register:password" style="color: red"/>
                             </div>
                             <div class="form-group">
-                                <!--<h:message for="password" /> -->
                                 <h:outputLabel for="repassword" value="Confirm Password:"/>
                                 <h:inputSecret class="form-control" id="repassword"
                                                value="#{registerBB.rePassword}"

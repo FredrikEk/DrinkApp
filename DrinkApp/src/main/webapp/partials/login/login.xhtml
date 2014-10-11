@@ -19,23 +19,21 @@ and open the template in the editor.
                 <h3>Login</h3>
                 <div class="row">
                     <div class="col-md-4">
-                        
-                <h:form id="login-form">
-                        <div class="form-group">
-                            <h:outputLabel for="id" value="Username:"/>
-                            <h:inputText class="form-control" id="id"/>
-                        </div>
-                            <!--<h:message for="id" /> -->
-                        <div class="form-group">
-                            <h:outputLabel for="password" value="Password:"/>
-                            <h:inputSecret class="form-control" value="password" id="password"/>  
-                        </div>
-                            <!--<h:message for="password" /> -->
-                        <h:commandButton class="btn btn-default" value="Cancel" immediate="true" action="home" />
-                        <h:commandButton class="btn btn-default" id="button" value="Login"/>
-                    
-                </h:form>
-                        
+
+                        <h:form id="login-form">
+                            <div class="form-group">
+                                <h:outputLabel for="username" value="Username:"/>
+                                <h:inputText class="form-control" value="#{loginBB.username}" id="username"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="password" value="Password:"/>
+                                <h:inputSecret class="form-control" value="#{loginBB.password}" id="password"/>  
+                            </div>
+                            <h:commandButton class="btn btn-default" value="Cancel" immediate="true" action="home" />
+                            <h:commandButton class="btn btn-default" value="Login" action="#{loginCtrl.login()}"/>
+
+                        </h:form>
+
                     </div>
                 </div>
             </ui:define>

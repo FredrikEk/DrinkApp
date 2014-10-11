@@ -7,9 +7,17 @@
 package com.DrinkApp.auth;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -33,6 +41,11 @@ public class User implements Serializable {
     protected String password;
     @Column(nullable = false)
     private String email;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "USERS_GROUPS", 
+            joinColumns = @JoinColumn(name = "username"))
+    @Enumerated(EnumType.STRING)
+    protected List<Groups> groups = new ArrayList<>();
 
     public User() {
         this.username = "";
@@ -40,11 +53,16 @@ public class User implements Serializable {
         this.password = "";
     }
     
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, Groups group) {
         this.username = username;
         this.email    = email;
         this.password = password;
+        groups.add(group);
         }
+    
+    /*
+    * Setters if we want to modify, like for example change password etc. in the future?
+    */
 
     public String getUsername() {
         return username;
@@ -57,13 +75,18 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
+    
+    public List<Groups> getGroups(){
+        return groups;
+    }
+    
+    public void removeGroup(Groups group) {
+        groups.remove(group);
+    }
 
     @Override
     public String toString() {
         return "User{username=" + username + ", email=" + email + '}';
     }
-
-    Object getPasswd() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

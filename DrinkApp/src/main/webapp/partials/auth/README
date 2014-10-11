@@ -1,0 +1,9 @@
+You need to have the database jdbc/drinkapp already setup (I suppose you all have)
+
+Creating A Realm for DrinkApp:
+Create one using
+Admin Console (i.e. go to Services > Servers > GlassFish Server, right click and choose View Domain Admin Console)
+Then on the left side below Common Tasks: Configurations > server Config > Security > Realms > New 
+
+For settings, check the realmSetup.png
+

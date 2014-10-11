@@ -30,23 +30,24 @@
             <to-view-id>partials/login/register.xhtml</to-view-id>
         </navigation-case>    
         <navigation-case>
+            <from-action>#{registerCtrl.register()}</from-action>
             <from-outcome>registerSuccess</from-outcome>
             <to-view-id>partials/auth/registerSuccess.xhtml</to-view-id>
         </navigation-case>        
         <navigation-case>
-            <from-action>#{authBean.login}</from-action>
+            <from-action>#{loginCtrl.login()}</from-action>
             <from-outcome>login-success</from-outcome>
-            <to-view-id>partials/login/welcome.xhtml</to-view-id>
+            <to-view-id>partials/auth/profile.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-action>#{authBean.login}</from-action>
-            <from-outcome>fail</from-outcome>
+            <from-action>#{loginCtrl.login()}</from-action>
+            <from-outcome>login-fail</from-outcome>
             <to-view-id>partials/login/login.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <from-action>#{authBean.logout}</from-action>
+            <from-action>#{loginCtrl.logout()}</from-action>
             <from-outcome>logout-success</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
             <redirect/>

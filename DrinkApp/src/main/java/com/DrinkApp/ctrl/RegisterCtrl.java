@@ -6,6 +6,7 @@
 package com.DrinkApp.ctrl;
 
 import com.DrinkApp.auth.AuthDAO;
+import com.DrinkApp.auth.Groups;
 import com.DrinkApp.auth.User;
 import com.DrinkApp.bb.RegisterBB;
 import java.util.logging.Level;
@@ -27,11 +28,11 @@ public class RegisterCtrl {
 
     @Inject
     private AuthDAO authDAO;
-    private RegisterBB ub;
+    private RegisterBB rb;
 
     @Inject
-    public void setUserBB(RegisterBB ub) {
-        this.ub = ub;
+    protected void setUserBB(RegisterBB ub) {
+        this.rb = ub;
     }
 
     public String register() {
@@ -39,22 +40,22 @@ public class RegisterCtrl {
         if (existUsername()) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Username '"
-                    + ub.getUsername()
+                    + rb.getUsername()
                     + "' already exists!  ",
                     "Please choose a different username.");
             context.addMessage(null, message);
         } else if (existEmail()) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email '"
-                    + ub.getEmail()
+                    + rb.getEmail()
                     + "' already exists!  ",
                     "Please enter a different email.");
             context.addMessage(null, message);
-        } else if (!ub.getPassword().equals(ub.getRePassword())) {
+        } else if (!rb.getPassword().equals(rb.getRePassword())) {
             FacesMessage message = new FacesMessage("The specified passwords do not match.  Please try again");
             context.addMessage(null, message);
         } else {
-            User user = new User(ub.getUsername(), ub.getEmail(), ub.getPassword());
+            User user = new User(rb.getUsername(), rb.getEmail(), rb.getPassword(), Groups.USER);
             try {
                 authDAO.create(user);
                 return "registerSuccess";
@@ -77,7 +78,7 @@ public class RegisterCtrl {
     private boolean existUsername() {
         try {
             authDAO.getEntityManager().createNamedQuery("User.findByUsername").
-                    setParameter("username", ub.getUsername()).getSingleResult();
+                    setParameter("username", rb.getUsername()).getSingleResult();
             return true;
         } catch (NoResultException nre) {
             return false;
@@ -87,7 +88,7 @@ public class RegisterCtrl {
     private boolean existEmail() {
         try {
             authDAO.getEntityManager().createNamedQuery("User.findByEmail").
-                    setParameter("email", ub.getEmail()).getSingleResult();
+                    setParameter("email", rb.getEmail()).getSingleResult();
             return true;
         } catch (NoResultException nre) {
             return false;
