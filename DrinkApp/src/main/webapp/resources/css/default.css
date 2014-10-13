@@ -37,12 +37,12 @@ header h1{
     vertical-align: middle;
 }
 
-div {
-    border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 5px 5px 5px 5px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border: 0px solid #000000;
-}
+//div {
+//    border-radius: 5px 5px 5px 5px;
+//    -moz-border-radius: 5px 5px 5px 5px;
+//    -webkit-border-radius: 5px 5px 5px 5px;
+//    border: 0px solid #000000;
+//}
 
 footer {
     position:fixed;
