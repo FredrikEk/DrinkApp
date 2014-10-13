@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.DrinkApp.bb;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
@@ -15,28 +15,37 @@ import javax.validation.constraints.NotNull;
  * @author martinkastebo
  */
 @Named
-@RequestScoped
-public class LoginBB {
-    
+@SessionScoped
+public class LoginBB implements Serializable {
+
     @NotNull
     private String username;
     @NotNull
     private String password;
-    
-    public void setUsername(String username){
+    private boolean loggedIn;
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
     }
-    
-    public String getUsername(){
+
+    public String getUsername() {
         return username;
     }
-    
-    public void setPassword(String password){
+
+    public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
-    
+
 }

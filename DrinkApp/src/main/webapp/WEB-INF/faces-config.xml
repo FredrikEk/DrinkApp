@@ -18,6 +18,22 @@
             <to-view-id>partials/drink/drinkList.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>addDrink</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/addDrink.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteDrink</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/deleteDrink.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editDrink</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/editDrink.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>favouriteDrinks</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/favouriteDrinks.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>login</from-outcome>
             <to-view-id>partials/login/login.xhtml</to-view-id>
         </navigation-case>
@@ -26,7 +42,6 @@
             <to-view-id>partials/login/register.xhtml</to-view-id>
         </navigation-case>    
         <navigation-case>
-            <from-action>#{registerCtrl.register()}</from-action>
             <from-outcome>registerSuccess</from-outcome>
             <to-view-id>partials/auth/registerSuccess.xhtml</to-view-id>
         </navigation-case>        
@@ -45,9 +60,8 @@
         <navigation-case>
             <from-action>#{loginCtrl.logout()}</from-action>
             <from-outcome>logout-success</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>partials/login/login.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>   
-
 </faces-config>

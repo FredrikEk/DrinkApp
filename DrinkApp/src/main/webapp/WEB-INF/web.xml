@@ -21,7 +21,6 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
-    
     <security-role>
         <description/>
         <role-name>user</role-name>
@@ -30,7 +29,6 @@
         <description/>
         <role-name>admin</role-name>
     </security-role>
-   
     <!-- Security constraints using roles above -->
     <security-constraint>
         <display-name>User Contraint</display-name>
@@ -54,5 +52,4 @@
             <form-error-page>/partials/login/login.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-    
 </web-app>
