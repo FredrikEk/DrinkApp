@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.DrinkApp.bb;
 
 import javax.enterprise.context.RequestScoped;
@@ -17,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Named
 @RequestScoped
 public class RegisterBB {
-    
+
     @NotNull
     private String username;
     @NotNull
@@ -25,38 +24,42 @@ public class RegisterBB {
     @NotNull
     private String password;
     @NotNull
-    private String rePassword;    
-    
-    public void setUsername(String username){
+    private String rePassword;
+
+    public void setUsername(String username) {
         this.username = username;
     }
-    
-    public void setEmail(String email){
+
+    public void setEmail(String email) {
         this.email = email;
     }
-    
-    public void setPassword(String password){
+
+    public void setPassword(String password) {
         this.password = password;
     }
-    
-    public void setRePassword(String rePassword){
+
+    public void setRePassword(String rePassword) {
         this.rePassword = rePassword;
     }
-    
-    public String getUsername(){
+
+    public String getUsername() {
         return username;
     }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
-    
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
-    
-    public String getRePassword(){
+
+    public String getRePassword() {
         return rePassword;
     }
-    
+
+    public String getHashedPassword() {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
 }

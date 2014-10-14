@@ -33,10 +33,8 @@ public class NavFilter implements Filter {
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println(((HttpServletRequest) request).getRequestURI());
         HttpServletRequest hsr = (HttpServletRequest) request;
         String url = hsr.getRequestURI();
-        System.out.println(lb.isLoggedIn());
         if (lb.isLoggedIn()) {
             if (url.contains("/partials/login/")) {
                 hsr.getRequestDispatcher("/index.xhtml").forward(request, response);

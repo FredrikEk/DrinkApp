@@ -5,6 +5,9 @@
  */
 package com.DrinkApp.ctrl;
 
+import com.DrinkApp.auth.AuthDAO;
+import com.DrinkApp.auth.User;
+import com.DrinkApp.bb.BCrypt;
 import com.DrinkApp.bb.LoginBB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +30,9 @@ public class LoginCtrl {
 
     private static final Logger LOG = Logger.getLogger(LoginCtrl.class.getSimpleName());
 
+    @Inject
+    private AuthDAO authDAO;
+
     private LoginBB lb;
 
     @Inject
@@ -40,19 +46,33 @@ public class LoginCtrl {
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
         LOG.log(Level.INFO, "*** Try login {0} {1}", new Object[]{lb.getUsername(), lb.getPassword()});
         try {
-            request.login(lb.getUsername(), lb.getPassword());
-            LOG.log(Level.INFO, "*** Login success");
-            lb.setLoggedIn(true);
-            return "login-success";
+            User u = authDAO.find(lb.getUsername());
+            if (BCrypt.checkpw(lb.getPassword(), u.getPassword())) {
+                request.login(lb.getUsername(), u.getPassword());
+                LOG.log(Level.INFO, "*** Login success");
+                lb.setLoggedIn(true);
+                return "login-success";
+            }
         } catch (ServletException e) {
+            LOG.log(Level.INFO, "*** Error ServletException: {0}", e.getMessage());
+        } catch (NullPointerException e) {
+            LOG.log(Level.INFO, "*** Error NullPointerException: {0}", e.getMessage());
             LOG.log(Level.INFO, "*** Login fail");
-            LOG.log(Level.INFO, "*** Error: {0}", e.getMessage());
-            FacesContext.getCurrentInstance().
+            context.
                     addMessage(null,
                             new FacesMessage(FacesMessage.SEVERITY_WARN,
-                                    "Login Failed", null));
+                                    "Login Failed! Username '"
+                                    + lb.getUsername()
+                                    + "' does not exist.", null));
             externalContext.getFlash().setKeepMessages(true);
+            return "login-fail";
         }
+        LOG.log(Level.INFO, "*** Login fail");
+        context.
+                addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "Login Failed! The password specified is not correct.", null));
+        externalContext.getFlash().setKeepMessages(true);
         return "login-fail";
     }
 

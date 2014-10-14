@@ -55,7 +55,7 @@ public class RegisterCtrl {
             FacesMessage message = new FacesMessage("The specified passwords do not match.  Please try again");
             context.addMessage(null, message);
         } else {
-            User user = new User(rb.getUsername(), rb.getEmail(), rb.getPassword(), Groups.USER);
+            User user = new User(rb.getUsername(), rb.getEmail(), rb.getHashedPassword(), Groups.USER);
             try {
                 authDAO.create(user);
                 return "registerSuccess";
