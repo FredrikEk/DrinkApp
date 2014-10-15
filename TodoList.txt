@@ -19,6 +19,8 @@ Till Ek och Sonny:
 Jobbar med vyerna Add Drink, Delete Drink, Edit Drink och Find Drink samt dess bönor och controllers.
 * Är det nödvändigt att vi ska kunna skicka bekräftelsemail? Ska vi isåfall även kontrollera att den
 emailen existerar? Känns som en senare grej man kan fixa.
+* Bör inte delete drink och add drink ligga som länkar inuti "mydrinks", känns konstigt ifall man skulle
+kunna ta bort och ändra på andras drinkar.
 
 Till Martin och Michael:
 
@@ -26,13 +28,6 @@ Allmänt om login-vyn :
 *Kolla upp om vi behöver "sanitize" input till databasen, dvs användarnamn, password, email etc. (Relevant för hela projektet)
 *Skicka bekräftelsemail till email-adressen efter man registrerat ett konto.
 
-Allmänt om design för authentikerade sidor:
-*Flytta länkarna på navbarsen så att det ser ut enligt följande:
-
-Home   My Drinks  My Favourite Drinks                     My Profile   About  Log Out
-
-
-        Find Drink   Add Drink  Edit Drink  Delete Drink   
 
 Allmänt About :
 *Lägg till lite info vad man kan göra som inloggad/auth user respektive inte inloggad
