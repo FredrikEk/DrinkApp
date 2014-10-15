@@ -17,6 +17,6 @@ import javax.ejb.Local;
 @Local
 public interface IUserBook extends IDAO<User, Long> {
 
-    User getByName(String name);
-    User getByMail(String email);
+    User findByName(String name);
+    User findByMail(String email);
 }

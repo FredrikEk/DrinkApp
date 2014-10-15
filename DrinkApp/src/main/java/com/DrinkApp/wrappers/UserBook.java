@@ -38,13 +38,13 @@ public class UserBook extends AbstractDAO<User, Long>
     
 
     @Override
-    public User getByName(String username) {
+    public User findByName(String username) {
         TypedQuery<User> tq = em.createQuery("SELECT u FROM User u WHERE u.username = \"" + username + "\"", User.class);
         return tq.getSingleResult();
     }
 
     @Override
-    public User getByMail(String email) {
+    public User findByMail(String email) {
         TypedQuery<User> tq = em.createQuery("SELECT u FROM User u WHERE u.email = \"" + email + "\"", User.class);
         return tq.getSingleResult();
     }

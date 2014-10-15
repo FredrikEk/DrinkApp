@@ -16,6 +16,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface IIngredientBook extends IDAO<Ingredient, Long> {
-
+    public Ingredient findByName(String name);
 }
 

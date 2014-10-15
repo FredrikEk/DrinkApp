@@ -87,7 +87,7 @@ and open the template in the editor.
                                         <div class="input-group">
                                             <h:inputText class="form-control" id="type" pt:placeholder="Type" value="#{typeBB.name}"/>
                                             <span class="input-group-btn">
-                                                <h:commandButton action="#{addDrinkCtrl.updateType()}" class="btn btn-default" value="Add2"/>    
+                                                <h:commandButton action="#{addDrinkCtrl.updateType()}" class="btn btn-default" value="Add"/>    
                                             </span>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ and open the template in the editor.
                                         <div class="input-group">
                                             <h:inputText class="form-control" id="step" pt:placeholder="Step" value="#{stepBB.name}"/>
                                             <span class="input-group-btn">
-                                                <h:commandButton action="#{addDrinkCtrl.updateStep()}" class="btn btn-default" value="Add3"/>  
+                                                <h:commandButton action="#{addDrinkCtrl.updateStep()}" class="btn btn-default" value="Add"/>  
                                             </span>
                                         </div>
                                     </div>
@@ -128,7 +128,9 @@ and open the template in the editor.
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <h:outputLabel for="comment" value="Comment:"/>
-                                        <h:inputTextarea class="form-control" id="comment" value="#{drinkBB.comment}"/>
+                                        <h:inputTextarea class="form-control" id="comment" value="#{drinkBB.comment}">
+                                            <c:ajax event="change" execute="comment"/>
+                                        </h:inputTextarea>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -152,8 +154,8 @@ and open the template in the editor.
                                         <h:outputText id="drinknk" value="#{drinkBB.drinkname}"/>
                                     </ui:define>
                                     <ui:define name="types">
-                                        <ui:repeat value="#{drinkBB.ingredients}" var="ingredient">
-                                            #{ingredient.quantity} #{ingredient.name} ,
+                                        <ui:repeat value="#{drinkBB.types}" var="type">
+                                            #{type.name} ,
                                         </ui:repeat>
                                     </ui:define>
                                     <ui:define name="user">
@@ -161,6 +163,14 @@ and open the template in the editor.
                                     </ui:define>
                                     <ui:define name="drinkdescription">
                                         <h:outputText value="#{drinkBB.comment}" />
+                                    </ui:define>
+                                    <ui:define name="drinkingredients">
+                                        
+                                         <ul>
+                                            <ui:repeat value="#{drinkBB.ingredients}" var="ingredient">
+                                                <li style="display: list-item">#{ingredient.quantity} #{ingredient.name}</li>
+                                            </ui:repeat>
+                                        </ul>
                                     </ui:define>
                                     <ui:define name="drinksteps">
                                         <ol class="list-group">

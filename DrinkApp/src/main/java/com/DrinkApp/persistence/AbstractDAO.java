@@ -2,7 +2,9 @@ package com.DrinkApp.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -28,7 +30,13 @@ public abstract class AbstractDAO<T, K> implements IDAO<T, K> {
 
     @Override
     public void create(T t) {
-        getEntityManager().persist(t);
+        try {
+            getEntityManager().persist(t);
+        } catch(EntityExistsException | TransactionRequiredException e1) {
+            return; // Ignore those exception for now.
+        } catch(Exception e) {
+            throw e;
+        }
     }
 
     @Override

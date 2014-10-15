@@ -19,9 +19,13 @@ import com.DrinkApp.wrappers.IDrinkIngredientBook;
 import com.DrinkApp.wrappers.IStepBook;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -37,6 +41,7 @@ public class AddDrinkCtrl{
     private IngredientBB ingredientBB;
     private DrinkBB drinkBB;
     private LoginBB loginBB;
+    private static final Logger LOG = Logger.getLogger(AddDrinkCtrl.class.getName());
     
     protected AddDrinkCtrl() {
         // Must have for CDI
@@ -84,7 +89,7 @@ public class AddDrinkCtrl{
     }
     
     public String updateIngredient() {
-        if(ingredientBB.getName() != "" && ingredientBB.getQuantity() != "") {
+        if(ingredientBB != null && !(ingredientBB.getName().equals("") || ingredientBB.getQuantity().equals(""))) {
             IngredientBB ibb = new IngredientBB();
             ibb.setName(ingredientBB.getName());
             ibb.setQuantity(ingredientBB.getQuantity());
@@ -99,7 +104,7 @@ public class AddDrinkCtrl{
     }
     
     public String updateType() {
-        if(typeBB.getName() != "") {
+        if(typeBB != null && !typeBB.getName().equals("")) {
             TypeBB t = new TypeBB();
             t.setName(typeBB.getName());
 
@@ -112,7 +117,7 @@ public class AddDrinkCtrl{
     }
     
     public String updateStep() {
-        if(stepBB.getName() != "") {
+        if(stepBB != null && !stepBB.getName().equals("")) {
             StepBB sbb = new StepBB();
             sbb.setName(stepBB.getName());
             List<StepBB> sbbList = drinkBB.getSteps();
@@ -124,62 +129,84 @@ public class AddDrinkCtrl{
     }
     
     public String finish() {
-        updateIngredient();
-        updateType();
-        updateStep();
         
         IDrinkBook drinkBook = bar.getDrinkBook();
-        IIngredientBook ingredientBook = bar.getIngredientBook();
-        ITypeBook typeBook = bar.getTypeBook();
-        IDrinkIngredientBook drinkIngredientBook = bar.getDrinkIngredientBook();
-        IStepBook stepBook = bar.getStepBook();
-        
-        String comment = drinkBB.getComment();
-        String name = drinkBB.getDrinkname();
         String username = loginBB.getUsername();
-        User user = bar.getUserBook().getByName(username);
+        String name = drinkBB.getDrinkname();
+        User user = bar.getUserBook().findByName(username);
+        FacesContext context = FacesContext.getCurrentInstance();
+       
         
-        List<IngredientBB> libb = drinkBB.getIngredients();
-        List<StepBB> lsbb = drinkBB.getSteps();
-        List<TypeBB> ltbb = drinkBB.getTypes();
-        
-        List<DrinkIngredient> dri = new ArrayList();
-        List<Step> sti = new ArrayList();
-        List<Type> tyi = new ArrayList();
-        List<Ingredient> ingredientList = new ArrayList();
-        
-        // Loop over all ingredients. Create ingredients and add them to a list.
-        for(IngredientBB i : libb) {
-            Ingredient ingredient = new Ingredient(i.getName());
-            ingredientBook.create(ingredient);
-            ingredientList.add(ingredient);
+        LOG.log(Level.INFO, "Checking up on our values: name=" + name + " and username = " + username, this);
+        if(drinkBook.findByUserAndDrinkname(user, name) == null){
+            updateIngredient();
+            updateType();
+            updateStep();
+
+
+            IIngredientBook ingredientBook = bar.getIngredientBook();
+            ITypeBook typeBook = bar.getTypeBook();
+            IDrinkIngredientBook drinkIngredientBook = bar.getDrinkIngredientBook();
+            IStepBook stepBook = bar.getStepBook();
+
+            String comment = drinkBB.getComment();
+
+            List<IngredientBB> libb = drinkBB.getIngredients();
+            List<StepBB> lsbb = drinkBB.getSteps();
+            List<TypeBB> ltbb = drinkBB.getTypes();
+
+            List<DrinkIngredient> dri = new ArrayList();
+            List<Step> sti = new ArrayList();
+            List<Type> tyi = new ArrayList();
+            List<Ingredient> ingredientList = new ArrayList();
+
+            // Loop over all ingredients. Create ingredients and add them to a list.
+            for(IngredientBB i : libb) {
+                Ingredient ingredient = new Ingredient(i.getName());
+                if(ingredientBook.findByName(i.getName()) == null) {
+                    ingredientBook.create(ingredient);
+                }
+                ingredientList.add(ingredient);
+            }
+
+            // Loop over all types. Create types and add them to a list.
+            for(TypeBB tb : ltbb) {
+                Type t = new Type(tb.getName());
+                if(typeBook.findByName(tb.getName()) == null) {
+                    typeBook.create(t);
+                }
+                tyi.add(t);
+            }
+            // Create a drink without ingredients and steps.
+            Drink drink = new Drink(name, user, dri, sti, tyi, comment);
+            drinkBook.create(drink);
+
+            for(int i = 0; i < ingredientList.size(); i++) {
+                DrinkIngredient di = new DrinkIngredient(drink, ingredientList.get(i), libb.get(i).getQuantity());
+                drinkIngredientBook.create(di);
+                dri.add(di);
+            }
+
+            for(int i = 0; i < lsbb.size(); i++) {
+                Step s = new Step(lsbb.get(i).getName(), i, drink);
+                stepBook.create(s);
+                sti.add(s);
+            }
+
+            Drink drink2 = new Drink(drink.getName(), drink.getUser(), dri, sti, drink.getTypes(), comment);
+            drinkBook.update(drink2);
+            return "home";
         }
-        
-        // Loop over all types. Create types and add them to a list.
-        for(TypeBB tb : ltbb) {
-            Type t = new Type(tb.getName());
-            typeBook.create(t);
-            tyi.add(t);
+        else {
+            context.addMessage(null, 
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "You have already created a drink called '"
+                    + name
+                    + "'!  ",
+                    "Please choose a different drinkname.")
+            );
+            return null;
         }
-        // Create a drink without ingredients and steps.
-        Drink drink = new Drink(name, user, dri, sti, tyi, comment);
-        drinkBook.create(drink);
-        
-        for(int i = 0; i < ingredientList.size(); i++) {
-            DrinkIngredient di = new DrinkIngredient(drink, ingredientList.get(i), libb.get(i).getQuantity());
-            drinkIngredientBook.create(di);
-            dri.add(di);
-        }
-        
-        for(int i = 0; i < lsbb.size(); i++) {
-            Step s = new Step(lsbb.get(i).getName(), i, drink);
-            stepBook.create(s);
-            sti.add(s);
-        }
-        
-        Drink drink2 = new Drink(drink.getName(), drink.getUser(), dri, sti, drink.getTypes(), comment);
-        drinkBook.update(drink2);
-        return "home";
     }
     
     //public String update() {

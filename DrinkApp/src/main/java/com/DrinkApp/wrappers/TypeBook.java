@@ -9,7 +9,9 @@ import com.DrinkApp.Core.Type;
 import com.DrinkApp.persistence.AbstractDAO;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -33,6 +35,16 @@ public class TypeBook extends AbstractDAO<Type, Long>
     
     public static ITypeBook newInstance() {
         return new TypeBook();
+    }
+
+    @Override
+    public Type findByName(String name) {
+        try {
+            TypedQuery<Type> tq = em.createQuery("SELECT t FROM Type t WHERE t.name = \"" + name + "\"", Type.class);
+            return tq.getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
     
 }

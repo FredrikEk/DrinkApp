@@ -32,12 +32,20 @@ and open the template in the editor.
             <div id="drinkcontent" class="panel-body bg-success">
                 <div class="panel panel-default">
                     <div class="panel-body bg-info">
-                    <ui:insert name="drinkdescription">Drinkdescription</ui:insert>
+                    <ui:insert name="drinkdescription">Drink description</ui:insert>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <ui:insert name="drinksteps">Drinksteps</ui:insert>
+                    <small>
+                        <ul>
+                        <ui:insert name="drinkingredients">Drink ingredients</ui:insert>
+                        </ul>
+                    </small>
                 </div>
+                <div class="panel-body">
+                    <ui:insert name="drinksteps">Drink steps</ui:insert>
+                </div>
+                
             </div>
         </div>
 </html>

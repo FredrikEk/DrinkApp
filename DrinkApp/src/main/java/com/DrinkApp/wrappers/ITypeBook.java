@@ -15,5 +15,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface ITypeBook extends IDAO<Type, Long> {
-
+    public Type findByName(String name);
 }

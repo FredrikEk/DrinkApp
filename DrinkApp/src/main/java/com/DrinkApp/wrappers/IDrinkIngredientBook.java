@@ -15,5 +15,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface IDrinkIngredientBook extends IDAO<DrinkIngredient, Long> {
-
+    
 }
