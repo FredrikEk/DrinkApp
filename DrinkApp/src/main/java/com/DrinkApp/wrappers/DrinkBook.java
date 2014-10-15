@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.DrinkApp.Core;
+package com.DrinkApp.wrappers;
 
+import com.DrinkApp.Core.Drink;
 import com.DrinkApp.persistence.AbstractDAO;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -49,15 +50,15 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
         return tq.getResultList();
     }
 	
-	@Override
-	public List<Drink> getByUser(String username) {
-		TypedQuery<Drink> tq = em.createQuery("SELECT d FROM Drink d WHERE d.user = \"" + username + "\"", Drink.class);
-		return tq.getResultList();
-	}
-	
-	@Override
-	public List<Drink> getByIngredient(String ingredient) {
-		TypedQuery<Drink> tq = em.createQuery("SELECT d FROM DrinkIngredient di WHERE di.ingredient = \"" + ingredient + "\"", Drink.class);
-		return tq.getResultList();
-	}
+    @Override
+    public List<Drink> getByUser(String username) {
+            TypedQuery<Drink> tq = em.createQuery("SELECT d FROM Drink d WHERE d.user = \"" + username + "\"", Drink.class);
+            return tq.getResultList();
+    }
+
+    @Override
+    public List<Drink> getByIngredient(String ingredient) {
+            TypedQuery<Drink> tq = em.createQuery("SELECT d FROM DrinkIngredient di WHERE di.ingredient = \"" + ingredient + "\"", Drink.class);
+            return tq.getResultList();
+    }
 }

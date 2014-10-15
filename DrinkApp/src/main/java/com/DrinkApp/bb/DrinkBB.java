@@ -6,20 +6,18 @@
 
 package com.DrinkApp.bb;
 
-import com.DrinkApp.Core.Ingredient;
-import com.DrinkApp.Core.Step;
-import com.DrinkApp.Core.Type;
 import com.DrinkApp.auth.User;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class DrinkBB {
 	
 	@NotNull
@@ -29,23 +27,27 @@ public class DrinkBB {
 	@NotNull
 	private String comment;
 	@NotNull
-	private List<Ingredient> ingredients;
+        private List<IngredientBB> ingredients;
 	@NotNull
-	private List<Type> types;
+	private List<TypeBB> types;
 	@NotNull
-	private List<Step> steps;
+	private List<StepBB> steps;
 	
 	@PostConstruct
     public void post(){
         LOG.log(Level.INFO, "The drink is alive ");
+        if(ingredients == null) {
+            ingredients = new ArrayList();
+        }
+        if(types == null) {
+            types = new ArrayList();
+        }
+        if(steps == null) {
+            steps = new ArrayList();
+        }
     }
     private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
     
-    /*
-    public void setUsername(String username){
-        this.username = username;
-    }
-    */
     public void setDrinkname(String drinkname){
         this.drinkname = drinkname;
     }
@@ -54,23 +56,18 @@ public class DrinkBB {
         this.comment = comment;
     }
     
-    public void setIngredients(List<Ingredient> ingredients){
+    public void setIngredients(List<IngredientBB> ingredients){
         this.ingredients = ingredients;
     }
 	
-	public void setSteps(List<Step> steps){
-		this.steps = steps;
-	}
-	
-	public void setTypes(List<Type> types) {
-		this.types = types;
-	}
-	
-    /*
-    public String getUsername(){
-        return username;
+    public void setSteps(List<StepBB> steps){
+            this.steps = steps;
     }
-    */
+
+    public void setTypes(List<TypeBB> types) {
+            this.types = types;
+    }
+
     public String getDrinkname(){
         return this.drinkname;
     }
@@ -79,16 +76,26 @@ public class DrinkBB {
         return this.comment;
     }
     
-    public List<Ingredient> getIngredients(){
+    public List<IngredientBB> getIngredients(){
         return this.ingredients;
     }
 	
 	
-    public List<Step> getSteps(){
-		return this.steps;
-	}
-	
-	public List<Type> getTypes() {
-		return this.types;
-	}
+    public List<StepBB> getSteps(){
+            return this.steps;
+    }
+
+    public List<TypeBB> getTypes() {
+            return this.types;
+    }
+    
+    public void addIngredient() {
+        
+        ingredients.add(null);
+    }
+    
+    public void addType(TypeBB typeBB) {
+        //types.add(new Type(typeBB.getName()));
+    }
+    
 }

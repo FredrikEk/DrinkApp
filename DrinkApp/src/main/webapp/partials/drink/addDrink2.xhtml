@@ -6,8 +6,10 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html">
     <head>
         <title>Add Drink</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,7 +17,162 @@ and open the template in the editor.
     <body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h3>Add Drink</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Add Drink</h3>
+                        <h:form id="add-drink-form">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <h:inputText class="form-control" id="drink-name" value="#{drinkBB.drinkname}" required="true" pt:placeholder="Name">
+                                            <c:ajax event="change" execute="drink-name"/>
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:message for="drink:drinkname" style="color:red"/>
+                                </div>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <ui:repeat value="#{drinkBB.ingredients}" var="ingredient">
+                                            #{ingredient.quantity} #{ingredient.name} <br/>
+                                        </ui:repeat>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <h:inputText class="form-control" id="quantity" pt:placeholder="Quantity" value="#{ingredientBB.quantity}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <h:inputText class="form-control" id="ingredient" pt:placeholder="Ingredient" value="#{ingredientBB.name}"/>
+                                                    <span class="input-group-btn">
+                                                        <h:commandButton action="#{addDrinkCtrl.updateIngredient()}" class="btn btn-default" value="Add" />    
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:message for="drink:ingredient" style="color:red"/>
+                                </div>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <ui:repeat value="#{drinkBB.types}" var="type">
+                                            #{type.name} <br/>
+                                        </ui:repeat>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <h:inputText class="form-control" id="type" pt:placeholder="Type" value="#{typeBB.name}"/>
+                                            <span class="input-group-btn">
+                                                <h:commandButton action="#{addDrinkCtrl.updateType()}" class="btn btn-default" value="Add2"/>    
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:message for="drink:type" style="color:red"/>
+                                </div>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <ui:repeat value="#{drinkBB.steps}" var="step">
+                                            #{step.name} <br/>
+                                        </ui:repeat>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <h:inputText class="form-control" id="step" pt:placeholder="Step" value="#{stepBB.name}"/>
+                                            <span class="input-group-btn">
+                                                <h:commandButton action="#{addDrinkCtrl.updateStep()}" class="btn btn-default" value="Add3"/>  
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:message for="drink:step" style="color:red"/>
+                                </div>    
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <h:outputLabel for="comment" value="Comment:"/>
+                                        <h:inputTextarea class="form-control" id="comment" value="#{drinkBB.comment}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h:message for="drink:comment" style="color:red"/>                     
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                <div style="float:right">
+                                    <h:commandButton action="#{addDrinkCtrl.finish()}" class="btn btn-default" value="Finish" />
+                                </div>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel-body bg-warning">
+                                <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
+                                    <ui:define name="drinkname">
+                                        <h:outputText id="drinknk" value="#{drinkBB.drinkname}"/>
+                                    </ui:define>
+                                    <ui:define name="types">
+                                        <ui:repeat value="#{drinkBB.ingredients}" var="ingredient">
+                                            #{ingredient.quantity} #{ingredient.name} ,
+                                        </ui:repeat>
+                                    </ui:define>
+                                    <ui:define name="user">
+                                        #{loginBB.username}
+                                    </ui:define>
+                                    <ui:define name="drinkdescription">
+                                        <h:outputText value="#{drinkBB.comment}" />
+                                    </ui:define>
+                                    <ui:define name="drinksteps">
+                                        <ol class="list-group">
+                                            <ui:repeat value="#{drinkBB.steps}" var="step">
+                                                <li class="list-group-item" style="display: list-item">#{step.name}</li>
+                                            </ui:repeat>
+                                        </ol>
+                                    </ui:define>
+                                </ui:decorate>
+                            </div>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

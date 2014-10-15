@@ -32,13 +32,14 @@ public class Step implements Serializable {
     public Step(){
         this.description = "";
         this.stepNr = 0;
-     
+        this.drink = new Drink();
     }
     
-    public Step(String description, int stepNr) {
+    public Step(String description, int stepNr, Drink drink) {
         this.description = description;
         this.stepNr = stepNr;
-        }
+        this.drink = drink;
+    }
     
     public int getStepNr() {
         return stepNr;

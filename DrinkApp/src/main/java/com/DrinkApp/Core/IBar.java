@@ -6,10 +6,22 @@
 
 package com.DrinkApp.Core;
 
+import com.DrinkApp.wrappers.ITypeBook;
+import com.DrinkApp.wrappers.IIngredientBook;
+import com.DrinkApp.wrappers.IUserBook;
+import com.DrinkApp.wrappers.IDrinkBook;
+import com.DrinkApp.wrappers.IDrinkIngredientBook;
+import com.DrinkApp.wrappers.IStepBook;
+
 /**
  *
  * @author Fredrik
  */
 public interface IBar {
     public IDrinkBook getDrinkBook();
+    public IIngredientBook getIngredientBook();
+    public IUserBook getUserBook();
+    public ITypeBook getTypeBook();
+    public IDrinkIngredientBook getDrinkIngredientBook();
+    public IStepBook getStepBook();
 }

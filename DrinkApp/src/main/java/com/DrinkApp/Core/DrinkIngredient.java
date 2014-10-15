@@ -24,15 +24,15 @@ public class DrinkIngredient implements Serializable{
     @Id
     private Ingredient ingredient;
     @Column
-    private int quantity;
+    private String quantity;
     
     public DrinkIngredient(){
         this.drink      = new Drink();
         this.ingredient = new Ingredient();
-        this.quantity   = 0;
+        this.quantity   = null;
     }
     
-    public DrinkIngredient(Drink drink, Ingredient ingredient, int quantity) {
+    public DrinkIngredient(Drink drink, Ingredient ingredient, String quantity) {
         this.drink      = drink;
         this.ingredient = ingredient;
         this.quantity   = quantity;
@@ -46,7 +46,7 @@ public class DrinkIngredient implements Serializable{
         return ingredient;
     }
     
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
     

@@ -22,6 +22,10 @@
             <to-view-id>partials/drink/authdrinkpages/addDrink.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>addDrink2</from-outcome>
+            <to-view-id>partials/drink/addDrink2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>deleteDrink</from-outcome>
             <to-view-id>partials/drink/authdrinkpages/deleteDrink.xhtml</to-view-id>
         </navigation-case>
