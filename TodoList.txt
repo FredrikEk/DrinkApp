@@ -15,14 +15,14 @@ Börja skissa upp de olika vyer som kommer behövas:
 
 LV7:
 
-Ek och Sonny:
+Till Ek och Sonny:
 Jobbar med vyerna Add Drink, Delete Drink, Edit Drink och Find Drink samt dess bönor och controllers.
-
+* Är det nödvändigt att vi ska kunna skicka bekräftelsemail? Ska vi isåfall även kontrollera att den
+emailen existerar? Känns som en senare grej man kan fixa.
 
 Till Martin och Michael:
 
 Allmänt om login-vyn : 
-*Lägg till validering så att man inte kan skapa något användarnamn som innehåller exempelvis admin
 *Lägg till validering så att email-adressen är en "valid" email adress.
 *Kolla upp om vi behöver "sanitize" input till databasen, dvs användarnamn, password, email etc. (Relevant för hela projektet)
 *Skicka bekräftelsemail till email-adressen efter man registrerat ett konto.
