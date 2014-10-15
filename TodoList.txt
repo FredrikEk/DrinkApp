@@ -23,7 +23,6 @@ emailen existerar? Känns som en senare grej man kan fixa.
 Till Martin och Michael:
 
 Allmänt om login-vyn : 
-*Lägg till validering så att email-adressen är en "valid" email adress.
 *Kolla upp om vi behöver "sanitize" input till databasen, dvs användarnamn, password, email etc. (Relevant för hela projektet)
 *Skicka bekräftelsemail till email-adressen efter man registrerat ett konto.
 
