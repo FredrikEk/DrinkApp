@@ -19,8 +19,15 @@ Till Ek och Sonny:
 Jobbar med vyerna Add Drink, Delete Drink, Edit Drink och Find Drink samt dess bönor och controllers.
 * Är det nödvändigt att vi ska kunna skicka bekräftelsemail? Ska vi isåfall även kontrollera att den
 emailen existerar? Känns som en senare grej man kan fixa.
+- Inte emailen existerar, men att den strängen man submittar åtminstone liknar en emailadress. 
+- (Har endast ett @ tecken och minst en punkt efter @-tecknet exempelvis.) Men ja, det kan vara ett 
+- senare problem om det är jobbigt.
+
+
 * Bör inte delete drink och add drink ligga som länkar inuti "mydrinks", känns konstigt ifall man skulle
 kunna ta bort och ändra på andras drinkar.
+- Kunde inte sagt det bättre själv! Men de låg utanför i nuläget så tänkte inte så mycket på det.
+
 
 Till Martin och Michael:
 
