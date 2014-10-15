@@ -42,8 +42,13 @@ and open the template in the editor.
                 </h:panelGroup>
                 <h:panelGroup rendered="#{loginBB.loggedIn}">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/myDrinks.xhtml"><i class="fa fa-glass"></i> My Drinks</a></li>
                         <li><a href="#{request.contextPath}/partials/auth/profile.xhtml"><i class="fa fa-user"></i> My Profile</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> Log Out</a></li>
+                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/myDrinks.xhtml"><i class="fa fa-glass"></i> My Drinks</a></li>
+                        <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/favouriteDrinks.xhtml"><i class="fa fa-glass"></i>My Favourite Drinks</a></li>
                     </ul>
                 </h:panelGroup>
                 <ul class="nav navbar-nav navbar-right">
@@ -64,11 +69,7 @@ and open the template in the editor.
                 <h:link value="Find Drink" class="navbar-brand" outcome="drinklist" />
                 <h:panelGroup rendered="#{loginBB.loggedIn}">
                     <h:link value="Add Drink" class="navbar-brand" outcome="addDrink"/>
-                    <h:link value="Delete Drink" class="navbar-brand" outcome="deleteDrink"/>
-                    <h:link value="Edit Drink" class="navbar-brand" outcome="editDrink"/>
-                    <h:link value="Favourite Drinks" class="navbar-brand" outcome="favouriteDrinks"/>
                 </h:panelGroup>
-                <!--<h:link value="Ingredients" class="navbar-brand" outcome="ingredients" /> -->      
             </nav>
             <div id="content">
                 <ui:insert name="content">Content</ui:insert>

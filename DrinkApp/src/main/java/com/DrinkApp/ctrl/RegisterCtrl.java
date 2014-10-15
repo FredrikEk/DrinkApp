@@ -16,6 +16,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.persistence.NoResultException;
 
 /**
@@ -29,6 +31,7 @@ public class RegisterCtrl {
     @Inject
     private AuthDAO authDAO;
     private RegisterBB rb;
+    private InternetAddress emailAddress;
 
     @Inject
     protected void setUserBB(RegisterBB ub) {
@@ -44,6 +47,13 @@ public class RegisterCtrl {
                     + "' already exists!  ",
                     "Please choose a different username.");
             context.addMessage(null, message);
+        } else if (rb.getUsername().toLowerCase().contains("admin")) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Username '"
+                    + rb.getUsername()
+                    + "' isnt allowed!  ",
+                    "Please choose a different username.");
+            context.addMessage(null, message);
         } else if (existEmail()) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email '"
@@ -57,8 +67,17 @@ public class RegisterCtrl {
         } else {
             User user = new User(rb.getUsername(), rb.getEmail(), rb.getHashedPassword(), Groups.USER);
             try {
+                emailAddress = new InternetAddress(user.getEmail());
+                emailAddress.validate();
                 authDAO.create(user);
                 return "registerSuccess";
+            } catch (AddressException e) {
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "Email  '"
+                        + rb.getEmail()
+                        + "' is not a valid Email!  ",
+                        "Please type correct Email.");
+                context.addMessage(null, message);
             } catch (Exception e) {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                         "Error creating user!",
