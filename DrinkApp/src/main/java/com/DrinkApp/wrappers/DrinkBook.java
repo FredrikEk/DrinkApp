@@ -8,7 +8,6 @@ package com.DrinkApp.wrappers;
 
 import com.DrinkApp.Core.Drink;
 import com.DrinkApp.auth.User;
-import static com.DrinkApp.auth.User_.username;
 import com.DrinkApp.persistence.AbstractDAO;
 import java.util.List;
 import java.util.logging.Logger;
