@@ -6,6 +6,7 @@
 
 package com.DrinkApp.bb;
 
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
@@ -16,7 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 @Named
 @RequestScoped
-public class ChangePasswBB {
+public class ChangePasswBB implements Serializable{
 
     @NotNull
     private String password;

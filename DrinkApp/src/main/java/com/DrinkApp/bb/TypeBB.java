@@ -6,6 +6,7 @@
 
 package com.DrinkApp.bb;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotNull;
 
 @Named
 @ViewScoped
-public class TypeBB {
+public class TypeBB implements Serializable {
 	
     @NotNull
     private String name;

@@ -7,6 +7,7 @@
 package com.DrinkApp.bb;
 
 import com.DrinkApp.auth.User;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,7 +19,7 @@ import javax.validation.constraints.NotNull;
 
 @Named
 @ViewScoped
-public class DrinkBB {
+public class DrinkBB implements Serializable{
 	
 	@NotNull
 	private String drinkname;
