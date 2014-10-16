@@ -43,12 +43,7 @@ and open the template in the editor.
                 <h:panelGroup rendered="#{loginBB.loggedIn}">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#{request.contextPath}/partials/auth/profile.xhtml"><i class="fa fa-user"></i> My Profile</a></li>
-                        <li>
-                            <h:form>
-                                <h:commandLink action="#{loginCtrl.logout()}"><i class="fa fa-user"></i> Log Out</h:commandLink>
-                            </h:form>
-                        </li>
-
+                        <li><a href="#{request.contextPath}/partials/auth/logOut.xhtml"><i class="fa fa-user"></i> Log Out</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/myDrinks.xhtml"><i class="fa fa-glass"></i> My Drinks</a></li>
