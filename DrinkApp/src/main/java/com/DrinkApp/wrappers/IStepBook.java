@@ -5,6 +5,7 @@
  */
 package com.DrinkApp.wrappers;
 
+import com.DrinkApp.Core.Drink;
 import com.DrinkApp.Core.Step;
 import com.DrinkApp.persistence.IDAO;
 import javax.ejb.Local;
@@ -15,5 +16,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface IStepBook extends IDAO<Step, Long> {
-
+    public void deleteAllByDrink(Drink drink);
 }

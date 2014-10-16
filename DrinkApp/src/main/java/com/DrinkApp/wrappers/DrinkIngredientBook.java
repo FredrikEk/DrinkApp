@@ -5,10 +5,13 @@
  */
 package com.DrinkApp.wrappers;
 
+import com.DrinkApp.Core.Drink;
 import com.DrinkApp.Core.DrinkIngredient;
+import com.DrinkApp.Core.Ingredient;
 import com.DrinkApp.persistence.AbstractDAO;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -33,6 +36,22 @@ public class DrinkIngredientBook extends AbstractDAO<DrinkIngredient, Long>
     
     public static IDrinkIngredientBook newInstance() {
         return new DrinkIngredientBook();
+    }
+
+    @Override
+    public DrinkIngredient findByDrinkAndIngredient(Ingredient i, Drink d) {
+        try {
+            return (DrinkIngredient) em.createNamedQuery("DrinkIngredient.findByIngredientAndDrink").
+                    setParameter("ingredient", i).setParameter("drink", d).getSingleResult();
+           
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteDrinkIngredientByDrink(Drink drink) {
+        em.createNamedQuery("DrinkIngredient.deleteAllDrinkIngredient").setParameter("drink", drink).executeUpdate();
     }
     
 }

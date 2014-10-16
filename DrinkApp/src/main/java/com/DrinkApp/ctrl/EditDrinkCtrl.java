@@ -11,6 +11,7 @@ import com.DrinkApp.Core.Step;
 import com.DrinkApp.Core.Type;
 import com.DrinkApp.auth.User;
 import com.DrinkApp.bb.AddDrinkBB;
+import com.DrinkApp.bb.EditDrinkBB;
 import com.DrinkApp.bb.IngredientBB;
 import com.DrinkApp.bb.LoginBB;
 import com.DrinkApp.bb.StepBB;
@@ -31,7 +32,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class AddDrinkCtrl{
+public class EditDrinkCtrl{
 
     @Inject
     private Bar bar;
@@ -39,11 +40,11 @@ public class AddDrinkCtrl{
     private TypeBB typeBB;
     private StepBB stepBB;
     private IngredientBB ingredientBB;
-    private AddDrinkBB drinkBB;
+    private EditDrinkBB drinkBB;
     private LoginBB loginBB;
-    private static final Logger LOG = Logger.getLogger(AddDrinkCtrl.class.getName());
+    private static final Logger LOG = Logger.getLogger(EditDrinkCtrl.class.getName());
     
-    protected AddDrinkCtrl() {
+    protected EditDrinkCtrl() {
         // Must have for CDI
     }
 
@@ -68,7 +69,7 @@ public class AddDrinkCtrl{
     }
     
     @Inject
-    public void setDrinkBB(AddDrinkBB drinkBB) {
+    public void setDrinkBB(EditDrinkBB drinkBB) {
         this.drinkBB = drinkBB;
     }
     
@@ -89,7 +90,7 @@ public class AddDrinkCtrl{
     }
     
     public String updateIngredient() {
-        if(ingredientBB != null && !(ingredientBB.getName().equals("") || ingredientBB.getQuantity().equals(""))) {
+        if(ingredientBB != null && !(ingredientBB.getName() == null || ingredientBB.getQuantity() == null) && !(ingredientBB.getName().equals("") || ingredientBB.getQuantity().equals(""))) {
             IngredientBB ibb = new IngredientBB();
             ibb.setName(ingredientBB.getName());
             ibb.setQuantity(ingredientBB.getQuantity());
@@ -109,7 +110,7 @@ public class AddDrinkCtrl{
     }
     
     public String updateType() {
-        if(typeBB != null && !typeBB.getName().equals("")) {
+        if(typeBB != null && typeBB.getName() != null && !typeBB.getName().equals("")) {
             TypeBB t = new TypeBB();
             t.setName(typeBB.getName());
 
@@ -122,7 +123,7 @@ public class AddDrinkCtrl{
     }
     
     public String updateStep() {
-        if(stepBB != null && !stepBB.getName().equals("")) {
+        if(stepBB != null && stepBB.getName() != null && !stepBB.getName().equals("")) {
             StepBB sbb = new StepBB();
             sbb.setName(stepBB.getName());
             List<StepBB> sbbList = drinkBB.getSteps();
@@ -143,7 +144,8 @@ public class AddDrinkCtrl{
        
         
         LOG.log(Level.INFO, "Checking up on our values: name=" + name + " and username = " + username, this);
-        if(drinkBook.findByUserAndDrinkname(user, name) == null){
+        Drink oldDrink = drinkBook.findByUserAndDrinkname(user, name);
+        if(oldDrink != null){
             updateIngredient();
             updateType();
             updateStep();
@@ -182,23 +184,22 @@ public class AddDrinkCtrl{
                 }
                 tyi.add(t);
             }
-            // Create a drink without ingredients and steps.
-            Drink drink = new Drink(name, user, dri, sti, tyi, comment);
-            drinkBook.create(drink);
 
+            drinkIngredientBook.deleteDrinkIngredientByDrink(oldDrink);
             for(int i = 0; i < ingredientList.size(); i++) {
-                DrinkIngredient di = new DrinkIngredient(drink, ingredientList.get(i), libb.get(i).getQuantity());
+                DrinkIngredient di = new DrinkIngredient(oldDrink, ingredientList.get(i), libb.get(i).getQuantity());
                 drinkIngredientBook.create(di);
                 dri.add(di);
             }
 
+            stepBook.deleteAllByDrink(oldDrink);
             for(int i = 0; i < lsbb.size(); i++) {
-                Step s = new Step(lsbb.get(i).getName(), i, drink);
+                Step s = new Step(lsbb.get(i).getName(), i, oldDrink);
                 stepBook.create(s);
                 sti.add(s);
             }
 
-            Drink drink2 = new Drink(drink.getName(), drink.getUser(), dri, sti, drink.getTypes(), comment);
+            Drink drink2 = new Drink(oldDrink.getName(), oldDrink.getUser(), dri, sti, tyi, comment);
             drinkBook.update(drink2);
             return "home";
         }
@@ -212,6 +213,38 @@ public class AddDrinkCtrl{
             );
             return null;
         }
+    }
+    
+    public void init(String drinkname) {
+        IDrinkBook idb = bar.getDrinkBook();
+        LOG.log(Level.INFO, loginBB.getUsername() + ":" + drinkname, this);
+        User user = bar.getUserBook().findByName(loginBB.getUsername());
+        Drink d = idb.findByUserAndDrinkname(user, drinkname);
+        List<DrinkIngredient> drinkIngredients = d.getIngredients();
+        List<IngredientBB> libb = new ArrayList();
+        for(DrinkIngredient di : drinkIngredients) {
+            IngredientBB ibb = new IngredientBB();
+            ibb.setName(di.getIngredient().getName());
+            ibb.setQuantity(di.getQuantity());
+            libb.add(ibb);
+        }
+        List<StepBB> lsbb = new ArrayList();
+        for(Step s : d.getSteps()) {
+            StepBB sbb = new StepBB();
+            sbb.setName(s.getDescription());
+            lsbb.add(sbb);
+        }
+        List<TypeBB> ltbb = new ArrayList();
+        for(Type t : d.getTypes()) {
+            TypeBB tbb = new TypeBB();
+            tbb.setName(t.getName());
+            ltbb.add(tbb);
+        }
+        
+        drinkBB.setComment(d.getComment());
+        drinkBB.setIngredients(libb);
+        drinkBB.setSteps(lsbb);
+        drinkBB.setTypes(ltbb);
     }
     
     //public String update() {

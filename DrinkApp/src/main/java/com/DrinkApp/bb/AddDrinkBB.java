@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 
 @Named
 @ViewScoped
-public class DrinkBB implements Serializable{
+public class AddDrinkBB implements Serializable{
 	
 	@NotNull
 	private String drinkname;
@@ -90,13 +90,31 @@ public class DrinkBB implements Serializable{
             return this.types;
     }
     
-    public void addIngredient() {
-        
-        ingredients.add(null);
+    public void addIngredient(IngredientBB ingredientBB) {
+        IngredientBB i = new IngredientBB();
+        i.setName(ingredientBB.getName());
+        i.setQuantity(ingredientBB.getQuantity());
+        ingredients.add(i);
+        ingredientBB.setName("");
+        ingredientBB.setQuantity("");
     }
     
     public void addType(TypeBB typeBB) {
-        //types.add(new Type(typeBB.getName()));
+        TypeBB typeB = new TypeBB();
+        typeB.setName(typeBB.getName());
+        types.add(typeB);
+        typeBB.setName("");
     }
     
+    public void removeType(TypeBB typeBB) {
+        types.remove(typeBB);
+    }
+    
+    public void removeIngredient(IngredientBB ingredientBB) {
+        ingredients.remove(ingredientBB);
+    }
+    
+    public void removeStep(StepBB stepBB) {
+        steps.remove(stepBB);
+    }
 }

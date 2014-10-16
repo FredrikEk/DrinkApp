@@ -5,6 +5,7 @@
  */
 package com.DrinkApp.wrappers;
 
+import com.DrinkApp.Core.Drink;
 import com.DrinkApp.Core.Step;
 import com.DrinkApp.persistence.AbstractDAO;
 import javax.ejb.Stateless;
@@ -33,6 +34,11 @@ public class StepBook extends AbstractDAO<Step, Long>
     
     public static IStepBook newInstance() {
         return new StepBook();
+    }
+
+    @Override
+    public void deleteAllByDrink(Drink drink) {
+        em.createNamedQuery("Step.deletAllByDrink").setParameter("drink", drink).executeUpdate();
     }
     
 }

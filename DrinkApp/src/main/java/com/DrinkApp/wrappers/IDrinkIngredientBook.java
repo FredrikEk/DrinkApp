@@ -5,7 +5,9 @@
  */
 package com.DrinkApp.wrappers;
 
+import com.DrinkApp.Core.Drink;
 import com.DrinkApp.Core.DrinkIngredient;
+import com.DrinkApp.Core.Ingredient;
 import com.DrinkApp.persistence.IDAO;
 import javax.ejb.Local;
 
@@ -15,5 +17,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface IDrinkIngredientBook extends IDAO<DrinkIngredient, Long> {
-    
+    public DrinkIngredient findByDrinkAndIngredient(Ingredient i, Drink d);
+    public void deleteDrinkIngredientByDrink(Drink drink);
 }

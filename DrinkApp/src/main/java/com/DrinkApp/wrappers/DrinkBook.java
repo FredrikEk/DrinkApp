@@ -57,6 +57,7 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
     @Override
     public List<Drink> findByUser(String username) {
             TypedQuery<Drink> tq = em.createQuery("SELECT d.* FROM Drink d WHERE d.user = \"" + username + "\"", Drink.class);
+            
             return tq.getResultList();
     }
 

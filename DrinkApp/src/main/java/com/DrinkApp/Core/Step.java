@@ -12,12 +12,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /*
  * The Step model. Stores the different steps of how to make a certain drink.
  */
 
 @Entity @IdClass(DrinkStepId.class)
+@NamedQueries({@NamedQuery(name="Step.deletAllByDrink", query="DELETE FROM Step s WHERE s.drink = :drink")})
 public class Step implements Serializable {
     
     @Column
