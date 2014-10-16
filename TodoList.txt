@@ -40,8 +40,8 @@ Allmänt About :
 *Lägg till lite info vad man kan göra som inloggad/auth user respektive inte inloggad
 
 Allmänt My Profile:
-*Gör det möjligt att ändra lösenord.
-*Gör det möjligt att ändra email.
+*Gör det möjligt att ändra lösenord. CHECK!
+*Gör det möjligt att ändra email. CHECK!
 *Kanske möjlighet att ha en sorts presentation av sig själv eller eller nåt
 
 Ev

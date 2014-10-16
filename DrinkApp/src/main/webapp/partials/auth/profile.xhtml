@@ -16,6 +16,8 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h3>Profile for #{loginBB.username}</h3>
+                <div><h:link value="Change Password" outcome="changePassword"/></div>
+                <div><h:link value="Change Email" outcome="changeEmail"/></div>
                 <h:form>
                     <h:commandButton class="btn btn-default" value="Log Out" action="#{loginCtrl.logout()}" />
                 </h:form>
