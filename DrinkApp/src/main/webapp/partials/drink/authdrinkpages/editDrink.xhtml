@@ -30,9 +30,7 @@ and open the template in the editor.
                             <div class="row">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <h:inputText class="form-control" id="drink-name" value="#{editDrinkBB.drinkname}" required="true" pt:placeholder="Name">
-                                            <f:ajax event="change" execute="drink-name" render=":drinkname_view"/>
-                                        </h:inputText>
+                                        <h:outputText class="form-control" id="drink-name" value="#{editDrinkBB.drinkname}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -109,7 +107,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <h:outputLabel for="comment" value="Comment:"/>
                                         <h:inputTextarea class="form-control" id="comment" value="#{editDrinkBB.comment}">
-                                            <f:ajax event="change" execute="comment" render=":comment_view"/>
+                                            <f:ajax event="keyup" execute="comment" render=":comment_view"/>
                                         </h:inputTextarea>
                                     </div>
                                 </div>

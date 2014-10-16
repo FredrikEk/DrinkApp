@@ -6,14 +6,13 @@
 
 package com.DrinkApp.bb;
 
+import com.DrinkApp.Core.Step;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 @Named
@@ -28,6 +27,14 @@ public class StepBB implements Serializable{
         LOG.log(Level.INFO, "The step is alive ");
     }
     private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
+    
+    public StepBB() {
+        
+    }
+    
+    public StepBB(Step s) {
+        this.name = s.getDescription();
+    }
     
     public void setName(String name){
         this.name = name;

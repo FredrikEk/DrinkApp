@@ -8,6 +8,7 @@ package com.DrinkApp.wrappers;
 
 import com.DrinkApp.Core.Drink;
 import com.DrinkApp.auth.User;
+import com.DrinkApp.bb.IngredientBB;
 import com.DrinkApp.persistence.IDAO;
 import java.util.List;
 import javax.ejb.Local;
@@ -24,5 +25,7 @@ public interface IDrinkBook extends IDAO<Drink, Long> {
     List<Drink> findByUser(String username);
     List<Drink> findByIngredient(String ingredient);
     Drink findByUserAndDrinkname(User user, String drinkname);
+    List<Drink> searchByName(String drinkname);
+//    List searchByNameAndIngredient(String drinkname, List<String> ingredients);
 }
 

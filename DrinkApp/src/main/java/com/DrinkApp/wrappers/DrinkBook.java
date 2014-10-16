@@ -15,6 +15,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -70,7 +71,7 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
     @Override
     public Drink findByUserAndDrinkname(User user, String drinkname) {
         try {
-            return (Drink) em.createNamedQuery("Drink.findByUserAndDrinkname").
+            return em.createNamedQuery("Drink.findByUserAndDrinkname", Drink.class).
                     setParameter("username", user).setParameter("drinkname", drinkname).getSingleResult();
            
         } catch (NoResultException nre) {
@@ -78,4 +79,17 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
         }
         //return tq.getSingleResult();
     }
+
+    @Override
+    public List<Drink> searchByName(String drinkname) {
+        TypedQuery<Drink> tq = em.createNamedQuery("Drink.searchByName", Drink.class).setMaxResults(10).setParameter("drinkname", "%" + drinkname + "%");
+        return tq.getResultList();
+    }
+/*
+    @Override
+    public List searchByNameAndIngredient(String drinkname, List<String> ingredients) {
+        Query tq = em.createNamedQuery("Drink.searchByNameAndIngredient").setParameter("drinkname", drinkname).setParameter("ingredients", ingredients);
+        return tq.getResultList();
+    }
+*/
 }

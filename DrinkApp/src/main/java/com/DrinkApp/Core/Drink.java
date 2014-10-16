@@ -28,7 +28,17 @@ import javax.persistence.OneToMany;
 
 @Entity @IdClass(DrinkUser.class)
 @NamedQueries( {@NamedQuery(name = "Drink.findByUserAndDrinkname", query = "SELECT d FROM Drink d WHERE d.user = :username AND d.drinkname = :drinkname"), 
-                @NamedQuery(name = "Drink.findByName", query = "SELECT d FROM Drink d WHERE d.drinkname = :drinkname")})
+                @NamedQuery(name = "Drink.findByName", query = "SELECT d FROM Drink d WHERE d.drinkname = :drinkname"),
+                @NamedQuery(name = "Drink.searchByName", query = "SELECT d FROM Drink d WHERE d.drinkname LIKE :drinkname"),
+//                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT di FROM DrinkIngredient WHERE di.drink = :drinkname AND di.ingredients IN :ingredients")
+//                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d,ipd,da \n" +
+//                                                                                "FROM (select di.DRINKNAME as Drinkname, COUNT(*) as drinkCount \n" +
+//                                                                                "        FROM DrinkIngredient di \n" +
+//                                                                                "        WHERE di.INGREDIENT_NAME IN :ingredients \n" +
+//                                                                                "        GROUP BY di.DRINKNAME) da, INGREDIENTSPERDRINK ipd, Drink d \n" +
+//                                                                                "WHERE da.drinkname LIKE :drinkname AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
+//                                                                                "ORDER BY (ipd.NROFINGREDIENTS - da.drinkcount) ASC")
+                })
 public class Drink implements Serializable {
     
     @ManyToOne

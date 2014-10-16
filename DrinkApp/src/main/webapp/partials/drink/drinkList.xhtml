@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <title>Drinklist</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,98 +18,108 @@ and open the template in the editor.
             <ui:define name="content">
                 <h3>Drinklist</h3>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Browse by name
-                                </h3>
-                            </div>
-                            <div class="panel-body bg-danger">
-                                <h:form id="drink-form">
+                    <h:form id="drink-form">
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Browse by name
+                                    </h3>
+                                </div>
+                                <div class="panel-body bg-danger">
                                     <h:outputLabel for="id" value="Enter a drinkname"/>
-                                    <h:inputText class="form-control" id="id"/>
-                                </h:form>
+                                    <h:inputText class="form-control" id="serachstr" value="#{drinkSearchBB.searchstring}">
+                                        <f:ajax execute="serachstr" event="keyup" render="drinkname_view"/>
+                                    </h:inputText>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Browse by ingredients
-                                </h3>
-                            </div>
-                            <div class="panel-body bg-danger">
-                                <h:form id="ingredient-form">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Browse by ingredients
+                                    </h3>
+                                </div>
+                                <div class="panel-body bg-danger">
                                     <h:outputLabel for="id" value="Enter an ingredent"/>
-                                    <h:inputText class="form-control" id="id"/>
-                                </h:form>
+                                    <h:inputText class="form-control" id="ingredientid" value="#{drinkSearchBB.ingredientString}" />
+                                    <h:commandButton action="#{drinkSearchBB.addIngredientTest()}" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                             <div class="panel-heading">
-                                 <h3 class="panel-title">
-                                     Drinks
-                                 </h3>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                     <h3 class="panel-title">
+                                         Drinks
+                                     </h3>
+                                </div>
+                                <h:panelGroup id="drinkname_view">
+                                    <div class="panel-body bg-success">
+                                        <div class="btn-group-vertical">
+                                            <ui:repeat var="drink" value="#{searchDrinkCtrl.getDrinks()}">
+                                                <h:commandButton class="btn btn-default" value="#{drink.drinkname}" id="drink_#{drink.drinkname}" action="#{drinkSearchBB.setDrinkBB(drink)}">
+                                                    
+                                                </h:commandButton>
+                                            </ui:repeat>    
+                                        </div>
+                                    </div>
+                                </h:panelGroup>    
                             </div>
-                            <div class="panel-body bg-success">
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info">
-                                        Mojito
-                                    </li>
-                                    <li class="list-group-item">
-                                        Other drink
-                                    </li>
-                                    <li class="list-group-item">
-                                        Third drink
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                             <div class="panel-heading">
-                                 <h3 class="panel-title">
-                                     Chosen Drink
-                                 </h3>
-                            </div>
-                            <div class="panel-body bg-warning">
-                                <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
-                                    <ui:define name="drinkname">
-                                        Mojito
-                                    </ui:define>
-                                    <ui:define name="types">
-                                        sweet,sour
-                                    </ui:define>
-                                    <ui:define name="user">
-                                        Ek Sonny
-                                    </ui:define>
-                                    <ui:define name="drinkdescription">
-                                        A sweet and refreshing drink.
-                                    </ui:define>
-                                    <ui:define name="drinkingredients">
-                                        <li style="display: list-item">2 Myntablad</li>
-                                        <li style="display: list-item">2dl Rum</li>
-                                        <li style="display: list-item">1dl Maple Syrup</li>
-                                    </ui:define>
-                                    <ui:define name="drinksteps">
-                                        <ol class="list-group">
-                                            <li class="list-group-item" style="display: list-item">Crush the ice</li>
-                                            <li class="list-group-item" style="display: list-item">Pour some liqour</li>
-                                            <li class="list-group-item" style="display: list-item">Add mynta</li>
-                                        </ol>
-                                    </ui:define>
-                                </ui:decorate>
-                            </div>
-                        </div>
-                    </div>
 
-                    
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                     <h3 class="panel-title">
+                                         Chosen Drink
+                                     </h3>
+                                </div>
+                                <h:panelGroup id="drink_view">
+                                    <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
+                                        <ui:define name="drinkname">
+                                            <h:outputText id="drinknk" value="#{drinkSearchBB.drinkBB.drinkname}"/>
+                                        </ui:define>
+                                        <ui:define name="types">
+                                            <h:form><ui:repeat value="#{drinkSearchBB.drinkBB.types}" var="type">
+                                                #{type.name} ,
+                                            </ui:repeat></h:form>
+                                        </ui:define>
+                                        <ui:define name="user">
+                                            #{drinkSearchBB.drinkBB.username}
+                                        </ui:define>
+                                        <ui:define name="drinkdescription">
+                                            <h:outputText value="#{drinkSearchBB.drinkBB.comment}" />
+                                        </ui:define>
+                                        <ui:define name="drinkingredients">
+                                            <ul>
+                                                <h:form>
+                                                    <ui:repeat value="#{drinkSearchBB.drinkBB.ingredients}" var="ingredient" id="drinkingredients">
+                                                            <li style="display: list-item">
+                                                                #{ingredient.quantity} #{ingredient.name}
+                                                            </li>
+                                                    </ui:repeat>
+                                                </h:form>
+                                           </ul>
+                                        </ui:define>
+                                        <ui:define name="drinksteps">
+                                            <ol class="list-group">
+                                                <h:form>
+                                                    <ui:repeat value="#{drinkSearchBB.drinkBB.steps}" var="step">
+                                                        <li class="list-group-item" style="display: list-item">
+                                                            #{step.name}
+                                                        </li>
+                                                    </ui:repeat>
+                                                </h:form>    
+                                            </ol>
+                                        </ui:define>
+                                    </ui:decorate>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+
+                    </h:form>
                 </div>
                 
             </ui:define>

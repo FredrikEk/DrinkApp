@@ -6,6 +6,7 @@
 
 package com.DrinkApp.bb;
 
+import com.DrinkApp.Core.Type;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,14 @@ public class TypeBB implements Serializable {
         LOG.log(Level.INFO, "The type is alive ");
     }
     private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
+    
+    public TypeBB() {
+        
+    }
+    
+    public TypeBB(Type t) {
+        this.name = t.getName();
+    }
     
     public void setName(String name){
         this.name = name;
