@@ -27,9 +27,9 @@ and open the template in the editor.
                                     </h3>
                                 </div>
                                 <div class="panel-body bg-danger">
-                                    <h:outputLabel for="id" value="Enter a drinkname"/>
-                                    <h:inputText class="form-control" id="serachstr" value="#{drinkSearchBB.searchstring}">
-                                        <f:ajax execute="serachstr" event="keyup" render="drinkname_view"/>
+                                    <h:outputLabel for="searchstr" value="Enter a drinkname"/>
+                                    <h:inputText class="form-control" id="searchstr" value="#{drinkSearchBB.searchstring}">
+                                        <f:ajax execute="searchstr" event="keyup" render="drinkname_view"/>
                                     </h:inputText>
                                 </div>
                             </div>
@@ -40,6 +40,13 @@ and open the template in the editor.
                                     </h3>
                                 </div>
                                 <div class="panel-body bg-danger">
+                                    <ul>    
+                                        <ui:repeat value="#{drinkSearchBB.ingredients}" var="ingredient" id="drinkingredients">
+                                                <li style="display: list-item">
+                                                    #{ingredient} <h:commandButton id="ing_#{ingredient}" action="#{drinkSearchBB.removeIngredient(ingredient)}" value="x" style="border:1px; border-radius: 7px;"/>
+                                                </li>
+                                        </ui:repeat>        
+                                    </ul>
                                     <h:outputLabel for="id" value="Enter an ingredent"/>
                                     <h:inputText class="form-control" id="ingredientid" value="#{drinkSearchBB.ingredientString}" />
                                     <h:commandButton action="#{drinkSearchBB.addIngredientTest()}" />

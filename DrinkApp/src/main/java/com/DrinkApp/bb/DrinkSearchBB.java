@@ -33,6 +33,8 @@ public class DrinkSearchBB implements Serializable{
 	private DrinkBB drinkBB;
         private String ingredientString;
         
+        
+        
 	@PostConstruct
     public void post(){
         LOG.log(Level.INFO, "The drink is alive ");
@@ -98,9 +100,13 @@ public class DrinkSearchBB implements Serializable{
         ingredients.remove(ingredientBB);
     }*/
     
+    public void removeIngredient(String s) {
+        this.ingredients.remove(s);
+    }
+    
     public void addIngredientTest() {
-        ingredients.add(ingredientString);
-        ingredientString = "";
+        this.ingredients.add(ingredientString);
+        this.ingredientString = "";
     }
     
 }

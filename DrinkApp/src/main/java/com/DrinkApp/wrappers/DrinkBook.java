@@ -10,6 +10,7 @@ import com.DrinkApp.Core.Drink;
 import com.DrinkApp.auth.User;
 import com.DrinkApp.persistence.AbstractDAO;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -85,6 +86,28 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
         TypedQuery<Drink> tq = em.createNamedQuery("Drink.searchByName", Drink.class).setMaxResults(10).setParameter("drinkname", "%" + drinkname + "%");
         return tq.getResultList();
     }
+    
+    @Override
+    public List<Object[]> searchByNameAndIngredient(String drinkname, List<String> ingredients){
+        String s = "";
+        for(int i = 0; i < ingredients.size(); i++) {
+            s += "'" + ingredients.get(i) + "'";
+            if(i != ingredients.size() - 1) {
+                s += ",";
+            }
+        }
+        LOG.log(Level.INFO, s, this);
+        Query tq = em.createNativeQuery("SELECT d.drinkname, d.user_username, (ipd.NROFINGREDIENTS - da.drinkcount) AS Counters \n" +
+                                        "FROM (SELECT di.DRINKNAME AS Drinkname, COUNT(*) AS drinkCount \n" +
+                                              "FROM DrinkIngredient di \n" +
+                                              "WHERE di.INGREDIENT_NAME IN (" + s + ") \n" +
+                                              "GROUP BY di.DRINKNAME) da, INGREDIENTSPERDRINK ipd, Drink d \n" +
+                                        "WHERE da.drinkname LIKE '%" + drinkname + "%' AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
+                                        "ORDER BY Counters ASC");
+        //Query tq = em.createNamedQuery("Drink.searchByNameAndIngredient").setParameter("drinkname", "Mojito").setParameter("ingredients", "(Rum)");
+        return tq.getResultList();
+
+    }
 /*
     @Override
     public List searchByNameAndIngredient(String drinkname, List<String> ingredients) {
@@ -92,4 +115,12 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
         return tq.getResultList();
     }
 */
+
+    @Override
+    public Drink findByUsernameAndDrinkname(String username, String drinkname) {
+        TypedQuery<User> tq1 = em.createNamedQuery("User.findByUsername", User.class).setParameter("username", username);
+        User user = tq1.getSingleResult();
+        TypedQuery<Drink> tq2 = em.createNamedQuery("Drink.findByUserAndDrinkname", Drink.class).setParameter("username", user).setParameter("drinkname", drinkname);
+        return tq2.getSingleResult();
+    }
 }
