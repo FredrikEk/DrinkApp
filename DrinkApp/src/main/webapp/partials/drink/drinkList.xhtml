@@ -65,7 +65,6 @@ and open the template in the editor.
                                         <div class="btn-group-vertical">
                                             <ui:repeat var="drink" value="#{searchDrinkCtrl.getDrinks()}">
                                                 <h:commandButton class="btn btn-default" value="#{drink.drinkname} '#{drink.username}'" id="drink_#{drink.drinkname}" action="#{drinkSearchBB.setDrinkBB(drink)}">
-                                                    
                                                 </h:commandButton>
                                             </ui:repeat>    
                                         </div>

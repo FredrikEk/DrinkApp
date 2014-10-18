@@ -16,16 +16,25 @@ and open the template in the editor.
             <ui:define name="content">
                 <h3>About</h3>
                 
-                <h4>Using DrinkApp without login in</h4>
+                <h4><b>Using DrinkApp.nu without login in</b></h4>
                 <div>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
-                    do eiusmod tempor incididunt ut labore et dolore magna</br>
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation<br>
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</br>
-                    Duis aute irure dolor in reprehenderit in voluptate velit<br>
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur</br>
-                    sint occaecat cupidatat non proident, sunt in culpa qui<br>
-                    officia deserunt mollit anim id est laborum."</br>
+                    You can use the 
+                    <a href="#{request.contextPath}/partials/drink/drinkList.xhtml"> Find Drink </a> 
+                    functionality freely without registering an account or login in,
+                    being able to browse for drinks entering a drink name and/or
+                    possible drink ingredients you might have at hand. 
+                </div>
+                
+                <h4><b>Using DrinkApp.nu as an authenticated user</b></h4>
+                <div>
+                    As a registered and authenticated user you will be able to access
+                    alot of extensive functionality other than browsing for drink. 
+                    You will for instance be able to add/edit/delete your own drinks to/in/from
+                    the database. You will have your own profile page, a page to hold
+                    your added drinks as well as a page for all your favourite drinks from the 
+                    entire database. Registering is completely free of charge. Please note 
+                    that the application currently is under construction and all functionality
+                    might not work a hundred percent as intended.
                 </div>
             </ui:define>
         </ui:composition>
