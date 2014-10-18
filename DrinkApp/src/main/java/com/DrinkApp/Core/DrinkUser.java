@@ -10,6 +10,12 @@ import com.DrinkApp.auth.User;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ *
+ * Help class for making the entity User and the attribute drinkname 
+ * a primary key pair
+ * 
+ */
 
 public class DrinkUser implements Serializable{
     

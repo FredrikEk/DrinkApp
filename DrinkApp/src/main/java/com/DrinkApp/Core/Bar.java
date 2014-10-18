@@ -20,7 +20,8 @@ import javax.inject.Inject;
 
 /**
  *
- * @author Fredrik
+ * A Bar to hold all the interfaces containing skeleton code for all Entity-books.
+ * 
  */
 @ApplicationScoped
 public class Bar implements IBar {

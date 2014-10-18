@@ -9,10 +9,6 @@ import com.DrinkApp.Core.Type;
 import com.DrinkApp.persistence.IDAO;
 import javax.ejb.Local;
 
-/**
- *
- * @author Fredrik
- */
 @Local
 public interface ITypeBook extends IDAO<Type, Long> {
     public Type findByName(String name);

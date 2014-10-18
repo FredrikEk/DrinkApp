@@ -14,10 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Fredrik
- */
 @Stateless
 public class DrinkIngredientBook extends AbstractDAO<DrinkIngredient, Long> 
                 implements IDrinkIngredientBook{

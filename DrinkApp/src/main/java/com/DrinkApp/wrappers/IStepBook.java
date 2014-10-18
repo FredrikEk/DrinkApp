@@ -10,10 +10,6 @@ import com.DrinkApp.Core.Step;
 import com.DrinkApp.persistence.IDAO;
 import javax.ejb.Local;
 
-/**
- *
- * @author Fredrik
- */
 @Local
 public interface IStepBook extends IDAO<Step, Long> {
     public void deleteAllByDrink(Drink drink);

@@ -33,6 +33,8 @@ import javax.persistence.OneToMany;
 //                  @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT di FROM DrinkIngredient WHERE di.drink = :drinkname AND di.ingredients IN :ingredients")
 //                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = ")
                 })
+
+//Attempt to make a named native query, something that didnt seem to work.
 /*@NamedNativeQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d.drinkname,d.user_username, (ipd.NROFINGREDIENTS - da.drinkcount) as Counters \n" +
                                                                     "FROM (select di.DRINKNAME as Drinkname, COUNT(*) as drinkCount \n" +
                                                                     "        FROM DrinkIngredient di \n" +

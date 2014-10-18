@@ -18,10 +18,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.NoResultException;
 
-/**
- *
- * @author Michael
- */
 @Named
 @RequestScoped
 public class ChangeEmailCtrl {

@@ -11,10 +11,6 @@ import com.DrinkApp.Core.Ingredient;
 import com.DrinkApp.persistence.IDAO;
 import javax.ejb.Local;
 
-/**
- *
- * @author Fredrik
- */
 @Local
 public interface IDrinkIngredientBook extends IDAO<DrinkIngredient, Long> {
     public DrinkIngredient findByDrinkAndIngredient(Ingredient i, Drink d);

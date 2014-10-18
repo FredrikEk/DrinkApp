@@ -16,6 +16,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 
+/*
+ *
+ * An entity to hold data regarding which ingredients each drink contains
+ *
+ */
+
 @Entity @IdClass(DrinkIngredientId.class)
 @NamedQueries( {@NamedQuery(name = "DrinkIngredient.findByIngredientAndDrink", query = "SELECT di FROM DrinkIngredient di WHERE di.ingredient = :ingredient AND di.drink = :drink"),
                 @NamedQuery(name = "DrinkIngredient.deleteAllDrinkIngredient", query = "DELETE FROM DrinkIngredient di WHERE di.drink = :drink")})

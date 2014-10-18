@@ -11,10 +11,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author martinkastebo
- */
 @Named
 @RequestScoped
 public class ChangePasswBB implements Serializable{

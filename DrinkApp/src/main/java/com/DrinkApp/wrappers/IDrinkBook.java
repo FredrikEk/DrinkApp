@@ -13,10 +13,6 @@ import com.DrinkApp.persistence.IDAO;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * @author Fredrik
- */
 @Local
 public interface IDrinkBook extends IDAO<Drink, Long> {
 

@@ -13,10 +13,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author Fredrik
- */
 @Stateless
 public class IngredientBook extends AbstractDAO<Ingredient, Long> 
                 implements IIngredientBook{

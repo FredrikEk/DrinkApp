@@ -11,7 +11,9 @@ import java.util.Objects;
 
 /**
  *
- * @author Fredrik
+ * Help class for making the entities drink and ingredient a primary 
+ * key pair 
+ * 
  */
 public class DrinkIngredientId implements Serializable{
     

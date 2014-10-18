@@ -15,7 +15,8 @@ import com.DrinkApp.wrappers.IStepBook;
 
 /**
  *
- * @author Fredrik
+ * Interface to define skeleton code for the bar class
+ * 
  */
 public interface IBar {
     public IDrinkBook getDrinkBook();

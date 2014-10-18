@@ -20,10 +20,6 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.persistence.NoResultException;
 
-/**
- *
- * @author martinkastebo
- */
 @Named
 @RequestScoped
 public class RegisterCtrl {

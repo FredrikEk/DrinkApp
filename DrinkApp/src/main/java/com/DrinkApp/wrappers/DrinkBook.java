@@ -19,10 +19,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author Fredrik
- */
 @Stateless
 public class DrinkBook extends AbstractDAO<Drink, Long>
         implements IDrinkBook {
@@ -97,11 +93,16 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
             }
         }
         LOG.log(Level.INFO, s, this);
+        //The Drinksearch query with subqueries.
+                                         //The main query that finds out if a drink contains all the submitted ingredients
+                                         //and/or how many ingredients that are missing
         Query tq = em.createNativeQuery("SELECT d.drinkname, d.user_username, (ipd.NROFINGREDIENTS - da.drinkcount) AS Counters \n" +
+                                               //Subquery to find which of the submitted ingredients a drink contains.
                                         "FROM (SELECT di.DRINKNAME AS Drinkname, COUNT(*) AS drinkCount \n" +
                                               "FROM DrinkIngredient di \n" +
                                               "WHERE di.INGREDIENT_NAME IN (" + s + ") \n" +
                                               "GROUP BY di.DRINKNAME) da, \n" + 
+                                               //Subquery to find total number of ingredients per drink
                                               "(SELECT di.DRINKNAME AS Drinkname, COUNT(*) AS nrOfIngredients \n" +
                                               "FROM DrinkIngredient di \n" +
                                               "GROUP BY di.DRINKNAME) ipd, Drink d \n" +

@@ -20,10 +20,6 @@ import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author martinkastebo
- */
 @Named
 @RequestScoped
 public class LoginCtrl {

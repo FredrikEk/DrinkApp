@@ -12,10 +12,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Fredrik
- */
 @Stateless
 public class StepBook extends AbstractDAO<Step, Long> 
                 implements IStepBook{

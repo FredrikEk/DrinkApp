@@ -10,10 +10,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author martinkastebo
- */
 @Named
 @SessionScoped
 public class LoginBB implements Serializable {

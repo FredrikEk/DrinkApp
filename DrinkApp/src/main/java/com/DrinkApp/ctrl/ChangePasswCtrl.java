@@ -18,10 +18,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-/**
- *
- * @author martinkastebo
- */
 @Named
 @RequestScoped
 public class ChangePasswCtrl {

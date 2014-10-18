@@ -10,10 +10,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author Michael
- */
 @Named
 @RequestScoped
 public class ChangeEmailBB implements Serializable{
