@@ -9,7 +9,6 @@ import com.DrinkApp.Core.Bar;
 import com.DrinkApp.Core.Drink;
 import com.DrinkApp.bb.DrinkBB;
 import com.DrinkApp.bb.DrinkSearchBB;
-import com.DrinkApp.bb.IngredientBB;
 import com.DrinkApp.wrappers.IDrinkBook;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class SearchDrinkCtrl{
 
     @Inject
     private Bar bar;
-    private IngredientBB ingredientBB;
+    
     private DrinkSearchBB drinkSearchBB;
     private static final Logger LOG = Logger.getLogger(AddDrinkCtrl.class.getName());
     private DrinkBB drinkBB;
@@ -50,11 +49,6 @@ public class SearchDrinkCtrl{
     //public IngredientListCtrl(SingletonShop shop) {
     //    this.pc = shop.getShop().getProductCatalogue();
     //}
-
-    @Inject
-    public void setIngredientBB(IngredientBB ingredientBB) {
-        this.ingredientBB = ingredientBB;
-    }
     
     @Inject
     public void setDrinkSearchBB(DrinkSearchBB drinkSearchBB) {
@@ -64,16 +58,34 @@ public class SearchDrinkCtrl{
     @Inject
     public void setDrinkBB(DrinkBB drinkBB) {
         this.drinkBB = drinkBB;
-    } 
-   
+    }
+    
     public void updateDrinks() {
         LOG.log(Level.INFO, "Testing" + drinkSearchBB.getSearchstring(), this);
-        if(drinkBB != null && drinkSearchBB.getSearchstring() != null) {
+        if(drinkSearchBB != null && drinkSearchBB.getSearchstring() != null) {
             IDrinkBook db = bar.getDrinkBook();
-            List<Drink> ld = db.searchByName(drinkSearchBB.getSearchstring());
+            /*List<Drink> ld = db.searchByName(drinkSearchBB.getSearchstring());
             List<DrinkBB> ldbb = new ArrayList();
             for(Drink d : ld) {
                 ldbb.add(new DrinkBB(d));
+            }*/
+            List<DrinkBB> ldbb = new ArrayList();
+            LOG.log(Level.INFO, "Testing_drinkIngredients " + drinkSearchBB.getIngredients().toString(), this);
+            if(drinkSearchBB.getIngredients().isEmpty()) {
+                List<Drink> ld = db.searchByName(drinkSearchBB.getSearchstring());
+                for(Drink d : ld) {
+                    ldbb.add(new DrinkBB(d));
+                }
+            } else {
+                List<Object[]> lobj = db.searchByNameAndIngredient(drinkSearchBB.getSearchstring(), drinkSearchBB.getIngredients());
+                for(Object[] obj : lobj) {
+                    String drinkname = (String) obj[0];
+                    String username = (String) obj[1];
+                    Drink d = db.findByUsernameAndDrinkname(username, drinkname);
+                    Integer q = (Integer) obj[2];
+                    LOG.log(Level.INFO, "Drink: " + drinkname + " : " + q, this);
+                    ldbb.add(new DrinkBB(d));
+                }
             }
             drinkSearchBB.setDrinks(ldbb);
         }
