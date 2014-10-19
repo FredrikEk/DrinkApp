@@ -57,16 +57,20 @@ Lv8:
 *Lägg till en snygg tabell under myprofile där man kan se hur många drinkar man lagt in, hur många drinkar man rateat, kanske något mer?
 
 	
-*Ratingsystem för drinkar
+*Ratingsystem för drinkar (Klart)
+
 *Lägga till drinkar som "My Favourite Drinks"
 
-*Ev Sanitiza input till alla textfields enligt http://css-tricks.com/snippets/php/sanitize-database-inputs/
+*Ev Sanitiza input till alla textfields enligt 
+(Vi gjorde en klass med en statisk metod som man kan använda för att sanitiza input)
 
-*Fixa Find Drink vyn så att ajax/submit funkar som det ska
+*Fixa Find Drink vyn så att ajax/submit funkar som det ska (Klart)
 
 *Runda av projektet, se över design och all funktionalitet
 
+*Bygga enhetstester (Lätta att få rader på)
 
+*Göra presentation och alla annat skit enligt PM (Tillsammans)
 
 Senare (Eventuellt):
 

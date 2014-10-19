@@ -10,7 +10,6 @@ import com.DrinkApp.Core.Drink;
 import com.DrinkApp.Core.DrinkIngredient;
 import com.DrinkApp.Core.Step;
 import com.DrinkApp.Core.Type;
-import com.DrinkApp.auth.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +36,8 @@ public class DrinkBB implements Serializable{
     private List<TypeBB> types;
     @NotNull
     private List<StepBB> steps;
+    
+    private int rating;
 
     @PostConstruct
     public void post(){

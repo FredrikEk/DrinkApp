@@ -11,10 +11,10 @@ import com.DrinkApp.wrappers.IIngredientBook;
 import com.DrinkApp.wrappers.IUserBook;
 import com.DrinkApp.wrappers.IDrinkBook;
 import com.DrinkApp.wrappers.IDrinkIngredientBook;
+import com.DrinkApp.wrappers.IRatingBook;
 import com.DrinkApp.wrappers.IStepBook;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -39,6 +39,8 @@ public class Bar implements IBar {
     private IDrinkIngredientBook drinkIngredientBook;
     @Inject
     private IStepBook stepBook;
+    @Inject
+    private IRatingBook ratingBook;
     
     public Bar() {
         //initTestData();
@@ -79,5 +81,8 @@ public class Bar implements IBar {
         return stepBook;
     }
     
-    
+    @Override
+    public IRatingBook getRatingBook() {
+        return ratingBook;
+    }
 }

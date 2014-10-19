@@ -7,9 +7,14 @@ package com.DrinkApp.ctrl;
 
 import com.DrinkApp.Core.Bar;
 import com.DrinkApp.Core.Drink;
+import com.DrinkApp.Core.Rating;
+import com.DrinkApp.auth.User;
 import com.DrinkApp.bb.DrinkBB;
 import com.DrinkApp.bb.DrinkSearchBB;
+import com.DrinkApp.bb.LoginBB;
 import com.DrinkApp.wrappers.IDrinkBook;
+import com.DrinkApp.wrappers.IRatingBook;
+import com.DrinkApp.wrappers.IUserBook;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,6 +24,7 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import static org.eclipse.persistence.expressions.ExpressionOperator.log;
 
 @Named
 @RequestScoped
@@ -28,8 +34,8 @@ public class SearchDrinkCtrl{
     private Bar bar;
     
     private DrinkSearchBB drinkSearchBB;
+    private LoginBB loginBB;
     private static final Logger LOG = Logger.getLogger(AddDrinkCtrl.class.getName());
-    private DrinkBB drinkBB;
     
     protected SearchDrinkCtrl() {
         // Must have for CDI
@@ -54,10 +60,10 @@ public class SearchDrinkCtrl{
     public void setDrinkSearchBB(DrinkSearchBB drinkSearchBB) {
         this.drinkSearchBB = drinkSearchBB;
     }
-    
+
     @Inject
-    public void setDrinkBB(DrinkBB drinkBB) {
-        this.drinkBB = drinkBB;
+    public void setLoginBB(LoginBB loginBB) {
+        this.loginBB = loginBB;
     }
     
     public void updateDrinks() {
@@ -96,4 +102,87 @@ public class SearchDrinkCtrl{
         return drinkSearchBB.getDrinks();
     }
 
+    public void updateRating(int rate) {
+        DrinkBB dbb = drinkSearchBB.getDrinkBB();
+        if(dbb != null && loginBB != null) {
+            IDrinkBook db = bar.getDrinkBook();
+            IUserBook ub = bar.getUserBook();
+            IRatingBook rb = bar.getRatingBook();
+            User drinkOwner = ub.findByName(dbb.getUsername());
+            Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
+            User user = ub.findByName(loginBB.getUsername());
+            Rating rating = rb.findByDrinkAndUser(d, user);
+            if(rating != null) {
+                Rating updatedRating = new Rating(user, d, rate);
+                rb.update(updatedRating);
+            } else {
+                LOG.log(Level.INFO, "user " + user.getUsername(), this);
+                LOG.log(Level.INFO, "drink " + drinkSearchBB.getDrinkBB().getDrinkname(), this);
+                LOG.log(Level.INFO, "rate " + rate, this);
+                Rating newRating = new Rating(user, d, rate);
+                rb.create(newRating);
+            }
+        }
+    }
+    
+    public List<Integer> getEmptyStars() {
+        DrinkBB dbb = drinkSearchBB.getDrinkBB();
+        List<Integer> integerList = new ArrayList();
+        if(dbb != null && loginBB != null) {
+            IDrinkBook db = bar.getDrinkBook();
+            IUserBook ub = bar.getUserBook();
+            IRatingBook rb = bar.getRatingBook();
+            User drinkOwner = ub.findByName(dbb.getUsername());
+            Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
+            User user = ub.findByName(loginBB.getUsername());
+            Rating rating = rb.findByDrinkAndUser(d, user);
+            if(rating != null) {
+                int noOfStars = 5;
+                for(int i = rating.getRating() + 1; i <= noOfStars; i++) {
+                    integerList.add(i);
+                }
+            } else {
+                int noOfStars = 5;
+                for(int i = 1; i <= noOfStars; i++) {
+                    integerList.add(i);
+                }
+            }
+        }
+        return integerList;
+    }
+    
+    public List<Integer> getFilledStars() {
+        DrinkBB dbb = drinkSearchBB.getDrinkBB();
+        List<Integer> integerList = new ArrayList();
+        if(dbb != null && loginBB != null) {
+            IDrinkBook db = bar.getDrinkBook();
+            IUserBook ub = bar.getUserBook();
+            IRatingBook rb = bar.getRatingBook();
+            User drinkOwner = ub.findByName(dbb.getUsername());
+            Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
+            User user = ub.findByName(loginBB.getUsername());
+            Rating rating = rb.findByDrinkAndUser(d, user);
+            if(rating != null) {
+                int noOfStars = rating.getRating();
+                for(int i = 1; i <= noOfStars; i++) {
+                    integerList.add(i);
+                }
+            } 
+        }
+        return integerList;
+    }
+    
+    public String getAvgRating() {
+        DrinkBB dbb = drinkSearchBB.getDrinkBB();
+        if(dbb != null) {
+            IDrinkBook db = bar.getDrinkBook();
+            IUserBook ub = bar.getUserBook();
+            IRatingBook rb = bar.getRatingBook();
+            User drinkOwner = ub.findByName(dbb.getUsername());
+            Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
+            Double flyttal = rb.getAverageRating(d);
+            return "Avg (" + Double.toString(flyttal) + "/5)";
+        }
+        return null;
+    }
 }

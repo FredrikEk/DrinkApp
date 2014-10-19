@@ -11,6 +11,7 @@ import com.DrinkApp.wrappers.IIngredientBook;
 import com.DrinkApp.wrappers.IUserBook;
 import com.DrinkApp.wrappers.IDrinkBook;
 import com.DrinkApp.wrappers.IDrinkIngredientBook;
+import com.DrinkApp.wrappers.IRatingBook;
 import com.DrinkApp.wrappers.IStepBook;
 
 /**
@@ -25,4 +26,5 @@ public interface IBar {
     public ITypeBook getTypeBook();
     public IDrinkIngredientBook getDrinkIngredientBook();
     public IStepBook getStepBook();
+    public IRatingBook getRatingBook();
 }

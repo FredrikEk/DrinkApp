@@ -135,7 +135,10 @@ and open the template in the editor.
                                     </ui:define>
                                     <ui:define name="types">
                                         <h:form><ui:repeat value="#{addDrinkBB.types}" var="type">
-                                            #{type.name} <h:commandButton action="#{addDrinkBB.removeType(type)}" value="x" style="background: parent; border:0px; border-radius: 7px"></h:commandButton>, 
+                                            #{type.name} 
+                                            <h:commandLink action="#{addDrinkBB.removeType(type)}">
+                                                <i class="fa fa-times"></i>
+                                            </h:commandLink>, 
                                         </ui:repeat></h:form>
                                     </ui:define>
                                     <ui:define name="user">
@@ -149,11 +152,18 @@ and open the template in the editor.
                                     <ui:define name="drinkingredients">
                                         <ul>
                                             <h:form>
+                                                <div class="col-md-6">
                                                 <ui:repeat value="#{addDrinkBB.ingredients}" var="ingredient" id="drinkingredients">
-                                                        <li style="display: list-item">
-                                                            #{ingredient.quantity} #{ingredient.name} <h:commandButton action="#{addDrinkBB.removeIngredient(ingredient)}" value="x" style="background: parent;border:1px; border-radius: 7px;"/>
-                                                        </li>
+                                                    <li style="display: list-item">
+                                                        #{ingredient.quantity} #{ingredient.name}
+                                                        <span style="float:right">
+                                                        <h:commandLink action="#{addDrinkBB.removeIngredient(ingredient)}">
+                                                            <i class="fa fa-times"></i>
+                                                        </h:commandLink>
+                                                        </span>
+                                                    </li>
                                                 </ui:repeat>
+                                                </div>
                                             </h:form>
                                        </ul>
                                     </ui:define>
@@ -162,7 +172,10 @@ and open the template in the editor.
                                             <h:form>
                                                 <ui:repeat value="#{addDrinkBB.steps}" var="step">
                                                     <li class="list-group-item" style="display: list-item">
-                                                        #{step.name} <h:commandButton action="#{addDrinkBB.removeStep(step)}" value="x" style="background: parent;border:1px; border-radius: 7px; float:right"/>
+                                                        #{step.name} 
+                                                        <h:commandLink action="#{addDrinkBB.removeStep(step)}" style="float:right"> 
+                                                            <i class="fa fa-times"></i>
+                                                        </h:commandLink>
                                                     </li>
                                                 </ui:repeat>
                                             </h:form>    

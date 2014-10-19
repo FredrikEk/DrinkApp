@@ -6,27 +6,40 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
     
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
-                <div class="col-md-7">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ui:insert name="drinkname">Drinkname</ui:insert>
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ui:insert name="drinkname">Drinkname</ui:insert>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ui:insert name="types"></ui:insert>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="row">
+                    <div class="col-md-5">
                         <div class="col-md-12">
-                            <ui:insert name="types"></ui:insert>
+                            By <ui:insert name="user">User</ui:insert>
+                        </div>
+                        <div class="col-md-12">
+                            <ui:insert name="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                (Unrated)
+                            </ui:insert>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-5">
-                    By <ui:insert name="user">User</ui:insert>
-                </div>
                 </div>
             </div>
             <div id="drinkcontent" class="panel-body bg-success">

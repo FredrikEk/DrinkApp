@@ -8,7 +8,9 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>Drinklist</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -27,8 +29,7 @@ and open the template in the editor.
                                     </h3>
                                 </div>
                                 <div class="panel-body bg-danger">
-                                    <h:outputLabel for="searchstr" value="Enter a drinkname"/>
-                                    <h:inputText class="form-control" id="searchstr" value="#{drinkSearchBB.searchstring}">
+                                    <h:inputText class="form-control" id="searchstr" pt:placeholder="Enter a drinkname" value="#{drinkSearchBB.searchstring}">
                                         <f:ajax execute="searchstr" event="keyup" render="drinkname_view"/>
                                     </h:inputText>
                                 </div>
@@ -43,13 +44,21 @@ and open the template in the editor.
                                     <ul>    
                                         <ui:repeat value="#{drinkSearchBB.ingredients}" var="ingredient" id="drinkingredients">
                                                 <li style="display: list-item">
-                                                    #{ingredient} <h:commandButton id="ing_#{ingredient}" action="#{drinkSearchBB.removeIngredient(ingredient)}" value="x" style="border:1px; border-radius: 7px;"/>
+                                                    #{ingredient} 
+                                                    <h:commandLink id="ing_#{ingredient}" action="#{drinkSearchBB.removeIngredient(ingredient)}">
+                                                        <i class="fa fa-times fa-border"></i>
+                                                    </h:commandLink>
                                                 </li>
                                         </ui:repeat>        
                                     </ul>
-                                    <h:outputLabel for="id" value="Enter an ingredent"/>
-                                    <h:inputText class="form-control" id="ingredientid" value="#{drinkSearchBB.ingredientString}" />
-                                    <h:commandButton action="#{drinkSearchBB.addIngredientTest()}" />
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <h:inputText class="form-control" id="ingredientid" pt:placeholder="Enter an ingredient" value="#{drinkSearchBB.ingredientString}" />
+                                            <span class="input-group-btn">
+                                                <h:commandButton action="#{drinkSearchBB.addIngredientTest()}" class="btn btn-default" value="Add" />
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -95,13 +104,28 @@ and open the template in the editor.
                                         <ui:define name="user">
                                             #{drinkSearchBB.drinkBB.username}
                                         </ui:define>
+                                        <ui:define name="rating">
+                                            <div class="rating">
+                                            <ui:repeat value="#{searchDrinkCtrl.getFilledStars()}" var="filledStars">
+                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(filledStars)}">
+                                                    <i class="fa fa-star"></i>
+                                                </h:commandLink>
+                                            </ui:repeat>
+                                            <ui:repeat value="#{searchDrinkCtrl.getEmptyStars()}" var="emptyStars">
+                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(emptyStars)}">
+                                                    <i class="fa fa-star-o"></i>
+                                                </h:commandLink>
+                                            </ui:repeat>
+                                            </div>
+                                            #{searchDrinkCtrl.getAvgRating()}
+                                        </ui:define>       
                                         <ui:define name="drinkdescription">
                                             <h:outputText value="#{drinkSearchBB.drinkBB.comment}" />
                                         </ui:define>
                                         <ui:define name="drinkingredients">
                                             <ul>
                                                 <h:form>
-                                                    <ui:repeat value="#{drinkSearchBB.drinkBB.ingredients}" var="ingredient" id="drinkingredients">
+                                                    <ui:repeat value="#{drinkSearchBB.drinkBB.ingredients}" var="ingredient" id="showdrinkingredients">
                                                             <li style="display: list-item">
                                                                 #{ingredient.quantity} #{ingredient.name}
                                                             </li>
