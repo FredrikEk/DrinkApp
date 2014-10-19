@@ -76,7 +76,11 @@ public class RatingBook extends AbstractDAO<Rating, Long>
             Object[] obj = objectList.get(0);
             Long noOfStars = (Long) obj[0];
             Long noOfRaters = (Long) obj[1];
-            return (1.0 * noOfStars) / (1.0 * noOfRaters);
+            if(noOfStars != null && noOfRaters != null) {
+                return (1.0 * noOfStars) / (1.0 * noOfRaters);
+            } else {
+                return 0.0;
+            }
         } catch (NoResultException nre) {
             return null;
         }
