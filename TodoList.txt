@@ -46,18 +46,30 @@ Allmänt My Profile:
 
 Ev
 
-*Lägg till en snygg tabell typ där man så småningom ska kunna se hur många drinkar man lagt in, hur många drinkar man rateat, kanske något mer?
 
+
+
+Lv8:
+
+*Skapa sidan MyDrinks där alla ens tillagda drinkar finns tillsammans med två valmöjligheter; edit och delete.
+	Tänker mig att man representerar varje drink som ett litet kort (knapp) med drinkens namn, samt edit och delete.
+
+*Lägg till en snygg tabell under myprofile där man kan se hur många drinkar man lagt in, hur många drinkar man rateat, kanske något mer?
+
+	
+*Ratingsystem för drinkar
+*Lägga till drinkar som "My Favourite Drinks"
+
+*Ev Sanitiza input till alla textfields enligt http://css-tricks.com/snippets/php/sanitize-database-inputs/
+
+*Fixa Find Drink vyn så att ajax/submit funkar som det ska
+
+*Runda av projektet, se över design och all funktionalitet
 
 
 
 Senare (Eventuellt):
 
-*Ratingsystem för drinkar
-*Lägga till drinkar som "My Favourite Drinks"
 *LiveFeed på Home-sidan som berättar när nya drinkar lagts till etc
 *Någon form av Chat
-
-
-Ännu senare:
-Facebook connectivity
+*Facebook connectivity
