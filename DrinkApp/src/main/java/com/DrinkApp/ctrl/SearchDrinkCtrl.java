@@ -104,7 +104,7 @@ public class SearchDrinkCtrl{
 
     public void updateRating(int rate) {
         DrinkBB dbb = drinkSearchBB.getDrinkBB();
-        if(dbb != null && loginBB != null) {
+        if(dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
             IDrinkBook db = bar.getDrinkBook();
             IUserBook ub = bar.getUserBook();
             IRatingBook rb = bar.getRatingBook();
@@ -128,7 +128,7 @@ public class SearchDrinkCtrl{
     public List<Integer> getEmptyStars() {
         DrinkBB dbb = drinkSearchBB.getDrinkBB();
         List<Integer> integerList = new ArrayList();
-        if(dbb != null && loginBB != null) {
+        if(dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
             IDrinkBook db = bar.getDrinkBook();
             IUserBook ub = bar.getUserBook();
             IRatingBook rb = bar.getRatingBook();
@@ -154,7 +154,7 @@ public class SearchDrinkCtrl{
     public List<Integer> getFilledStars() {
         DrinkBB dbb = drinkSearchBB.getDrinkBB();
         List<Integer> integerList = new ArrayList();
-        if(dbb != null && loginBB != null) {
+        if(dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
             IDrinkBook db = bar.getDrinkBook();
             IUserBook ub = bar.getUserBook();
             IRatingBook rb = bar.getRatingBook();
@@ -180,8 +180,12 @@ public class SearchDrinkCtrl{
             IRatingBook rb = bar.getRatingBook();
             User drinkOwner = ub.findByName(dbb.getUsername());
             Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
-            Double flyttal = rb.getAverageRating(d);
-            return "Avg (" + Double.toString(flyttal) + "/5)";
+            Double avgRating = rb.getAverageRating(d);
+            if(avgRating < 0.5) {
+                return "Unrated";
+            } else {
+                return "Avg (" + Double.toString(avgRating) + "/5)";
+            }
         }
         return null;
     }
