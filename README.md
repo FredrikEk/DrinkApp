@@ -1,4 +1,4 @@
-DrinkApp
+DrinkApp by Fredrik Ek, Robert Stigsson, Martin Kastebo, Michael Tran
 ========
 
 To clone project to computer:

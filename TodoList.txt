@@ -76,6 +76,7 @@ Lv8:
 
 Senare (Eventuellt):
 
+*Lägga till en gästbok
 *LiveFeed på Home-sidan som berättar när nya drinkar lagts till etc
 *Någon form av Chat
 *Facebook connectivity
