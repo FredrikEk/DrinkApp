@@ -7,6 +7,7 @@ package com.DrinkApp.ctrl;
 
 import com.DrinkApp.auth.AuthDAO;
 import com.DrinkApp.auth.Groups;
+import com.DrinkApp.auth.SanitizedInput;
 import com.DrinkApp.auth.User;
 import com.DrinkApp.bb.RegisterBB;
 import java.util.logging.Level;
@@ -42,6 +43,20 @@ public class RegisterCtrl {
                     + rb.getUsername()
                     + "' already exists!  ",
                     "Please choose a different username.");
+            context.addMessage(null, message);
+        } else if (!SanitizedInput.sanitizeInput(rb.getUsername())) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Username '"
+                    + rb.getUsername()
+                    + "' contains illegal characters!  ",
+                    "Please choose a different username.");
+            context.addMessage(null, message);
+        } else if (!SanitizedInput.sanitizeInput(rb.getEmail())) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Email '"
+                    + rb.getEmail()
+                    + "' contains illegal characters!  ",
+                    "Please choose a different email.");
             context.addMessage(null, message);
         } else if (rb.getUsername().toLowerCase().contains("admin")) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,

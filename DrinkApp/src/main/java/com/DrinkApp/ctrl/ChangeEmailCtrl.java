@@ -7,6 +7,7 @@ package com.DrinkApp.ctrl;
 
 import com.DrinkApp.auth.AuthDAO;
 import com.DrinkApp.auth.Groups;
+import com.DrinkApp.auth.SanitizedInput;
 import com.DrinkApp.auth.User;
 import com.DrinkApp.bb.ChangeEmailBB;
 import com.DrinkApp.bb.LoginBB;
@@ -58,7 +59,22 @@ public class ChangeEmailCtrl {
                     "Please enter a different email.");
             context.addMessage(null, message);
             externalContext.getFlash().setKeepMessages(true);
-        } else if (!ceBB.getNewEmail().equals(ceBB.getConfirmEmail())) {
+        }else if (!SanitizedInput.sanitizeInput(ceBB.getOldEmail())) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Email: '"
+                    + ceBB.getOldEmail()
+                    + "' contains illegal characters!  ",
+                    "Please choose a different Email.");
+            context.addMessage(null, message);
+        } 
+        else if (!SanitizedInput.sanitizeInput(ceBB.getNewEmail())) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Email: '"
+                    + ceBB.getNewEmail()
+                    + "' contains illegal characters!  ",
+                    "Please choose a different Email.");
+            context.addMessage(null, message);
+        }else if (!ceBB.getNewEmail().equals(ceBB.getConfirmEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Confirm Email '"
                     + ceBB.getConfirmEmail()
