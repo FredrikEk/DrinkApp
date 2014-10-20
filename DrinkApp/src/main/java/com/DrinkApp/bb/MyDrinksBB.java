@@ -6,6 +6,7 @@
 
 package com.DrinkApp.bb;
 
+import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -15,6 +16,6 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
-public class MyDrinksBB {
+public class MyDrinksBB implements Serializable {
     
 }
