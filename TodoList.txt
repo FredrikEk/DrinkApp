@@ -1,4 +1,4 @@
-Lv6:
+﻿Lv6:
 Ek och Sonny: 
 Bygger upp en grundläggande 
 databasdesign med de tabeller/klasser som behövs initialt.
@@ -50,6 +50,8 @@ Ev
 
 
 Lv8:
+
+*Lägga till rollen admin, så att den som är admin kan exempelvis ta bort och edita andras drinkar.
 
 *Skapa sidan MyDrinks där alla ens tillagda drinkar finns tillsammans med två valmöjligheter; edit och delete.
 	Tänker mig att man representerar varje drink som ett litet kort (knapp) med drinkens namn, samt edit och delete.
