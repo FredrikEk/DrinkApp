@@ -63,8 +63,12 @@ Lv8:
 
 *Lägga till drinkar som "My Favourite Drinks"
 
-*Ev Sanitiza input till alla textfields enligt 
+*Ev Sanitiza input till alla textfields enligt (Gör för addDrinks, FindDrinks, editDrinks)
 (Vi gjorde en klass med en statisk metod som man kan använda för att sanitiza input)
+
+GÖRA CONFIRMATION SIDOR FÖR ADD-DRINK, EDIT-DRINK SAMT DELETE-DRINK.
+URL FÖR VARJE DRINK I MYDRINKS, SÅ ATT MAN KAN LÄNKA, NON AUTHENTICATION!
+INTE TILLÅTA WHITESPACE NÄR MAN EDITAR, ADDAR DRINKAR SAMT HANTERING AV EXCEPTIONS I DESSA!
 
 *Fixa Find Drink vyn så att ajax/submit funkar som det ska (Klart)
 
