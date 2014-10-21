@@ -12,7 +12,7 @@ public class SanitizedInput {
     * This could come in handy for filtering unwanted characters in databasecalls.
     */
     public static boolean sanitizeInput(String checkString){
-        String[] arr = checkString.split("[~#@*+%{}<>\\[\\]|\"\\_^]", 2);
-        return arr.length > 1;
+        String[] arr = checkString.split("[~#*+%{}<>\\[\\]|\"\\_^]", 2);
+        return !(arr.length > 1);
     }
 }
