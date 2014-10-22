@@ -26,8 +26,7 @@ public class ChosenDrinkCtrl {
 
     @Inject
     private Bar bar;
-    private ChosenDrinkBB drinkBB;
-    private LoginBB loginBB;
+    private ChosenDrinkBB chosenDrinkBB;
     private static final Logger LOG = Logger.getLogger(EditDrinkCtrl.class.getName());
 
     protected ChosenDrinkCtrl() {
@@ -35,20 +34,16 @@ public class ChosenDrinkCtrl {
     }
 
     @Inject
-    public void setDrinkBB(ChosenDrinkBB drinkBB) {
-        this.drinkBB = drinkBB;
+    public void setDrinkBB(ChosenDrinkBB chosenDrinkBB) {
+        this.chosenDrinkBB = chosenDrinkBB;
     }
 
-    @Inject
-    public void setLoginBB(LoginBB loginBB) {
-        this.loginBB = loginBB;
-    }
 
-    public void init(String drinkname) {
+    public void init() {
         IDrinkBook idb = bar.getDrinkBook();
-        LOG.log(Level.INFO, loginBB.getUsername() + ":" + drinkname, this);
-        User user = bar.getUserBook().findByName(loginBB.getUsername());
-        Drink d = idb.findByUserAndDrinkname(user, drinkname);
+        LOG.log(Level.INFO, chosenDrinkBB.getUsername() + ":" + chosenDrinkBB.getDrinkname(), this);
+        User user = bar.getUserBook().findByName(chosenDrinkBB.getUsername());
+        Drink d = idb.findByUserAndDrinkname(user, chosenDrinkBB.getDrinkname());
         List<DrinkIngredient> drinkIngredients = d.getIngredients();
         List<IngredientBB> libb = new ArrayList();
         for (DrinkIngredient di : drinkIngredients) {
@@ -70,10 +65,10 @@ public class ChosenDrinkCtrl {
             ltbb.add(tbb);
         }
 
-        drinkBB.setComment(d.getComment());
-        drinkBB.setIngredients(libb);
-        drinkBB.setSteps(lsbb);
-        drinkBB.setTypes(ltbb);
+        chosenDrinkBB.setComment(d.getComment());
+        chosenDrinkBB.setIngredients(libb);
+        chosenDrinkBB.setSteps(lsbb);
+        chosenDrinkBB.setTypes(ltbb);
     }
 
 }
