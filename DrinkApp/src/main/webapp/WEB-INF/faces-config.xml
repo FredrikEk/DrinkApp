@@ -26,6 +26,10 @@
             <to-view-id>partials/auth/profile.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>chosenDrink</from-outcome>
+            <to-view-id>partials/drink/chosenDrink.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>drinklist</from-outcome>
             <to-view-id>partials/drink/drinkList.xhtml</to-view-id>
         </navigation-case>
