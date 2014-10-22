@@ -5,12 +5,92 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
     <head>
-        <title>TODO supply a title</title>
+        <f:metadata>
+            <f:viewParam name="name" value="#{chosenDrinkBB.drinkName}"/>                    
+        </f:metadata>
+        <title>
+            #{chosenDrinkBB.drinkName}
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <div>TODO write content</div>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <h3>Chosen Drink</h3>
+
+                <p>Drink: #{chosenDrinkBB.drinkName}</p>
+                <h:form>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                     <h3 class="panel-title">
+                                         Chosen Drink
+                                     </h3>
+                                </div>
+                                <h:panelGroup id="drink_view">
+                                    <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
+                                        <ui:define name="drinkname">
+                                            <h:outputText id="drinknk" value="#{drinkSearchBB.drinkBB.drinkname}"/>
+                                        </ui:define>
+                                        <ui:define name="types">
+                                            <h:form><ui:repeat value="#{drinkSearchBB.drinkBB.types}" var="type">
+                                                #{type.name} ,
+                                            </ui:repeat></h:form>
+                                        </ui:define>
+                                        <ui:define name="user">
+                                            #{drinkSearchBB.drinkBB.username}
+                                        </ui:define>
+                                        <ui:define name="rating">
+                                            <div class="rating">
+                                            <ui:repeat value="#{searchDrinkCtrl.getFilledStars()}" var="filledStars">
+                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(filledStars)}">
+                                                    <i class="fa fa-star"></i>
+                                                </h:commandLink>
+                                            </ui:repeat>
+                                            <ui:repeat value="#{searchDrinkCtrl.getEmptyStars()}" var="emptyStars">
+                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(emptyStars)}">
+                                                    <i class="fa fa-star-o"></i>
+                                                </h:commandLink>
+                                            </ui:repeat>
+                                            </div>
+                                            #{searchDrinkCtrl.getAvgRating()}
+                                        </ui:define>       
+                                        <ui:define name="drinkdescription">
+                                            <h:outputText value="#{drinkSearchBB.drinkBB.comment}" />
+                                        </ui:define>
+                                        <ui:define name="drinkingredients">
+                                            <ul>
+                                                <h:form>
+                                                    <ui:repeat value="#{drinkSearchBB.drinkBB.ingredients}" var="ingredient" id="showdrinkingredients">
+                                                            <li style="display: list-item">
+                                                                #{ingredient.quantity} #{ingredient.name}
+                                                            </li>
+                                                    </ui:repeat>
+                                                </h:form>
+                                           </ul>
+                                        </ui:define>
+                                        <ui:define name="drinksteps">
+                                            <ol class="list-group">
+                                                <h:form>
+                                                    <ui:repeat value="#{drinkSearchBB.drinkBB.steps}" var="step">
+                                                        <li class="list-group-item" style="display: list-item">
+                                                            #{step.name}
+                                                        </li>
+                                                    </ui:repeat>
+                                                </h:form>    
+                                            </ol>
+                                        </ui:define>
+                                    </ui:decorate>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </body>
 </html>
