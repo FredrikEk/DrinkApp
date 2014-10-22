@@ -30,17 +30,19 @@ and open the template in the editor.
                                     <ui:repeat var="drink" value="#{myDrinksCtrl.getMyDrinks()}">
                                         <tr class="panel-body bg-success">
                                             <td>
-                                                <h:commandButton class="btn btn-default" value="#{drink.drinkname}" id="drink_#{drink.drinkname}" action="#{drinkSearchBB.setDrinkBB(drink)}">
-                                                </h:commandButton>
+                                                <h:link class="btn btn-default" value="#{drink.drinkname}" outcome="chosenDrink">
+                                                    <f:param name="name" value="#{drink.drinkname}" />
+                                                    <f:param name="username" value="#{drink.username}" />
+                                                </h:link>
                                             </td>
                                             <td>
                                                 <h:link class="btn btn-default" value="Edit" outcome="editDrink.xhtml">
-                                                     <f:param name="name" value="#{drink.drinkname}" />
+                                                    <f:param name="name" value="#{drink.drinkname}" />
                                                 </h:link>
                                             </td>
                                             <td>
                                                 <h:link class="btn btn-default" value="Delete" outcome="deleteDrink.xhtml">
-                                                     <f:param name="name" value="#{drink.drinkname}" />
+                                                    <f:param name="name" value="#{drink.drinkname}" />
                                                 </h:link>
                                             </td>
                                         </tr>
