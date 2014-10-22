@@ -20,8 +20,8 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="metadata">
                 <f:metadata>
-                    <f:viewParam name="name" value="#{chosenDrinkBB.drinkname}"/>
-                    <f:viewParam name="username" value="#{chosenDrinkBB.username}"/>
+                    <f:viewParam name="user" value="#{chosenDrinkBB.username}"/>
+                    <f:viewParam name="drink" value="#{chosenDrinkBB.drinkname}"/>
                     <f:viewAction action="#{chosenDrinkCtrl.init()}"/>
                 </f:metadata>
             </ui:define>
