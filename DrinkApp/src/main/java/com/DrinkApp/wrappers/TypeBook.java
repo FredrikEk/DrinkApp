@@ -14,21 +14,21 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 @Stateless
-public class TypeBook extends AbstractDAO<Type, Long> 
-                implements ITypeBook{
+public class TypeBook extends AbstractDAO<Type, Long>
+        implements ITypeBook {
 
     @PersistenceContext
     private EntityManager em;
-    
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     public TypeBook() {
         super(Type.class);
     }
-    
+
     public static ITypeBook newInstance() {
         return new TypeBook();
     }
@@ -42,6 +42,10 @@ public class TypeBook extends AbstractDAO<Type, Long>
             return null;
         }
     }
-    
-}
 
+    @Override
+    public void deleteDrinkTypes(String username, String drinkname) {
+        em.createNativeQuery("DELETE FROM Drink_type WHERE user_username = '" + username + "'" + " AND drinkname = '" + drinkname + "'").executeUpdate();
+    }
+
+}

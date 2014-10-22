@@ -85,5 +85,11 @@ public class RatingBook extends AbstractDAO<Rating, Long>
             return null;
         }
     }
+    
+    @Override
+    public void deleteRatings(Drink drink) {
+        em.createNamedQuery("Rating.deleteDrinkRatings").setParameter("drink", drink).executeUpdate();
+    }
+    
 }
     

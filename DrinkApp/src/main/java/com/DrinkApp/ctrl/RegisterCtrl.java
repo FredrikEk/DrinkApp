@@ -44,14 +44,14 @@ public class RegisterCtrl {
                     + "' already exists!  ",
                     "Please choose a different username.");
             context.addMessage(null, message);
-        } else if (!SanitizedInput.sanitizeInput(rb.getUsername())) {
+        } else if (SanitizedInput.sanitizeInput(rb.getUsername())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Username '"
                     + rb.getUsername()
                     + "' contains illegal characters!  ",
                     "Please choose a different username.");
             context.addMessage(null, message);
-        } else if (!SanitizedInput.sanitizeInput(rb.getEmail())) {
+        } else if (SanitizedInput.sanitizeInput(rb.getEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email '"
                     + rb.getEmail()
