@@ -29,8 +29,9 @@ import javax.persistence.OneToMany;
 @Entity @IdClass(DrinkUser.class)
 @NamedQueries( {@NamedQuery(name = "Drink.findByUserAndDrinkname", query = "SELECT d FROM Drink d WHERE d.user = :username AND d.drinkname = :drinkname"),
                 @NamedQuery(name = "Drink.findByName", query = "SELECT d FROM Drink d WHERE d.drinkname = :drinkname"),
-                @NamedQuery(name = "Drink.searchByName", query = "SELECT d FROM Drink d WHERE d.drinkname LIKE :drinkname")
-
+                @NamedQuery(name = "Drink.searchByName", query = "SELECT d FROM Drink d WHERE d.drinkname LIKE :drinkname"),
+                @NamedQuery(name = "Drink.searchByUser", query = "SELECT d FROM Drink d WHERE d.user = :user"),
+                @NamedQuery(name = "Drink.deleteDrink", query = "DELETE FROM Drink d WHERE d.drinkname = :drinkname AND d.user = :user")
 })
         /*
                 @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d, (ipd.nrOfIngredients - da.drinkCount) as Counters \n" +

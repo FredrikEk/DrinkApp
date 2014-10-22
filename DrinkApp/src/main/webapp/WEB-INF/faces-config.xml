@@ -46,6 +46,10 @@
             <to-view-id>partials/drink/authdrinkpages/favouriteDrinks.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>myDrinks</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/myDrinks.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>login</from-outcome>
             <to-view-id>partials/login/login.xhtml</to-view-id>
         </navigation-case>

@@ -18,7 +18,8 @@ import javax.persistence.OneToOne;
 @Entity @IdClass(RatingUserId.class)
 @NamedQueries({@NamedQuery(name = "Rating.averageRating", query = "SELECT SUM(r.rating),count(r) FROM Rating r WHERE r.drink = :drink"),
                @NamedQuery(name = "Rating.userRating", query = "SELECT d FROM Drink d WHERE d.user = :user"),
-               @NamedQuery(name = "Rating.userAndDrink", query = "SELECT r FROM Rating r WHERE r.drink = :drink AND r.ratingUser = :user")
+               @NamedQuery(name = "Rating.userAndDrink", query = "SELECT r FROM Rating r WHERE r.drink = :drink AND r.ratingUser = :user"),
+               @NamedQuery(name = "Rating.deleteDrinkRatings", query = "DELETE FROM Rating r WHERE r.drink = :drink")
 })
 public class Rating implements Serializable {
     
