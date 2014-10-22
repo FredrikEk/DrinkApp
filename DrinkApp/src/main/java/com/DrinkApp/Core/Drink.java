@@ -30,33 +30,23 @@ import javax.persistence.OneToMany;
 @NamedQueries( {@NamedQuery(name = "Drink.findByUserAndDrinkname", query = "SELECT d FROM Drink d WHERE d.user = :username AND d.drinkname = :drinkname"),
                 @NamedQuery(name = "Drink.findByName", query = "SELECT d FROM Drink d WHERE d.drinkname = :drinkname"),
                 @NamedQuery(name = "Drink.searchByName", query = "SELECT d FROM Drink d WHERE d.drinkname LIKE :drinkname")
-})
 
-/*
-                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d, (ipd.NROFINGREDIENTS - da.drinkcount) as Counters \n" +
-                                                                    "FROM Drink d , (select di.DRINKNAME as Drinkname, COUNT(di.drink) as drinkCount \n" +
+})
+        /*
+                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d, (ipd.nrOfIngredients - da.drinkCount) as Counters \n" +
+                                                                    "FROM Drink d , (SELECT di.drink as drink, COUNT(di.drink) as drinkCount \n" +
                                                                     "        FROM DrinkIngredient di \n" +
-                                                                    "        WHERE di.INGREDIENT IN :ingredients \n" +
-                                                                    "        GROUP BY di.DRINKNAME) da, (SELECT di.DRINK AS Drinkname, COUNT(di.drink) AS nrOfIngredients \n" +
+                                                                    "        WHERE di.ingredient IN :ingredients \n" +
+                                                                    "        GROUP BY di.drink) da, (SELECT di.drink as drink, COUNT(di.drink) AS nrOfIngredients \n" +
                                                                     "        FROM DrinkIngredient di \n" +
-                                                                    "        GROUP BY di.DRINKNAME) ipd \n" +
-                                                                    "WHERE da.Drinkname LIKE :drinkname AND da.DRINKNAME = ipd.DRINKNAME AND d.DRINKNAME = da.DRINKNAME \n" +
-                                                                    "ORDER BY Counters ASC")
-*/
+                                                                    "        GROUP BY di.drink) ipd \n" +
+                                                                    "WHERE d.drinkname LIKE :drinkname AND da.drink = ipd.drink AND d = da.drink \n" +
+                                                                    "ORDER BY Counters ASC")*/
+
+
 
 //                  @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT di FROM DrinkIngredient WHERE di.drink = :drinkname AND di.ingredients IN :ingredients")
 //                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = ")
-                
-
-//Attempt to make a named native query, something that didnt seem to work.
-/*@NamedNativeQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d.drinkname,d.user_username, (ipd.NROFINGREDIENTS - da.drinkcount) as Counters \n" +
-                                                                    "FROM (select di.DRINKNAME as Drinkname, COUNT(di) as drinkCount \n" +
-                                                                    "        FROM DrinkIngredient di \n" +
-                                                                    "        WHERE di.INGREDIENT_NAME IN ?ingredients \n" +
-                                                                    "        GROUP BY di.DRINKNAME) da, INGREDIENTSPERDRINK ipd, Drink d \n" +
-                                                                    "WHERE da.drinkname LIKE ?drinkname AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
-                                                                    "ORDER BY Counters ASC")
-             */
 public class Drink implements Serializable {
     
     @ManyToOne

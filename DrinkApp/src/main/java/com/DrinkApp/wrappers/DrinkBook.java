@@ -9,6 +9,7 @@ package com.DrinkApp.wrappers;
 import com.DrinkApp.Core.Drink;
 import com.DrinkApp.auth.User;
 import com.DrinkApp.persistence.AbstractDAO;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,7 +109,7 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
                                               "GROUP BY di.DRINKNAME) ipd, Drink d \n" +
                                         "WHERE da.drinkname LIKE '%" + drinkname + "%' AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
                                         "ORDER BY Counters ASC");
-        //Query tq = em.createNamedQuery("Drink.searchByNameAndIngredient").setParameter("drinkname", "Mojito").setParameter("ingredients", "(Rum)");
+        //Query tq = em.createNamedQuery("Drink.searchByNameAndIngredient").setParameter("drinkname", "%" + drinkname + "%").setParameter("ingredients", ingredients);
         return tq.getResultList();
 
     }
