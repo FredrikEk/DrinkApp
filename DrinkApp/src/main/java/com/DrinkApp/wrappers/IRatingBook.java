@@ -22,4 +22,5 @@ public interface IRatingBook extends IDAO<Rating, Long> {
     public List<Rating> findByUser(User user);
     public Rating findByDrinkAndUser(Drink drink, User user);
     public Double getAverageRating(Drink drink);
+    public void deleteRatings(Drink drink);
 }
