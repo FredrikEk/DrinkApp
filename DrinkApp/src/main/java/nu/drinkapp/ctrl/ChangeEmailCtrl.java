@@ -62,7 +62,7 @@ public class ChangeEmailCtrl {
                     "Please enter a different email.");
             context.addMessage(null, message);
             externalContext.getFlash().setKeepMessages(true);
-        } else if (SanitizedInput.sanitizeInput(ceBB.getOldEmail())) {
+        } else if (!SanitizedInput.sanitizeInput(ceBB.getOldEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email: '"
                     + ceBB.getOldEmail()
@@ -70,7 +70,7 @@ public class ChangeEmailCtrl {
                     "Please choose a different Email.");
             context.addMessage(null, message);
             externalContext.getFlash().setKeepMessages(true);
-        } else if (SanitizedInput.sanitizeInput(ceBB.getNewEmail())) {
+        } else if (!SanitizedInput.sanitizeInput(ceBB.getNewEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email: '"
                     + ceBB.getNewEmail()
