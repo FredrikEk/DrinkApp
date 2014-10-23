@@ -17,6 +17,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.persistence.NoResultException;
 
 @Named
@@ -28,6 +30,7 @@ public class ChangeEmailCtrl {
 
     private ChangeEmailBB ceBB;
     private LoginBB lb;
+    private InternetAddress emailAddress;
 
     @Inject
     protected void setChangeEmailBB(ChangeEmailBB ceBB) {
@@ -59,22 +62,23 @@ public class ChangeEmailCtrl {
                     "Please enter a different email.");
             context.addMessage(null, message);
             externalContext.getFlash().setKeepMessages(true);
-        }else if (!SanitizedInput.sanitizeInput(ceBB.getOldEmail())) {
+        } else if (SanitizedInput.sanitizeInput(ceBB.getOldEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email: '"
                     + ceBB.getOldEmail()
                     + "' contains illegal characters!  ",
                     "Please choose a different Email.");
             context.addMessage(null, message);
-        } 
-        else if (!SanitizedInput.sanitizeInput(ceBB.getNewEmail())) {
+            externalContext.getFlash().setKeepMessages(true);
+        } else if (SanitizedInput.sanitizeInput(ceBB.getNewEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Email: '"
                     + ceBB.getNewEmail()
                     + "' contains illegal characters!  ",
                     "Please choose a different Email.");
             context.addMessage(null, message);
-        }else if (!ceBB.getNewEmail().equals(ceBB.getConfirmEmail())) {
+            externalContext.getFlash().setKeepMessages(true);
+        } else if (!ceBB.getNewEmail().equals(ceBB.getConfirmEmail())) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Confirm Email '"
                     + ceBB.getConfirmEmail()
@@ -83,9 +87,21 @@ public class ChangeEmailCtrl {
             context.addMessage(null, message);
             externalContext.getFlash().setKeepMessages(true);
         } else {
-            User updatedUser = new User(lb.getUsername(), ceBB.getNewEmail(), user.getPassword(), Groups.USER);
-            authDAO.update(updatedUser);
-            return "changeEmail-success";
+            try {
+                emailAddress = new InternetAddress(ceBB.getNewEmail());
+                emailAddress.validate();
+                User updatedUser = new User(lb.getUsername(), ceBB.getNewEmail(), user.getPassword(), Groups.USER);
+                authDAO.update(updatedUser);
+                return "changeEmail-success";
+            } catch (AddressException e) {
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "New Email  '"
+                        + ceBB.getNewEmail()
+                        + "' is not a valid Email!  ",
+                        "Please type correct Email.");
+                context.addMessage(null, message);
+                externalContext.getFlash().setKeepMessages(true);
+            }
         }
         return "changeEmail-fail";
     }

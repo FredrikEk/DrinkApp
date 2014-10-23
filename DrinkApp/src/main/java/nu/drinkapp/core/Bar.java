@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package nu.drinkapp.core;
 
 import nu.drinkapp.wrappers.ITypeBook;
@@ -11,6 +10,7 @@ import nu.drinkapp.wrappers.IIngredientBook;
 import nu.drinkapp.wrappers.IUserBook;
 import nu.drinkapp.wrappers.IDrinkBook;
 import nu.drinkapp.wrappers.IDrinkIngredientBook;
+import nu.drinkapp.wrappers.IFavouriteBook;
 import nu.drinkapp.wrappers.IRatingBook;
 import nu.drinkapp.wrappers.IStepBook;
 import java.util.logging.Level;
@@ -20,8 +20,9 @@ import javax.inject.Inject;
 
 /**
  *
- * A Bar to hold all the interfaces containing skeleton code for all Entity-books.
- * 
+ * A Bar to hold all the interfaces containing skeleton code for all
+ * Entity-books.
+ *
  */
 @ApplicationScoped
 public class Bar implements IBar {
@@ -41,7 +42,9 @@ public class Bar implements IBar {
     private IStepBook stepBook;
     @Inject
     private IRatingBook ratingBook;
-    
+    @Inject
+    private IFavouriteBook favouriteBook;
+
     public Bar() {
         //initTestData();
         Logger.getAnonymousLogger().log(Level.INFO, "Shop alive");
@@ -68,7 +71,7 @@ public class Bar implements IBar {
 
     @Override
     public ITypeBook getTypeBook() {
-       return typeBook;
+        return typeBook;
     }
 
     @Override
@@ -80,9 +83,14 @@ public class Bar implements IBar {
     public IStepBook getStepBook() {
         return stepBook;
     }
-    
+
     @Override
     public IRatingBook getRatingBook() {
         return ratingBook;
+    }
+
+    @Override
+    public IFavouriteBook getFavouriteBook() {
+        return favouriteBook;
     }
 }

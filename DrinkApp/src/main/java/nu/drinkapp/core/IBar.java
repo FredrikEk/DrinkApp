@@ -11,6 +11,7 @@ import nu.drinkapp.wrappers.IIngredientBook;
 import nu.drinkapp.wrappers.IUserBook;
 import nu.drinkapp.wrappers.IDrinkBook;
 import nu.drinkapp.wrappers.IDrinkIngredientBook;
+import nu.drinkapp.wrappers.IFavouriteBook;
 import nu.drinkapp.wrappers.IRatingBook;
 import nu.drinkapp.wrappers.IStepBook;
 
@@ -27,4 +28,5 @@ public interface IBar {
     public IDrinkIngredientBook getDrinkIngredientBook();
     public IStepBook getStepBook();
     public IRatingBook getRatingBook();
+    public IFavouriteBook getFavouriteBook();
 }

@@ -7,6 +7,7 @@ package nu.drinkapp.ctrl;
 
 import nu.drinkapp.core.Bar;
 import nu.drinkapp.core.Drink;
+import nu.drinkapp.core.Favourite;
 import nu.drinkapp.core.Rating;
 import nu.drinkapp.auth.User;
 import nu.drinkapp.bb.DrinkBB;
@@ -14,6 +15,7 @@ import nu.drinkapp.bb.DrinkSearchBB;
 import nu.drinkapp.bb.LoginBB;
 import nu.drinkapp.wrappers.IDrinkBook;
 import nu.drinkapp.wrappers.IRatingBook;
+import nu.drinkApp.wrappers.IFavouriteBook;
 import nu.drinkapp.wrappers.IUserBook;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,6 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import static org.eclipse.persistence.expressions.ExpressionOperator.log;
 
 @Named
 @RequestScoped

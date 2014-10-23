@@ -43,12 +43,12 @@ and open the template in the editor.
                                 <div class="panel-body bg-danger">
                                     <ul>    
                                         <ui:repeat value="#{drinkSearchBB.ingredients}" var="ingredient" id="drinkingredients">
-                                                <li style="display: list-item">
-                                                    #{ingredient} 
-                                                    <h:commandLink id="ing_#{ingredient}" action="#{drinkSearchBB.removeIngredient(ingredient)}">
-                                                        <i class="fa fa-times fa-border"></i>
-                                                    </h:commandLink>
-                                                </li>
+                                            <li style="display: list-item">
+                                                #{ingredient} 
+                                                <h:commandLink id="ing_#{ingredient}" action="#{drinkSearchBB.removeIngredient(ingredient)}">
+                                                    <i class="fa fa-times fa-border"></i>
+                                                </h:commandLink>
+                                            </li>
                                         </ui:repeat>        
                                     </ul>
                                     <div class="form-group">
@@ -64,10 +64,10 @@ and open the template in the editor.
                         </div>
                         <div class="col-md-4">
                             <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                     <h3 class="panel-title">
-                                         Drinks
-                                     </h3>
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Drinks
+                                    </h3>
                                 </div>
                                 <h:panelGroup id="drinkname_view">
                                     <div class="panel-body bg-success">
@@ -86,36 +86,41 @@ and open the template in the editor.
 
                         <div class="col-md-4">
                             <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                     <h3 class="panel-title">
-                                         Chosen Drink
-                                     </h3>
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Chosen Drink
+                                    </h3>
                                 </div>
                                 <h:panelGroup id="drink_view">
                                     <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
                                         <ui:define name="drinkname">
                                             <h:outputText id="drinknk" value="#{drinkSearchBB.drinkBB.drinkname}"/>
+                                            <h:panelGroup rendered="#{loginBB.loggedIn and drinkSearchBB.drinkBB.drinkname != null}">
+                                                <h:commandLink action="#{searchDrinkCtrl.updateFavourite()}">
+                                                    <i class="fa fa-thumbs-up"></i>
+                                                </h:commandLink>
+                                            </h:panelGroup>
                                         </ui:define>
                                         <ui:define name="types">
                                             <h:form><ui:repeat value="#{drinkSearchBB.drinkBB.types}" var="type">
-                                                #{type.name} ,
-                                            </ui:repeat></h:form>
+                                                    #{type.name} ,
+                                                </ui:repeat></h:form>
                                         </ui:define>
                                         <ui:define name="user">
                                             #{drinkSearchBB.drinkBB.username}
                                         </ui:define>
                                         <ui:define name="rating">
                                             <div class="rating">
-                                            <ui:repeat value="#{searchDrinkCtrl.getFilledStars()}" var="filledStars">
-                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(filledStars)}">
-                                                    <i class="fa fa-star"></i>
-                                                </h:commandLink>
-                                            </ui:repeat>
-                                            <ui:repeat value="#{searchDrinkCtrl.getEmptyStars()}" var="emptyStars">
-                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(emptyStars)}">
-                                                    <i class="fa fa-star-o"></i>
-                                                </h:commandLink>
-                                            </ui:repeat>
+                                                <ui:repeat value="#{searchDrinkCtrl.getFilledStars()}" var="filledStars">
+                                                    <h:commandLink action="#{searchDrinkCtrl.updateRating(filledStars)}">
+                                                        <i class="fa fa-star"></i>
+                                                    </h:commandLink>
+                                                </ui:repeat>
+                                                <ui:repeat value="#{searchDrinkCtrl.getEmptyStars()}" var="emptyStars">
+                                                    <h:commandLink action="#{searchDrinkCtrl.updateRating(emptyStars)}">
+                                                        <i class="fa fa-star-o"></i>
+                                                    </h:commandLink>
+                                                </ui:repeat>
                                             </div>
                                             #{searchDrinkCtrl.getAvgRating()}
                                         </ui:define>       
@@ -126,12 +131,12 @@ and open the template in the editor.
                                             <ul>
                                                 <h:form>
                                                     <ui:repeat value="#{drinkSearchBB.drinkBB.ingredients}" var="ingredient" id="showdrinkingredients">
-                                                            <li style="display: list-item">
-                                                                #{ingredient.quantity} #{ingredient.name}
-                                                            </li>
+                                                        <li style="display: list-item">
+                                                            #{ingredient.quantity} #{ingredient.name}
+                                                        </li>
                                                     </ui:repeat>
                                                 </h:form>
-                                           </ul>
+                                            </ul>
                                         </ui:define>
                                         <ui:define name="drinksteps">
                                             <ol class="list-group">
@@ -151,7 +156,7 @@ and open the template in the editor.
 
                     </h:form>
                 </div>
-                
+
             </ui:define>
         </ui:composition>
     </body>
