@@ -1,5 +1,6 @@
 import com.DrinkApp.Core.Bar;
 import com.DrinkApp.Core.Drink;
+import com.DrinkApp.auth.User;
 import java.util.List;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
@@ -43,15 +44,15 @@ public class TestCore {
     public void before() throws Exception {
         clearAll();
     }
-
+/*
     @Test
-    public void testPersistADrink() throws Exception {
+    public void testPersistDrink() throws Exception {
         Drink d = new Drink();
         bar.getDrinkBook().create(d);
         List<Drink> ds = bar.getDrinkBook().findAll();
         assertTrue(ds.size() > 0);
     }
-   
+*/
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
     @Produces
@@ -62,8 +63,8 @@ public class TestCore {
     private void clearAll() throws Exception {  
         utx.begin();  
         em.joinTransaction();
-        em.createQuery("delete from Drink").executeUpdate();
-        //em.createQuery("delete from User").executeUpdate();
+        //em.createQuery("delete from Drink").executeUpdate();
+        em.createNativeQuery("delete from Users_groups").executeUpdate();
         utx.commit();
     }
 }
