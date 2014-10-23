@@ -201,7 +201,7 @@ public class EditDrinkCtrl{
 
             Drink drink2 = new Drink(oldDrink.getName(), oldDrink.getUser(), dri, sti, tyi, comment);
             drinkBook.update(drink2);
-            return "home";
+            return "myDrinks";
         }
         else {
             context.addMessage(null, 

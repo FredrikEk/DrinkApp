@@ -42,6 +42,7 @@ public class DeleteDrinkCtrl {
     
     public void deleteDrink(){
         Drink selectedDrink = bar.getDrinkBook().findByUsernameAndDrinkname(loginBB.getUsername(), ddBB.getDrinkName());
+        bar.getFavouriteBook().deleteFavourites(selectedDrink);
         bar.getTypeBook().deleteDrinkTypes(loginBB.getUsername(), ddBB.getDrinkName());
         bar.getStepBook().deleteAllByDrink(selectedDrink);
         bar.getRatingBook().deleteRatings(selectedDrink);
