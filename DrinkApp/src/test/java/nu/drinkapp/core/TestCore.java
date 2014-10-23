@@ -1,17 +1,10 @@
 package nu.drinkapp.core;
 
-import nu.drinkapp.core.*;
-import nu.drinkapp.bb.*;
-import nu.drinkapp.auth.*;
-import nu.drinkapp.ctrl.*;
-import nu.drinkapp.persistence.*;
-import nu.drinkapp.wrappers.*;
 import java.util.List;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
