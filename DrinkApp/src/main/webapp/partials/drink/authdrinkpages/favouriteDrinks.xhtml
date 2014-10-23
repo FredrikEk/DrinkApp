@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>My Favourite Drinks</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <h3>My Favourite Drinks</h3>
+                <h:form>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    My Favourite Drinks
+                                </h3>
+                            </div>
+                            <table class="table">
+                                <h:panelGroup id="drinkname_view">
+                                    <ui:repeat var="drink" value="#{favouriteDrinksCtrl.getFavouriteDrinksBB()}">
+                                        <tr class="panel-body bg-success">
+                                            <td>
+                                                <h:link class="btn btn-default" value="#{drink.drinkname}" outcome="chosenDrink">
+                                                    <f:param name="drink" value="#{drink.drinkname}" />
+                                                    <f:param name="user" value="#{drink.username}" />
+                                                </h:link>
+                                            </td>
+                                            <td>
+                                                <h:commandButton value="UnFavourite" actionListener="#{favouriteDrinksCtrl.deleteAsFavourite(drink)}" action="favouriteDrinks" class="btn btn-default"/>
+                                            </td>
+                                        </tr>
+                                    </ui:repeat>    
+                                </h:panelGroup>    
+                            </table>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
