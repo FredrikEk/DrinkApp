@@ -26,6 +26,18 @@
             <to-view-id>partials/auth/profile.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>favouriteDrinks</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/favouriteDrinks.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>addConf</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/addConfirmation.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteConf</from-outcome>
+            <to-view-id>partials/drink/authdrinkpages/deleteConfirmation.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>chosenDrink</from-outcome>
             <to-view-id>partials/drink/chosenDrink.xhtml</to-view-id>
         </navigation-case>
@@ -86,13 +98,13 @@
         <navigation-case>
             <from-action>#{changeEmailCtrl.changeEmail()}</from-action>
             <from-outcome>changeEmail-success</from-outcome>
-            <to-view-id>index.html</to-view-id>
+            <to-view-id>partials/auth/changeEmailConfirmation.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-action>#{changePasswCtrl.changeP()}</from-action>
             <from-outcome>passwUpdated</from-outcome>
-            <to-view-id>index.html</to-view-id>
+            <to-view-id>partials/auth/changePassConfirmation.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
