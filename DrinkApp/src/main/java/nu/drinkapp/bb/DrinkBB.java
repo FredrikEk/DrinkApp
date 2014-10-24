@@ -13,6 +13,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of the drnk
+ */
+
 @Named
 @ViewScoped
 public class DrinkBB implements Serializable{

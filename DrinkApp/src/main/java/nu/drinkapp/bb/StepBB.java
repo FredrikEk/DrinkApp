@@ -7,6 +7,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of Step
+ */
+
 @Named
 @ViewScoped
 public class StepBB implements Serializable, Comparable<StepBB>{

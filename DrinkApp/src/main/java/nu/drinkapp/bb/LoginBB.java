@@ -5,6 +5,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of login
+ */
+
 @Named
 @SessionScoped
 public class LoginBB implements Serializable {

@@ -8,6 +8,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of adding a drink
+ */
+
 @Named
 @ViewScoped
 public class AddDrinkBB implements Serializable{
