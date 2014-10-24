@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.bb;
 
 import java.io.Serializable;
@@ -15,10 +10,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author Michael
- */
+
 @Named
 @ViewScoped
 public class ChosenDrinkBB implements Serializable {
@@ -38,7 +30,6 @@ public class ChosenDrinkBB implements Serializable {
 
     @PostConstruct
     public void post() {
-        LOG.log(Level.INFO, "The drink is alive ");
         if (ingredients == null) {
             ingredients = new ArrayList();
         }
@@ -49,8 +40,7 @@ public class ChosenDrinkBB implements Serializable {
             steps = new ArrayList();
         }
     }
-    private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
-
+    
     public void setDrinkname(String drinkname) {
         this.drinkname = drinkname;
     }

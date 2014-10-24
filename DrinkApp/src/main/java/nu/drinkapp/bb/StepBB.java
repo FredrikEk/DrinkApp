@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.bb;
 
 import nu.drinkapp.core.Step;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -24,12 +16,9 @@ public class StepBB implements Serializable{
 
     @PostConstruct
     public void post(){
-        LOG.log(Level.INFO, "The step is alive ");
     }
-    private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
     
-    public StepBB() {
-        
+    public StepBB() {   
     }
     
     public StepBB(Step s) {
