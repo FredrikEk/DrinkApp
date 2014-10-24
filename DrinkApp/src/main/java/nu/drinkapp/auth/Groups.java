@@ -1,4 +1,3 @@
-
 package nu.drinkapp.auth;
 
 /**
