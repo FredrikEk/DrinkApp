@@ -5,6 +5,9 @@ import nu.drinkapp.core.DrinkIngredient;
 import nu.drinkapp.core.Ingredient;
 import nu.drinkapp.persistence.IDAO;
 import javax.ejb.Local;
+/**
+ * Interface for DrinkIngredientBook
+ */
 
 @Local
 public interface IDrinkIngredientBook extends IDAO<DrinkIngredient, Long> {

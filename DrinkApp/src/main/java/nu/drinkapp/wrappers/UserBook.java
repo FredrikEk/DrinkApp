@@ -7,6 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+/**
+ * Book including the users
+ */
+
 @Stateless
 public class UserBook extends AbstractDAO<User, Long> 
                 implements IUserBook{

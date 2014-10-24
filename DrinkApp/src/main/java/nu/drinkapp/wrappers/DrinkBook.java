@@ -4,8 +4,6 @@ import nu.drinkapp.core.Drink;
 import nu.drinkapp.auth.User;
 import nu.drinkapp.persistence.AbstractDAO;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -13,10 +11,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+/**
+ * A book including drinks
+ * Methods to find drink and user
+*/
+
 @Stateless
 public class DrinkBook extends AbstractDAO<Drink, Long>
         implements IDrinkBook {
-    private static final Logger LOG = Logger.getLogger(DrinkBook.class.getName());
 
     @PersistenceContext
     private EntityManager em;

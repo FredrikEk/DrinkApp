@@ -8,6 +8,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+/**
+ * Book including the drink ingredients
+ * Methods do find a drink by ingredients
+ */
 
 @Stateless
 public class DrinkIngredientBook extends AbstractDAO<DrinkIngredient, Long> 

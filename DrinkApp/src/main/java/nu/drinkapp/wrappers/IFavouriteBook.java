@@ -7,6 +7,10 @@ import nu.drinkapp.persistence.IDAO;
 import java.util.List;
 import javax.ejb.Local;
 
+/**
+ * Interface for FavouriteBook
+ */
+
 @Local
 public interface IFavouriteBook extends IDAO<Favourite, Long> {
     public List<Favourite> findByUser(String username);

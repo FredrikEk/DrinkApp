@@ -7,6 +7,10 @@ import nu.drinkapp.persistence.IDAO;
 import java.util.List;
 import javax.ejb.Local;
 
+/**
+ * Interface for RatingBook
+ */
+
 @Local
 public interface IRatingBook extends IDAO<Rating, Long> {
     public List<Rating> findByDrink(Drink drink);
