@@ -1,12 +1,12 @@
 ﻿Slutspurt: (Måste göras innan deadline)
 
-*Fixa så att ordningen på steps alltid blir rätt enligt hur man lägger till dem i add drinks.
+*Presentation
+
+*exception hantering
 
 *My Favourite Drinks vyn - Göra en tabell istället/snyggare design. Kanske 
 göra så man kan ratea och unlika när man är inne på den som chosen.
 
 *My Drinks vyn - Göra en tabell istället/snyggare design. Kanske 
 göra så man kan ratea och unlika när man är inne på den som chosen.
-
-*Gå in på drinken i chosen drinks efter man lagt till den.
 
