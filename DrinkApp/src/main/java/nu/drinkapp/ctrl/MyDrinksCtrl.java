@@ -10,6 +10,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * A controller for myDrinks
+ */
+
 @Named
 @RequestScoped
 public class MyDrinksCtrl {

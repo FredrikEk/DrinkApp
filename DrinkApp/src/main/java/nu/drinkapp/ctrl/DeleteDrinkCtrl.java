@@ -8,6 +8,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * A controller for deleting drinks
+ */
+
 @Named
 @RequestScoped
 public class DeleteDrinkCtrl {
@@ -37,5 +41,4 @@ public class DeleteDrinkCtrl {
         bar.getDrinkIngredientBook().deleteDrinkIngredientByDrink(selectedDrink);
         bar.getDrinkBook().deleteDrink(selectedDrink);
     }
-    
 }
