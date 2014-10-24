@@ -200,7 +200,7 @@ public class AddDrinkCtrl{
 
             Drink drink2 = new Drink(drink.getName(), drink.getUser(), dri, sti, drink.getTypes(), comment);
             drinkBook.update(drink2);
-            return "home";
+            return "chosenDrink";
         }
         else {
             context.addMessage(null, 

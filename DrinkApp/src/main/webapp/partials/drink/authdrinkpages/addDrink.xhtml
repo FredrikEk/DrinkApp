@@ -9,6 +9,7 @@ and open the template in the editor.
       xmlns:c="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
     <head>
         <title>Add Drink</title>
@@ -118,7 +119,10 @@ and open the template in the editor.
                             <div class="row">
                                 <div class="col-md-9">
                                 <div style="float:right">
-                                    <h:commandButton value="Finish" actionListener="#{addDrinkCtrl.finish()}" class="btn btn-default" action="addConf"/>
+                                    <h:commandButton value="Finish" action="#{addDrinkCtrl.finish()}" class="btn btn-default">
+                                        <f:param name="user" value="#{loginBB.username}" />
+                                        <f:param name="drink" value="#{addDrinkBB.drinkname}" />
+                                    </h:commandButton>
                                     <p></p>
                                 </div>
                                 </div>

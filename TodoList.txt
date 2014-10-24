@@ -87,11 +87,6 @@ Slutspurt: (Måste göras innan deadline)
 
 *Fixa så att ordningen på steps alltid blir rätt enligt hur man lägger till dem i add drinks.
 
-*Add to favourite- knappen. Göra så att man förstår att man tryckt på den. 
-Kanske ha tummen up för att gilla, och tummen ner för att ogilla. 
-Alternativt ge en popup av något slag som säger "Drink added to favourite".
-Ev byta plats på den
-
 *My Favourite Drinks vyn - Göra en tabell istället/snyggare design. Kanske 
 göra så man kan ratea och unlika när man är inne på den som chosen.
 
