@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.ctrl;
 
 import nu.drinkapp.auth.AuthDAO;
@@ -27,7 +22,6 @@ public class ChangeEmailCtrl {
 
     @Inject
     private AuthDAO authDAO;
-
     private ChangeEmailBB ceBB;
     private LoginBB lb;
     private InternetAddress emailAddress;

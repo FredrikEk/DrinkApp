@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.ctrl;
 
 import nu.drinkapp.auth.AuthDAO;
@@ -10,8 +5,6 @@ import nu.drinkapp.auth.Groups;
 import nu.drinkapp.auth.SanitizedInput;
 import nu.drinkapp.auth.User;
 import nu.drinkapp.bb.RegisterBB;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -94,9 +87,6 @@ public class RegisterCtrl {
                         "Error creating user!",
                         "Unexpected error when creating your account.  Please contact the system Administrator");
                 context.addMessage(null, message);
-                Logger.getAnonymousLogger().log(Level.SEVERE,
-                        "Unable to create new user",
-                        e);
             }
         }
         return "register"; //Returns to the register page, since it failed. Might change in faces-config to make String it more clear

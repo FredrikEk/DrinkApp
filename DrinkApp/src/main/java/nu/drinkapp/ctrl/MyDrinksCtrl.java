@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.ctrl;
 
 import nu.drinkapp.core.Bar;
@@ -15,10 +10,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-/**
- *
- * @author Michael
- */
 @Named
 @RequestScoped
 public class MyDrinksCtrl {
@@ -43,5 +34,4 @@ public class MyDrinksCtrl {
         myDrinksBB = new MyDrinksBB(drinks);
         return myDrinksBB.getMyDrinks();
     }
-    
 }

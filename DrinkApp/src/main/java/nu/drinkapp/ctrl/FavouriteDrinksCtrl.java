@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.ctrl;
 
 import nu.drinkapp.core.Bar;
@@ -23,10 +18,7 @@ import javax.inject.Named;
 import nu.drinkapp.auth.AuthDAO;
 import nu.drinkapp.bb.ChosenDrinkBB;
 
-/**
- *
- * @author martinkastebo
- */
+
 @Named
 @RequestScoped
 public class FavouriteDrinksCtrl {
@@ -56,7 +48,7 @@ public class FavouriteDrinksCtrl {
         Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
         User user = ub.findByName(loginBB.getUsername());
         Favourite isFavourite = fb.findByDrinkAndUser(d, user);
-        if (isFavourite != null) {
+        if(isFavourite != null) {
             return true;
         } else {
             return false;
@@ -64,18 +56,18 @@ public class FavouriteDrinksCtrl {
     }
 	
 	public boolean isFavouriteChosenDrink(ChosenDrinkBB dbb) {
-		IDrinkBook db = bar.getDrinkBook();
-		IUserBook ub = bar.getUserBook();
-		IFavouriteBook fb = bar.getFavouriteBook();
-		User drinkOwner = ub.findByName(dbb.getUsername());
-		Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
-		User user = ub.findByName(loginBB.getUsername());
-		Favourite isFavourite = fb.findByDrinkAndUser(d, user);
-		if (isFavourite != null) {
-			return true;
-		} else {
-			return false;
-		}
+            IDrinkBook db = bar.getDrinkBook();
+            IUserBook ub = bar.getUserBook();
+            IFavouriteBook fb = bar.getFavouriteBook();
+            User drinkOwner = ub.findByName(dbb.getUsername());
+            Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
+            User user = ub.findByName(loginBB.getUsername());
+            Favourite isFavourite = fb.findByDrinkAndUser(d, user);
+            if(isFavourite != null) {
+		return true;
+            } else {
+		return false;
+            }
 	}
 
     public List<DrinkBB> getFavouriteDrinksBB() {
@@ -97,5 +89,4 @@ public class FavouriteDrinksCtrl {
         User user = ub.findByName(loginBB.getUsername());
         fb.deleteByUserAndDrink(user, d);
     }
-
 }

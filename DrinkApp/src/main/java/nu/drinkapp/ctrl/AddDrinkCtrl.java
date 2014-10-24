@@ -35,7 +35,6 @@ public class AddDrinkCtrl{
 
     @Inject
     private Bar bar;
-    private IDrinkBook db;
     private TypeBB typeBB;
     private StepBB stepBB;
     private IngredientBB ingredientBB;
@@ -49,18 +48,11 @@ public class AddDrinkCtrl{
 
     @PostConstruct
     public void post() {
-        //LOG.log(Level.INFO, "EditProductCtrl alive {0}", this);
     }
 
     @PreDestroy
     public void pre() {
-        //LOG.log(Level.INFO, "EditProductCtrl to be destroyed {0}", this);
     }
-
-    //@Inject
-    //public IngredientListCtrl(SingletonShop shop) {
-    //    this.pc = shop.getShop().getProductCatalogue();
-    //}
 
     @Inject
     public void setIngredientBB(IngredientBB ingredientBB) {
@@ -142,7 +134,6 @@ public class AddDrinkCtrl{
         FacesContext context = FacesContext.getCurrentInstance();
        
         
-        LOG.log(Level.INFO, "Checking up on our values: name=" + name + " and username = " + username, this);
         if(drinkBook.findByUserAndDrinkname(user, name) == null){
             updateIngredient();
             updateType();
@@ -213,11 +204,4 @@ public class AddDrinkCtrl{
             return null;
         }
     }
-    
-    //public String update() {
-    //    LOG.log(Level.INFO, "Save: {0}" + ingredientBB);
-    //    pc.update(new Product(ingredientBB.getId(), ingredientBB.getName()));
-    //    return "productList?faces-redirect=true";
-    //}
-
 }
