@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.core;
 
 import nu.drinkapp.auth.User;
@@ -15,10 +10,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author Michael
- */
+
 @Entity @IdClass(FavouriteUserId.class)
 @NamedQueries({@NamedQuery(name = "Favourite.userFavourite", query = "SELECT f FROM Favourite f WHERE f.favouriteUser = :user"),
                @NamedQuery(name = "Favourite.userAndDrink", query = "SELECT f FROM Favourite f WHERE f.drink = :drink AND f.favouriteUser = :user"),
@@ -55,6 +47,5 @@ public class Favourite implements Serializable {
     @Override
     public String toString() {
         return "Favourite(username=" + favouriteUser.getUsername() + ", drinkname=" + drink.getName() + ")";
-    }
-    
+    } 
 }

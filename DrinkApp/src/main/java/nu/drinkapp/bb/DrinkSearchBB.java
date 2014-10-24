@@ -1,15 +1,5 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.bb;
 
-import nu.drinkapp.core.Drink;
-import nu.drinkapp.wrappers.DrinkBook;
-import nu.drinkapp.wrappers.IDrinkBook;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
@@ -25,20 +14,18 @@ import javax.validation.constraints.NotNull;
 @ViewScoped
 public class DrinkSearchBB implements Serializable{
 	
-	@NotNull
-	private String searchstring;
-	@NotNull
-        private List<String> ingredients;
-        
-        private List<DrinkBB> drinks;
-	private DrinkBB drinkBB;
-        private String ingredientString;
-        
+    @NotNull
+    private String searchstring;
+    @NotNull
+    private List<String> ingredients;  
+    private List<DrinkBB> drinks;
+    private DrinkBB drinkBB;
+    private String ingredientString;
         
         
-	@PostConstruct
+        
+    @PostConstruct
     public void post(){
-        LOG.log(Level.INFO, "The drink is alive ");
         if(ingredients == null) {
             ingredients = new ArrayList();
         }
@@ -46,7 +33,6 @@ public class DrinkSearchBB implements Serializable{
             drinks = new ArrayList();
         }
     }
-    private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
     
     public void setSearchstring(String searchstring){
         this.searchstring = searchstring;
@@ -87,20 +73,7 @@ public class DrinkSearchBB implements Serializable{
     public String getIngredientString() {
         return this.ingredientString;
     }
-    
-   /* public void addIngredient(IngredientBB ingredientBB) {
-        IngredientBB i = new IngredientBB();
-        i.setName(ingredientBB.getName());
-        i.setQuantity(ingredientBB.getQuantity());
-        ingredients.add(i);
-        ingredientBB.setName("");
-        ingredientBB.setQuantity("");
-    }*/
 
-    /*public void removeIngredient(IngredientBB ingredientBB) {
-        ingredients.remove(ingredientBB);
-    }*/
-    
     public void removeIngredient(String s) {
         this.ingredients.remove(s);
     }

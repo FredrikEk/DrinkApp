@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.bb;
 
-import nu.drinkapp.auth.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,22 +14,19 @@ import javax.validation.constraints.NotNull;
 @ViewScoped
 public class EditDrinkBB implements Serializable{
 	
-	@NotNull
-	private String drinkname;
-	@NotNull
-	private User user;
-	@NotNull
-	private String comment;
-	@NotNull
-        private List<IngredientBB> ingredients;
-	@NotNull
-	private List<TypeBB> types;
-	@NotNull
-	private List<StepBB> steps;
+    @NotNull
+    private String drinkname;
+    @NotNull
+    private String comment;
+    @NotNull
+    private List<IngredientBB> ingredients;
+    @NotNull
+    private List<TypeBB> types;
+    @NotNull
+    private List<StepBB> steps;
 	
-	@PostConstruct
+    @PostConstruct
     public void post(){
-        LOG.log(Level.INFO, "The drink is alive ");
         if(ingredients == null) {
             ingredients = new ArrayList();
         }
@@ -47,7 +37,6 @@ public class EditDrinkBB implements Serializable{
             steps = new ArrayList();
         }
     }
-    private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
     
     public void setDrinkname(String drinkname){
         this.drinkname = drinkname;

@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.core;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Michael
- */
 public class FavouriteUserId implements Serializable{
     
     String favouriteUser;
@@ -38,6 +29,5 @@ public class FavouriteUserId implements Serializable{
             return false;
         }
         return true;
-    }
-    
+    }  
 }
