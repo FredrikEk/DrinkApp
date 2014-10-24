@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.wrappers;
 
 import nu.drinkapp.core.Drink;
@@ -35,6 +30,5 @@ public class StepBook extends AbstractDAO<Step, Long>
     @Override
     public void deleteAllByDrink(Drink drink) {
         em.createNamedQuery("Step.deletAllByDrink").setParameter("drink", drink).executeUpdate();
-    }
-    
+    }  
 }

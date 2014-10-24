@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.wrappers;
 
 import nu.drinkapp.core.Drink;
 import nu.drinkapp.auth.User;
 import nu.drinkapp.persistence.AbstractDAO;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,7 +69,6 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
         } catch (NoResultException nre) {
             return null;
         }
-        //return tq.getSingleResult();
     }
 
     @Override
@@ -94,10 +86,9 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
                 s += ",";
             }
         }
-        LOG.log(Level.INFO, s, this);
         //The Drinksearch query with subqueries.
-                                         //The main query that finds out if a drink contains all the submitted ingredients
-                                         //and/or how many ingredients that are missing
+        //The main query that finds out if a drink contains all the submitted ingredients
+        //and/or how many ingredients that are missing
         Query tq = em.createNativeQuery("SELECT d.drinkname, d.user_username, (ipd.NROFINGREDIENTS - da.drinkcount) AS Counters \n" +
                                                //Subquery to find which of the submitted ingredients a drink contains.
                                         "FROM (SELECT di.DRINKNAME AS Drinkname, COUNT(*) AS drinkCount \n" +
@@ -110,17 +101,9 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
                                               "GROUP BY di.DRINKNAME) ipd, Drink d \n" +
                                         "WHERE da.drinkname LIKE '%" + drinkname + "%' AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
                                         "ORDER BY Counters ASC");
-        //Query tq = em.createNamedQuery("Drink.searchByNameAndIngredient").setParameter("drinkname", "%" + drinkname + "%").setParameter("ingredients", ingredients);
         return tq.getResultList();
 
     }
-/*
-    @Override
-    public List searchByNameAndIngredient(String drinkname, List<String> ingredients) {
-        Query tq = em.createNamedQuery("Drink.searchByNameAndIngredient").setParameter("drinkname", drinkname).setParameter("ingredients", ingredients);
-        return tq.getResultList();
-    }
-*/
 
     @Override
     public Drink findByUsernameAndDrinkname(String username, String drinkname) {
@@ -133,6 +116,5 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
     @Override
     public void deleteDrink(Drink drink){
         em.createNamedQuery("Drink.deleteDrink").setParameter("drinkname", drink.getName()).setParameter("user", drink.getUser()).executeUpdate();
-    }
-    
+    } 
 }

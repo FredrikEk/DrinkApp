@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.wrappers;
 
 import nu.drinkapp.core.Type;
@@ -47,5 +42,4 @@ public class TypeBook extends AbstractDAO<Type, Long>
     public void deleteDrinkTypes(String username, String drinkname) {
         em.createNativeQuery("DELETE FROM Drink_type WHERE user_username = '" + username + "'" + " AND drinkname = '" + drinkname + "'").executeUpdate();
     }
-
 }
