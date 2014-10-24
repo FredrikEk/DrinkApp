@@ -6,9 +6,8 @@ import nu.drinkapp.core.Step;
 import nu.drinkapp.core.Type;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -111,7 +110,8 @@ public class DrinkBB implements Serializable{
 	
 	
     public List<StepBB> getSteps(){
-            return this.steps;
+		Collections.sort(this.steps);
+        return this.steps;
     }
 
     public List<TypeBB> getTypes() {

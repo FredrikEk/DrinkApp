@@ -9,10 +9,11 @@ import javax.validation.constraints.NotNull;
 
 @Named
 @ViewScoped
-public class StepBB implements Serializable{
+public class StepBB implements Serializable, Comparable<StepBB>{
 	
     @NotNull
     private String name;
+	private int stepNr;
 
     @PostConstruct
     public void post(){
@@ -23,6 +24,7 @@ public class StepBB implements Serializable{
     
     public StepBB(Step s) {
         this.name = s.getDescription();
+		this.stepNr = s.getStepNr();
     }
     
     public void setName(String name){
@@ -32,5 +34,18 @@ public class StepBB implements Serializable{
     public String getName(){
         return this.name;
     }
+	
+	public void setStepNr(int stepNr) {
+		this.stepNr = stepNr;
+	}
+	
+	public int getStepNr() {
+		return this.stepNr;
+	}
+	
+	@Override
+	public int compareTo(StepBB sbb) {
+		return Integer.compare(this.stepNr, sbb.getStepNr());
+	}
     
 }
