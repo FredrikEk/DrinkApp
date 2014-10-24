@@ -1,0 +1,22 @@
+Working Use-Cases DrinkApp
+
+Main page
+* Search for drinks by name
+* Search for drinks by ingredients
+* Search for drinks by name and ingredients
+* Register account
+
+Authenticated user
+* Log In
+* Log Out
+* Change password/email under profile
+* Add Drinks to the database with name, ingredients, types, steps och comment
+* Watch your drinks under My Drinks
+* Enter a Drinks page to share it with your friends on facebook using the url 
+(Dont need to be logged in to see a drinks page)
+* Edit your own Drinks under My Drinks
+* Delete your own Drinks under My drink
+* Add drinks to My Favourite Drinks by pressing the thumbs up button next to the drink
+name while browsing for drinks
+* Watch your favourite drinks under My Favourite Drinks
+* Unfavourite your added drinks
