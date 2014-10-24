@@ -3,7 +3,6 @@ package nu.drinkapp.core;
 import nu.drinkapp.auth.User;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -14,6 +14,10 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.persistence.NoResultException;
 
+/**
+ * A controller for Register
+ */
+
 @Named
 @RequestScoped
 public class RegisterCtrl {

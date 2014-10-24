@@ -13,6 +13,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * A controller for changing password
+ */
+
 @Named
 @RequestScoped
 public class ChangePasswCtrl {

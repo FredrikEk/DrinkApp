@@ -18,6 +18,9 @@ import javax.inject.Named;
 import nu.drinkapp.auth.AuthDAO;
 import nu.drinkapp.bb.ChosenDrinkBB;
 
+/**
+ * A controller for favourite drinks
+ */
 
 @Named
 @RequestScoped

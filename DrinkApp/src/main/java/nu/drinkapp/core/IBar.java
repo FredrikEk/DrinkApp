@@ -10,9 +10,7 @@ import nu.drinkapp.wrappers.IRatingBook;
 import nu.drinkapp.wrappers.IStepBook;
 
 /**
- *
  * Interface to define skeleton code for the bar class
- * 
  */
 public interface IBar {
     public IDrinkBook getDrinkBook();

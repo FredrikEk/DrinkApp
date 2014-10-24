@@ -16,6 +16,10 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.persistence.NoResultException;
 
+/**
+ * A controller for changing email
+ */
+
 @Named
 @RequestScoped
 public class ChangeEmailCtrl {

@@ -3,6 +3,10 @@ package nu.drinkapp.core;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Help class for making the entities rating and user a primary 
+ * key pair 
+ */
 
 public class RatingUserId implements Serializable{
     

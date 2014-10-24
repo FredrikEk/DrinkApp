@@ -11,6 +11,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 
+/*
+ * The Favourite model. Stores favourites in the database.
+ */
+
 @Entity @IdClass(FavouriteUserId.class)
 @NamedQueries({@NamedQuery(name = "Favourite.userFavourite", query = "SELECT f FROM Favourite f WHERE f.favouriteUser = :user"),
                @NamedQuery(name = "Favourite.userAndDrink", query = "SELECT f FROM Favourite f WHERE f.drink = :drink AND f.favouriteUser = :user"),

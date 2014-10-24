@@ -11,9 +11,7 @@ import javax.persistence.NamedQuery;
 
 
 /*
- *
  * An entity to hold data regarding which ingredients each drink contains
- *
  */
 
 @Entity @IdClass(DrinkIngredientId.class)
