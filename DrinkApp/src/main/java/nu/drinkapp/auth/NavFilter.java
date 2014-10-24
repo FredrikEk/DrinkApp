@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.auth;
 
 import nu.drinkapp.bb.LoginBB;
@@ -17,10 +12,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author Michael
- */
 @WebFilter(filterName = "NavFilter", urlPatterns = {"/*"})
 public class NavFilter implements Filter {
 

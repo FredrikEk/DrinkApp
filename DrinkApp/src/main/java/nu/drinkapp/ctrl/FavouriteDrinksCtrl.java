@@ -20,6 +20,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import nu.drinkapp.auth.AuthDAO;
 
 /**
  *
@@ -33,6 +34,8 @@ public class FavouriteDrinksCtrl {
     private Bar bar;
     private FavouriteDrinksBB favouriteDrinksBB;
     private LoginBB loginBB;
+    @Inject
+    AuthDAO authDAO;
 
     @Inject
     public void setFavouriteDrinksBB(FavouriteDrinksBB favouriteDrinksBB) {
@@ -42,6 +45,21 @@ public class FavouriteDrinksCtrl {
     @Inject
     public void setLoginBB(LoginBB loginBB) {
         this.loginBB = loginBB;
+    }
+
+    public boolean isFavourite(DrinkBB dbb) {
+        IDrinkBook db = bar.getDrinkBook();
+        IUserBook ub = bar.getUserBook();
+        IFavouriteBook fb = bar.getFavouriteBook();
+        User drinkOwner = ub.findByName(dbb.getUsername());
+        Drink d = db.findByUserAndDrinkname(drinkOwner, dbb.getDrinkname());
+        User user = ub.findByName(loginBB.getUsername());
+        Favourite isFavourite = fb.findByDrinkAndUser(d, user);
+        if (isFavourite != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<DrinkBB> getFavouriteDrinksBB() {

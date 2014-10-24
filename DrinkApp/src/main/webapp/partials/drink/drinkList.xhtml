@@ -95,9 +95,14 @@ and open the template in the editor.
                                     <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
                                         <ui:define name="drinkname">
                                             <h:outputText id="drinknk" value="#{drinkSearchBB.drinkBB.drinkname}"/>
-                                            <h:panelGroup rendered="#{loginBB.loggedIn and drinkSearchBB.drinkBB.drinkname != null}">
+                                            <h:panelGroup rendered="#{loginBB.loggedIn and drinkSearchBB.drinkBB.drinkname != null and favouriteDrinksCtrl.isFavourite(drinkSearchBB.drinkBB)}">
                                                 <h:commandLink action="#{searchDrinkCtrl.updateFavourite()}">
-                                                    <i class="fa fa-thumbs-up"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </h:commandLink>
+                                            </h:panelGroup>
+                                            <h:panelGroup rendered="#{loginBB.loggedIn and drinkSearchBB.drinkBB.drinkname != null and !favouriteDrinksCtrl.isFavourite(drinkSearchBB.drinkBB)}">
+                                                <h:commandLink action="#{searchDrinkCtrl.updateFavourite()}">
+                                                    <i class="fa fa-heart-o"></i>
                                                 </h:commandLink>
                                             </h:panelGroup>
                                         </ui:define>
