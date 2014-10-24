@@ -15,7 +15,7 @@ import javax.persistence.NamedQuery;
 
 @Entity @IdClass(DrinkStepId.class)
 @NamedQueries({@NamedQuery(name="Step.deletAllByDrink", query="DELETE FROM Step s WHERE s.drink = :drink")})
-public class Step implements Serializable {
+public class Step implements Serializable, Comparable<Step> {
     
     @Column
     @Id
@@ -54,4 +54,9 @@ public class Step implements Serializable {
     public String toString() {
         return "Ingredient{ stepNr=" + stepNr + ", description=" + description + '}';
     }
+
+	@Override
+	public int compareTo(Step s) {
+		return Integer.compare(stepNr, s.stepNr);
+	}
 }

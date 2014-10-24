@@ -13,12 +13,9 @@ import nu.drinkapp.bb.StepBB;
 import nu.drinkapp.bb.TypeBB;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import nu.drinkapp.bb.DrinkBB;
 import nu.drinkapp.bb.LoginBB;
 import nu.drinkapp.core.Favourite;
 import nu.drinkapp.core.Rating;
@@ -33,8 +30,7 @@ public class ChosenDrinkCtrl {
     @Inject
     private Bar bar;
     private ChosenDrinkBB chosenDrinkBB;
-    private static final Logger LOG = Logger.getLogger(EditDrinkCtrl.class.getName());
-	private LoginBB loginBB;
+    private LoginBB loginBB;
 	
 	
     protected ChosenDrinkCtrl() {
@@ -53,7 +49,6 @@ public class ChosenDrinkCtrl {
 	
     public void init() {
         IDrinkBook idb = bar.getDrinkBook();
-        LOG.log(Level.INFO, chosenDrinkBB.getUsername() + ":" + chosenDrinkBB.getDrinkname(), this);
         User user = bar.getUserBook().findByName(chosenDrinkBB.getUsername());
         Drink d = idb.findByUserAndDrinkname(user, chosenDrinkBB.getDrinkname());
         List<DrinkIngredient> drinkIngredients = d.getIngredients();
@@ -97,9 +92,6 @@ public class ChosenDrinkCtrl {
                 Rating updatedRating = new Rating(user, d, rate);
                 rb.update(updatedRating);
             } else {
-                LOG.log(Level.INFO, "user " + user.getUsername(), this);
-                LOG.log(Level.INFO, "drink " + chosenDrinkBB.getDrinkname(), this);
-                LOG.log(Level.INFO, "rate " + rate, this);
                 Rating newRating = new Rating(user, d, rate);
                 rb.create(newRating);
             }
@@ -118,8 +110,6 @@ public class ChosenDrinkCtrl {
             if (favourite != null) {//If you click when it's already marke as favourite, you remove it...
                 fb.deleteByUserAndDrink(user, d);
             } else {
-                LOG.log(Level.INFO, "user " + user.getUsername(), this);
-                LOG.log(Level.INFO, "drink " + chosenDrinkBB.getDrinkname(), this);
                 Favourite newFavourite = new Favourite(user, d);
                 fb.create(newFavourite);
             }

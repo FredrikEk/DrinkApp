@@ -12,6 +12,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+/**
+ * Book including Ratings of the drinks
+ * Methods handling the rating of drinks
+ */
+
 @Stateless
 public class RatingBook extends AbstractDAO<Rating, Long> 
                 implements IRatingBook{

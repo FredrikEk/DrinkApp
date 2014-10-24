@@ -8,6 +8,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of ingredients
+ */
+
 @Named
 @ViewScoped
 public class IngredientBB implements Serializable{

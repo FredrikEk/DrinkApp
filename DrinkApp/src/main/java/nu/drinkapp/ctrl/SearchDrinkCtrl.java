@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.ctrl;
 
 import nu.drinkapp.core.Bar;
@@ -35,7 +30,6 @@ public class SearchDrinkCtrl {
     private Bar bar;
     private DrinkSearchBB drinkSearchBB;
     private LoginBB loginBB;
-    private static final Logger LOG = Logger.getLogger(AddDrinkCtrl.class.getName());
 
     protected SearchDrinkCtrl() {
         // Must have for CDI
@@ -43,18 +37,12 @@ public class SearchDrinkCtrl {
 
     @PostConstruct
     public void post() {
-        //LOG.log(Level.INFO, "EditProductCtrl alive {0}", this);
     }
 
     @PreDestroy
     public void pre() {
-        //LOG.log(Level.INFO, "EditProductCtrl to be destroyed {0}", this);
     }
 
-    //@Inject
-    //public IngredientListCtrl(SingletonShop shop) {
-    //    this.pc = shop.getShop().getProductCatalogue();
-    //}
     @Inject
     public void setDrinkSearchBB(DrinkSearchBB drinkSearchBB) {
         this.drinkSearchBB = drinkSearchBB;
@@ -66,7 +54,6 @@ public class SearchDrinkCtrl {
     }
 
     public void updateDrinks() {
-        LOG.log(Level.INFO, "Testing" + drinkSearchBB.getSearchstring(), this);
         if (drinkSearchBB != null && drinkSearchBB.getSearchstring() != null) {
             IDrinkBook db = bar.getDrinkBook();
             /*List<Drink> ld = db.searchByName(drinkSearchBB.getSearchstring());
@@ -75,7 +62,6 @@ public class SearchDrinkCtrl {
              ldbb.add(new DrinkBB(d));
              }*/
             List<DrinkBB> ldbb = new ArrayList();
-            LOG.log(Level.INFO, "Testing_drinkIngredients " + drinkSearchBB.getIngredients().toString(), this);
             if (drinkSearchBB.getIngredients().isEmpty()) {
                 List<Drink> ld = db.searchByName(drinkSearchBB.getSearchstring());
                 for (Drink d : ld) {
@@ -88,7 +74,6 @@ public class SearchDrinkCtrl {
                     String username = (String) obj[1];
                     Drink d = db.findByUsernameAndDrinkname(username, drinkname);
                     Integer q = (Integer) obj[2];
-                    LOG.log(Level.INFO, "Drink: " + drinkname + " : " + q, this);
                     ldbb.add(new DrinkBB(d));
                 }
             }
@@ -115,9 +100,6 @@ public class SearchDrinkCtrl {
                 Rating updatedRating = new Rating(user, d, rate);
                 rb.update(updatedRating);
             } else {
-                LOG.log(Level.INFO, "user " + user.getUsername(), this);
-                LOG.log(Level.INFO, "drink " + drinkSearchBB.getDrinkBB().getDrinkname(), this);
-                LOG.log(Level.INFO, "rate " + rate, this);
                 Rating newRating = new Rating(user, d, rate);
                 rb.create(newRating);
             }
@@ -137,8 +119,6 @@ public class SearchDrinkCtrl {
             if (favourite != null) {//If you click when it's already marke as favourite, you remove it...
                 fb.deleteByUserAndDrink(user, d);
             } else {
-                LOG.log(Level.INFO, "user " + user.getUsername(), this);
-                LOG.log(Level.INFO, "drink " + drinkSearchBB.getDrinkBB().getDrinkname(), this);
                 Favourite newFavourite = new Favourite(user, d);
                 fb.create(newFavourite);
             }

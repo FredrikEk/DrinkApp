@@ -7,6 +7,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * Book including the steps to make a drink
+ */
+
 @Stateless
 public class StepBook extends AbstractDAO<Step, Long> 
                 implements IStepBook{

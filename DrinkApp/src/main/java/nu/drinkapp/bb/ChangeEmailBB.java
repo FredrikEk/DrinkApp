@@ -5,6 +5,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of changing email
+ */
+
 @Named
 @RequestScoped
 public class ChangeEmailBB implements Serializable{

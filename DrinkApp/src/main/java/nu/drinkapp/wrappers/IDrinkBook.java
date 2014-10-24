@@ -6,6 +6,10 @@ import nu.drinkapp.persistence.IDAO;
 import java.util.List;
 import javax.ejb.Local;
 
+/**
+ * Interface for DrinkBook
+ */
+
 @Local
 public interface IDrinkBook extends IDAO<Drink, Long> {
 

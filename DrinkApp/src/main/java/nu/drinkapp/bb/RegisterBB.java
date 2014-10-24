@@ -5,6 +5,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The back bean of Register
+ */
+
 @Named
 @RequestScoped
 public class RegisterBB implements Serializable{

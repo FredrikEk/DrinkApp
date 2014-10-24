@@ -8,6 +8,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+/**
+ * Book including the type of drink
+ */
+
 @Stateless
 public class TypeBook extends AbstractDAO<Type, Long>
         implements ITypeBook {

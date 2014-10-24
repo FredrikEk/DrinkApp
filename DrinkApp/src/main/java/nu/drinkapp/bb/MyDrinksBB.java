@@ -8,6 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+/**
+ * The back bean of myDrinks
+ */
 
 @Named
 @ViewScoped

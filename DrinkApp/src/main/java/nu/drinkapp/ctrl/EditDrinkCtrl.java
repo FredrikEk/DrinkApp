@@ -10,7 +10,6 @@ import nu.drinkapp.core.Ingredient;
 import nu.drinkapp.core.Step;
 import nu.drinkapp.core.Type;
 import nu.drinkapp.auth.User;
-import nu.drinkapp.bb.AddDrinkBB;
 import nu.drinkapp.bb.EditDrinkBB;
 import nu.drinkapp.bb.IngredientBB;
 import nu.drinkapp.bb.LoginBB;
@@ -20,8 +19,6 @@ import nu.drinkapp.wrappers.IDrinkIngredientBook;
 import nu.drinkapp.wrappers.IStepBook;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -42,7 +39,6 @@ public class EditDrinkCtrl{
     private IngredientBB ingredientBB;
     private EditDrinkBB drinkBB;
     private LoginBB loginBB;
-    private static final Logger LOG = Logger.getLogger(EditDrinkCtrl.class.getName());
     
     protected EditDrinkCtrl() {
         // Must have for CDI
@@ -50,18 +46,12 @@ public class EditDrinkCtrl{
 
     @PostConstruct
     public void post() {
-        //LOG.log(Level.INFO, "EditProductCtrl alive {0}", this);
     }
 
     @PreDestroy
     public void pre() {
-        //LOG.log(Level.INFO, "EditProductCtrl to be destroyed {0}", this);
     }
 
-    //@Inject
-    //public IngredientListCtrl(SingletonShop shop) {
-    //    this.pc = shop.getShop().getProductCatalogue();
-    //}
 
     @Inject
     public void setIngredientBB(IngredientBB ingredientBB) {
@@ -77,7 +67,6 @@ public class EditDrinkCtrl{
     public void setTypeBB(TypeBB typeBB) {
         this.typeBB = typeBB;
     }
-    
     
     @Inject
     public void setStepBB(StepBB stepBB) {
@@ -143,7 +132,6 @@ public class EditDrinkCtrl{
         FacesContext context = FacesContext.getCurrentInstance();
        
         
-        LOG.log(Level.INFO, "Checking up on our values: name=" + name + " and username = " + username, this);
         Drink oldDrink = drinkBook.findByUserAndDrinkname(user, name);
         if(oldDrink != null){
             updateIngredient();
@@ -217,7 +205,6 @@ public class EditDrinkCtrl{
     
     public void init(String drinkname) {
         IDrinkBook idb = bar.getDrinkBook();
-        LOG.log(Level.INFO, loginBB.getUsername() + ":" + drinkname, this);
         User user = bar.getUserBook().findByName(loginBB.getUsername());
         Drink d = idb.findByUserAndDrinkname(user, drinkname);
         List<DrinkIngredient> drinkIngredients = d.getIngredients();
@@ -246,11 +233,4 @@ public class EditDrinkCtrl{
         drinkBB.setSteps(lsbb);
         drinkBB.setTypes(ltbb);
     }
-    
-    //public String update() {
-    //    LOG.log(Level.INFO, "Save: {0}" + ingredientBB);
-    //    pc.update(new Product(ingredientBB.getId(), ingredientBB.getName()));
-    //    return "productList?faces-redirect=true";
-    //}
-
 }
