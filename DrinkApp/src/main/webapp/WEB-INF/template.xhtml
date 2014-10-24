@@ -33,12 +33,12 @@ and open the template in the editor.
             </div>
             <div class="collapse navbar-collapse" id="nav-coll-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#{request.contextPath}/index.xhtml"><i class="fa fa-glass"></i> Home</a></li>
+                    <li><a href="#{request.contextPath}/index.xhtml"><i class="fa fa-home"></i> Home</a></li>
                 </ul>
                 <h:panelGroup rendered="#{!loginBB.loggedIn}">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#{request.contextPath}/partials/login/register.xhtml"><i class="fa fa-plus-square"></i> Register</a></li>
-                        <li><a href="#{request.contextPath}/partials/login/login.xhtml"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="#{request.contextPath}/partials/login/login.xhtml"><i class="fa fa-sign-in"></i> Login</a></li>
                     </ul>
                 </h:panelGroup>
                 <h:panelGroup rendered="#{loginBB.loggedIn}">
@@ -46,13 +46,13 @@ and open the template in the editor.
                         <li><a href="#{request.contextPath}/partials/auth/profile.xhtml"><i class="fa fa-user"></i> My Profile</a></li>
                         <li class="logout">
                             <h:form>
-                                <h:commandLink action="#{loginCtrl.logout()}"><i class="fa fa-user"></i> Log Out</h:commandLink>
+                                <h:commandLink action="#{loginCtrl.logout()}"><i class="fa fa-sign-out"></i> Log Out</h:commandLink>
                             </h:form>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/myDrinks.xhtml"><i class="fa fa-glass"></i> My Drinks</a></li>
-                        <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/favouriteDrinks.xhtml"><i class="fa fa-glass"></i>My Favourite Drinks</a></li>
+                        <li><a href="#{request.contextPath}/partials/drink/authdrinkpages/favouriteDrinks.xhtml"><i class="fa fa-heart"></i>My Favourite Drinks</a></li>
                     </ul>
                 </h:panelGroup>
                 <ul class="nav navbar-nav navbar-right">
