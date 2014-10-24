@@ -16,8 +16,9 @@ and open the template in the editor.
     <body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h3>My Drinks</h3>
+                
                 <h:form>
+                    <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -28,7 +29,7 @@ and open the template in the editor.
                             <table class="table">
                                 <h:panelGroup id="drinkname_view">
                                     <ui:repeat var="drink" value="#{myDrinksCtrl.getMyDrinks()}">
-                                        <tr class="panel-body bg-success">
+                                        <tr class="bg-success">
                                             <td>
                                                 <h:link class="btn btn-default" value="#{drink.drinkname}" outcome="chosenDrink">
                                                     <f:param name="user" value="#{drink.username}" />
@@ -51,6 +52,7 @@ and open the template in the editor.
                             </table>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </h:form>
             </ui:define>
         </ui:composition>
