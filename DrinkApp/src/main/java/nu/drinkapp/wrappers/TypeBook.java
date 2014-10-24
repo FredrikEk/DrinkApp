@@ -35,7 +35,7 @@ public class TypeBook extends AbstractDAO<Type, Long>
     @Override
     public Type findByName(String name) {
         try {
-            TypedQuery<Type> tq = em.createQuery("SELECT t FROM Type t WHERE t.name = \"" + name + "\"", Type.class);
+            TypedQuery<Type> tq = em.createNamedQuery("Type.findByName", Type.class).setParameter("name", name);
             return tq.getSingleResult();
         } catch (NoResultException nre) {
             return null;
