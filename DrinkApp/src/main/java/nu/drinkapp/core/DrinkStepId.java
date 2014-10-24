@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
  * Help class for making the entity drink and the attribute stepNr a 
  * primary key pair 
- * 
  */
 
 public class DrinkStepId implements Serializable{

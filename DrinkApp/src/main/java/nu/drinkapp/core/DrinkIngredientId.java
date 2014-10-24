@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
  * Help class for making the entities drink and ingredient a primary 
  * key pair 
- * 
  */
 public class DrinkIngredientId implements Serializable{
     

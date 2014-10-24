@@ -10,6 +10,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
+/**
+ * The Favourite model. Stores favourites in the database.
+ */
+
 @Entity @IdClass(RatingUserId.class)
 @NamedQueries({@NamedQuery(name = "Rating.averageRating", query = "SELECT SUM(r.rating),count(r) FROM Rating r WHERE r.drink = :drink"),
                @NamedQuery(name = "Rating.userRating", query = "SELECT d FROM Drink d WHERE d.user = :user"),
