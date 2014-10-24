@@ -44,7 +44,7 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
     
     @Override
     public List<Drink> findByName(String name) {
-        TypedQuery<Drink> tq = em.createQuery("SELECT d.* FROM Drink d WHERE d.name = '" + name + "'", Drink.class);
+        TypedQuery<Drink> tq = em.createNamedQuery("Drink.findByName", Drink.class).setParameter("drinkname", name);
         return tq.getResultList();
     }
 	
@@ -53,12 +53,6 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
             TypedQuery<User> tq1 = em.createNamedQuery("User.findByUsername", User.class).setParameter("username", username);
             User user = tq1.getSingleResult();
             TypedQuery<Drink> tq = em.createNamedQuery("Drink.searchByUser", Drink.class).setParameter("user", user);
-            return tq.getResultList();
-    }
-
-    @Override
-    public List<Drink> findByIngredient(String ingredient) {
-            TypedQuery<Drink> tq = em.createQuery("SELECT di.drink FROM DrinkIngredient di WHERE di.ingredient = \"" + ingredient + "\"", Drink.class);
             return tq.getResultList();
     }
 

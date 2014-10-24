@@ -27,6 +27,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * A controller for edit drink
+ */
+
 @Named
 @RequestScoped
 public class EditDrinkCtrl{

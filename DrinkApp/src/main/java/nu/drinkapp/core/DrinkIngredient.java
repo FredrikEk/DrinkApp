@@ -16,7 +16,9 @@ import javax.persistence.NamedQuery;
 
 @Entity @IdClass(DrinkIngredientId.class)
 @NamedQueries( {@NamedQuery(name = "DrinkIngredient.findByIngredientAndDrink", query = "SELECT di FROM DrinkIngredient di WHERE di.ingredient = :ingredient AND di.drink = :drink"),
-                @NamedQuery(name = "DrinkIngredient.deleteAllDrinkIngredient", query = "DELETE FROM DrinkIngredient di WHERE di.drink = :drink")})
+                @NamedQuery(name = "DrinkIngredient.deleteAllDrinkIngredient", query = "DELETE FROM DrinkIngredient di WHERE di.drink = :drink"),
+				@NamedQuery(name = "DrinkIngredient.findByIngredient", query = "SELECT di FROM DrinkIngredient di WHERE di.ingredient = :ingredient")
+})
 public class DrinkIngredient implements Serializable{
     
     @ManyToOne

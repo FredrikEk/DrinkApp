@@ -19,8 +19,6 @@ import nu.drinkapp.wrappers.IDrinkIngredientBook;
 import nu.drinkapp.wrappers.IStepBook;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -28,6 +26,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+/**
+ * A controller of adding drinks
+ */
 
 @Named
 @RequestScoped
@@ -40,7 +42,6 @@ public class AddDrinkCtrl{
     private IngredientBB ingredientBB;
     private AddDrinkBB drinkBB;
     private LoginBB loginBB;
-    private static final Logger LOG = Logger.getLogger(AddDrinkCtrl.class.getName());
     
     protected AddDrinkCtrl() {
         // Must have for CDI
@@ -191,7 +192,7 @@ public class AddDrinkCtrl{
 
             Drink drink2 = new Drink(drink.getName(), drink.getUser(), dri, sti, drink.getTypes(), comment);
             drinkBook.update(drink2);
-            return "chosenDrink";
+            return "myDrinks";
         }
         else {
             context.addMessage(null, 

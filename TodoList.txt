@@ -1,97 +1,12 @@
-﻿Lv6:
-Ek och Sonny: 
-Bygger upp en grundläggande 
-databasdesign med de tabeller/klasser som behövs initialt.
+﻿Slutspurt: (Måste göras innan deadline)
 
-Martin och Michael
-Börja skissa upp de olika vyer som kommer behövas:
-*Startsida
-*Loginscreen (Authentication)
-*Profil/Settings
-*"My Drinks"
-*"Sökvy"
+*Presentation
 
-
-
-LV7:
-
-Till Ek och Sonny:
-Jobbar med vyerna Add Drink, Delete Drink, Edit Drink och Find Drink samt dess bönor och controllers.
-* Är det nödvändigt att vi ska kunna skicka bekräftelsemail? Ska vi isåfall även kontrollera att den
-emailen existerar? Känns som en senare grej man kan fixa.
-- Inte emailen existerar, men att den strängen man submittar åtminstone liknar en emailadress. 
-- (Har endast ett @ tecken och minst en punkt efter @-tecknet exempelvis.) Men ja, det kan vara ett 
-- senare problem om det är jobbigt.
-
-
-* Bör inte delete drink och add drink ligga som länkar inuti "mydrinks", känns konstigt ifall man skulle
-kunna ta bort och ändra på andras drinkar.
-- Kunde inte sagt det bättre själv! Men de låg utanför i nuläget så tänkte inte så mycket på det.
-
-
-Till Martin och Michael:
-
-Allmänt om login-vyn : 
-*Kolla upp om vi behöver "sanitize" input till databasen, dvs användarnamn, password, email etc. (Relevant för hela projektet)
-*Skicka bekräftelsemail till email-adressen efter man registrerat ett konto.
-
-
-Allmänt About :
-*Lägg till lite info vad man kan göra som inloggad/auth user respektive inte inloggad
-
-Allmänt My Profile:
-*Gör det möjligt att ändra lösenord. CHECK!
-*Gör det möjligt att ändra email. CHECK!
-*Kanske möjlighet att ha en sorts presentation av sig själv eller eller nåt
-
-Ev
-
-
-
-
-Lv8:
-
-*Lägga till rollen admin, så att den som är admin kan exempelvis ta bort och edita andras drinkar.
-
-*Skapa sidan MyDrinks där alla ens tillagda drinkar finns tillsammans med två valmöjligheter; edit och delete.
-	Tänker mig att man representerar varje drink som ett litet kort (knapp) med drinkens namn, samt edit och delete.
-
-*Lägg till en snygg tabell under myprofile där man kan se hur många drinkar man lagt in, hur många drinkar man rateat, kanske något mer?
-
-	
-*Ratingsystem för drinkar (Klart)
-
-
-*EV SANITIZA INPUT TILL ALLA TEXTFIELDS ENLIGT (GÖR FÖR ADDDRINKS, FINDDRINKS, EDITDRINKS)
-(VI GJORDE EN KLASS MED EN STATISK METOD SOM MAN KAN ANVÄNDA FÖR ATT SANITIZA INPUT)
-INTE TILLÅTA WHITESPACE NÄR MAN EDITAR, ADDAR DRINKAR SAMT HANTERING AV EXCEPTIONS I DESSA! (ADDA DRINK NAMN MED MELLANSLAG FUNKAR EJ...)
-OBS! HANTERA ALLA NULLPOINTER EXCEPTION MM NÄR MAN UPPDATERAR SIDAN EFTER GJORD HANDLING!
-
-*Fixa Find Drink vyn så att ajax/submit funkar som det ska (Klart)
-
-*Runda av projektet, se över design och all funktionalitet
-
-*Bygga enhetstester (Lätta att få rader på)
-
-*Göra presentation och alla annat skit enligt PM (Tillsammans)
-
-Senare (Eventuellt):
-
-*Lägga till en gästbok
-*LiveFeed på Home-sidan som berättar när nya drinkar lagts till etc
-*Någon form av Chat
-*Facebook connectivity
-
-
-Slutspurt: (Måste göras innan deadline)
-
-*Fixa så att ordningen på steps alltid blir rätt enligt hur man lägger till dem i add drinks.
+*exception hantering
 
 *My Favourite Drinks vyn - Göra en tabell istället/snyggare design. Kanske 
 göra så man kan ratea och unlika när man är inne på den som chosen.
 
 *My Drinks vyn - Göra en tabell istället/snyggare design. Kanske 
 göra så man kan ratea och unlika när man är inne på den som chosen.
-
-*Gå in på drinken i chosen drinks efter man lagt till den.
 

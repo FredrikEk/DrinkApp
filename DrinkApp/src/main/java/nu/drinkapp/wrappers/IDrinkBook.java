@@ -16,7 +16,6 @@ public interface IDrinkBook extends IDAO<Drink, Long> {
     List<Drink> findByName(String name);
     Drink findById(Long id);
     List<Drink> findByUser(String username);
-    List<Drink> findByIngredient(String ingredient);
     Drink findByUserAndDrinkname(User user, String drinkname);
     List<Drink> searchByName(String drinkname);
     List searchByNameAndIngredient(String drinkname, List<String> ingredients);

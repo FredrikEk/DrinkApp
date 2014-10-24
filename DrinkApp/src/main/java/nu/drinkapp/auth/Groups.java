@@ -6,5 +6,4 @@ package nu.drinkapp.auth;
 public enum Groups {
     USER,
     ADMIN,
- 
 }

@@ -13,6 +13,10 @@ import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * A controller for login
+ */
+
 @Named
 @RequestScoped
 public class LoginCtrl {

@@ -36,7 +36,7 @@ public class IngredientBook extends AbstractDAO<Ingredient, Long>
     @Override
     public Ingredient findByName(String name) {
         try {
-            TypedQuery<Ingredient> tq = em.createQuery("SELECT i FROM Ingredient i WHERE i.name = '" + name + "'", Ingredient.class);
+            TypedQuery<Ingredient> tq = em.createNamedQuery("Ingredient.findByName", Ingredient.class).setParameter("name", name);
             return tq.getSingleResult();
         } catch (NoResultException nre) {
             return null;

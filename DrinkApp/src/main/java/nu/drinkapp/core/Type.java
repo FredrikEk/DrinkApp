@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /*
  * The Type model. Stores different types that drinks can have
@@ -11,6 +13,7 @@ import javax.persistence.Id;
  */
 
 @Entity
+@NamedQueries({@NamedQuery(name = "Type.findByName", query = "SELECT t FROM Type t WHERE t.name = :name")})
 public class Type implements Serializable {
 
     @Column

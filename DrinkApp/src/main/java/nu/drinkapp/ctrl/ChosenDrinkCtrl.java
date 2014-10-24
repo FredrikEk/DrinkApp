@@ -23,6 +23,10 @@ import nu.drinkapp.wrappers.IFavouriteBook;
 import nu.drinkapp.wrappers.IRatingBook;
 import nu.drinkapp.wrappers.IUserBook;
 
+/**
+ * A controller for chosen drink
+ */
+
 @Named
 @RequestScoped
 public class ChosenDrinkCtrl {

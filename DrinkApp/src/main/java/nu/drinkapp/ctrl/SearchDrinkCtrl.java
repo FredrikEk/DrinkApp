@@ -14,13 +14,15 @@ import nu.drinkapp.wrappers.IFavouriteBook;
 import nu.drinkapp.wrappers.IUserBook;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+/**
+ * A controller for searchDrink
+ */
 
 @Named
 @RequestScoped
@@ -108,7 +110,7 @@ public class SearchDrinkCtrl {
 
     public void updateFavourite() {
         DrinkBB dbb = drinkSearchBB.getDrinkBB();
-        if (dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
+        if (dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("") && loginBB.isLoggedIn()) {
             IDrinkBook db = bar.getDrinkBook();
             IUserBook ub = bar.getUserBook();
             IFavouriteBook fb = bar.getFavouriteBook();
@@ -128,7 +130,7 @@ public class SearchDrinkCtrl {
     public List<Integer> getEmptyStars() {
         DrinkBB dbb = drinkSearchBB.getDrinkBB();
         List<Integer> integerList = new ArrayList();
-        if (dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
+        if (dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("") && loginBB.isLoggedIn()) {
             IDrinkBook db = bar.getDrinkBook();
             IUserBook ub = bar.getUserBook();
             IRatingBook rb = bar.getRatingBook();
@@ -154,7 +156,7 @@ public class SearchDrinkCtrl {
     public List<Integer> getFilledStars() {
         DrinkBB dbb = drinkSearchBB.getDrinkBB();
         List<Integer> integerList = new ArrayList();
-        if (dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
+        if (dbb != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("") && loginBB.isLoggedIn()) {
             IDrinkBook db = bar.getDrinkBook();
             IUserBook ub = bar.getUserBook();
             IRatingBook rb = bar.getRatingBook();
