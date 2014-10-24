@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.wrappers;
 
 import nu.drinkapp.auth.User;
@@ -43,7 +38,5 @@ public class UserBook extends AbstractDAO<User, Long>
     public User findByMail(String email) {
         TypedQuery<User> tq = em.createQuery("SELECT u FROM User u WHERE u.email = \"" + email + "\"", User.class);
         return tq.getSingleResult();
-    }
-    
-    
+    }   
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.wrappers;
 
 import nu.drinkapp.core.Drink;
@@ -48,7 +43,6 @@ public class DrinkIngredientBook extends AbstractDAO<DrinkIngredient, Long>
     @Override
     public void deleteDrinkIngredientByDrink(Drink drink) {
         em.createNamedQuery("DrinkIngredient.deleteAllDrinkIngredient").setParameter("drink", drink).executeUpdate();
-    }
-    
+    } 
 }
 
