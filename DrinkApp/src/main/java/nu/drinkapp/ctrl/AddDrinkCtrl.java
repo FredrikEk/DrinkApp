@@ -191,7 +191,7 @@ public class AddDrinkCtrl{
 
             Drink drink2 = new Drink(drink.getName(), drink.getUser(), dri, sti, drink.getTypes(), comment);
             drinkBook.update(drink2);
-            return "chosenDrink";
+            return "myDrinks";
         }
         else {
             context.addMessage(null, 
