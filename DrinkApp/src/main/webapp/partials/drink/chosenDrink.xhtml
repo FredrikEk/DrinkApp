@@ -33,6 +33,16 @@ and open the template in the editor.
                                 <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
                                     <ui:define name="drinkname">
                                         <h:outputText id="drinknk" value="#{chosenDrinkBB.drinkname}"/>
+                                        <h:panelGroup rendered="#{loginBB.loggedIn and chosenDrinkBB.drinkname != null and favouriteDrinksCtrl.isFavouriteChosenDrink(chosenDrinkBB)}">
+                                            <h:commandLink action="#{chosenDrinkCtrl.updateFavourite()}">
+                                                <i class="fa fa-heart"></i>
+                                            </h:commandLink>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{loginBB.loggedIn and chosenDrinkBB.drinkname != null and !favouriteDrinksCtrl.isFavouriteChosenDrink(chosenDrinkBB)}">
+                                            <h:commandLink action="#{chosenDrinkCtrl.updateFavourite()}">
+                                                <i class="fa fa-heart-o"></i>
+                                            </h:commandLink>
+                                        </h:panelGroup>
                                     </ui:define>
                                     <ui:define name="types">
                                         <h:form><ui:repeat value="#{chosenDrinkBB.types}" var="type">

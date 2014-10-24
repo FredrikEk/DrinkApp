@@ -151,6 +151,8 @@ public class ChosenDrinkCtrl {
         return integerList;
     }
 
+	
+	
     public List<Integer> getFilledStars() {
         List<Integer> integerList = new ArrayList();
         if (chosenDrinkBB != null && loginBB != null && loginBB.getUsername() != null && !loginBB.getUsername().equals("")) {
