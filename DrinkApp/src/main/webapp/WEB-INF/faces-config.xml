@@ -30,14 +30,6 @@
             <to-view-id>partials/drink/authdrinkpages/favouriteDrinks.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>addConf</from-outcome>
-            <to-view-id>partials/drink/authdrinkpages/addConfirmation.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>deleteConf</from-outcome>
-            <to-view-id>partials/drink/authdrinkpages/deleteConfirmation.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>chosenDrink</from-outcome>
             <to-view-id>partials/drink/chosenDrink.xhtml</to-view-id>
         </navigation-case>
