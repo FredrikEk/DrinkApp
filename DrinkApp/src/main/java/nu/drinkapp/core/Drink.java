@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.core;
 
 import nu.drinkapp.auth.User;
@@ -33,21 +27,6 @@ import javax.persistence.OneToMany;
                 @NamedQuery(name = "Drink.searchByUser", query = "SELECT d FROM Drink d WHERE d.user = :user"),
                 @NamedQuery(name = "Drink.deleteDrink", query = "DELETE FROM Drink d WHERE d.drinkname = :drinkname AND d.user = :user")
 })
-        /*
-                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT d, (ipd.nrOfIngredients - da.drinkCount) as Counters \n" +
-                                                                    "FROM Drink d , (SELECT di.drink as drink, COUNT(di.drink) as drinkCount \n" +
-                                                                    "        FROM DrinkIngredient di \n" +
-                                                                    "        WHERE di.ingredient IN :ingredients \n" +
-                                                                    "        GROUP BY di.drink) da, (SELECT di.drink as drink, COUNT(di.drink) AS nrOfIngredients \n" +
-                                                                    "        FROM DrinkIngredient di \n" +
-                                                                    "        GROUP BY di.drink) ipd \n" +
-                                                                    "WHERE d.drinkname LIKE :drinkname AND da.drink = ipd.drink AND d = da.drink \n" +
-                                                                    "ORDER BY Counters ASC")*/
-
-
-
-//                  @NamedQuery(name = "Drink.searchByNameAndIngredient", query = "SELECT di FROM DrinkIngredient WHERE di.drink = :drinkname AND di.ingredients IN :ingredients")
-//                @NamedQuery(name = "Drink.searchByNameAndIngredient", query = ")
 public class Drink implements Serializable {
     
     @ManyToOne
