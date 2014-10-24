@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.bb;
 
 import nu.drinkapp.core.Drink;
@@ -13,10 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-/**
- *
- * @author Michael
- */
+
 @Named
 @ViewScoped
 public class FavouriteDrinksBB implements Serializable {

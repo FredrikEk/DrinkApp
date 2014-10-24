@@ -1,4 +1,3 @@
-
 package nu.drinkapp.bb;
 
 import java.io.Serializable;
@@ -23,12 +22,10 @@ public class IngredientListBB implements Serializable{
 
     @PostConstruct
     public void post() {
-        //LOG.log(Level.INFO, "PersonDetailBB alive {0}", this);
     }
 
     @PreDestroy
     public void pre() {
-        //LOG.log(Level.INFO, "PersonDetailBB to be destroyed {0}", this);
     }
 
     public Long getId() {
@@ -37,7 +34,6 @@ public class IngredientListBB implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
-        //LOG.log(Level.INFO, "Set id {0}", id);
     }
 
     public String getName() {
@@ -46,14 +42,10 @@ public class IngredientListBB implements Serializable{
 
     public void setName(String name) {
         this.name = name;
-        //LOG.log(Level.INFO, "Set fname {0}", fname);
     }
-
 
     @Override
     public String toString() {
         return "AddProductBB{" + "id=" + id + ", name=" + name + '}';
-    }
-    
-    
+    }  
 }

@@ -26,20 +26,23 @@ and open the template in the editor.
                 </f:metadata>
             </ui:define>
             <ui:define name="content">
-                <h3>Chosen Drink</h3>
-
+                <div class="col-md-4"></div>
                 <h:form>
                     <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Chosen Drink
-                                </h3>
-                            </div>
                             <h:panelGroup id="drink_view">
                                 <ui:decorate template="/WEB-INF/drinktemplate.xhtml">
                                     <ui:define name="drinkname">
                                         <h:outputText id="drinknk" value="#{chosenDrinkBB.drinkname}"/>
+                                        <h:panelGroup rendered="#{loginBB.loggedIn and chosenDrinkBB.drinkname != null and favouriteDrinksCtrl.isFavouriteChosenDrink(chosenDrinkBB)}">
+                                            <h:commandLink action="#{chosenDrinkCtrl.updateFavourite()}">
+                                                <i class="fa fa-heart"></i>
+                                            </h:commandLink>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{loginBB.loggedIn and chosenDrinkBB.drinkname != null and !favouriteDrinksCtrl.isFavouriteChosenDrink(chosenDrinkBB)}">
+                                            <h:commandLink action="#{chosenDrinkCtrl.updateFavourite()}">
+                                                <i class="fa fa-heart-o"></i>
+                                            </h:commandLink>
+                                        </h:panelGroup>
                                     </ui:define>
                                     <ui:define name="types">
                                         <h:form><ui:repeat value="#{chosenDrinkBB.types}" var="type">
@@ -51,18 +54,18 @@ and open the template in the editor.
                                         </ui:define>
                                     <ui:define name="rating">
                                         <div class="rating">
-                                            <ui:repeat value="#{searchDrinkCtrl.getFilledStars()}" var="filledStars">
-                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(filledStars)}">
+                                            <ui:repeat value="#{chosenDrinkCtrl.getFilledStars()}" var="filledStars">
+                                                <h:commandLink action="#{chosenDrinkCtrl.updateRating(filledStars)}">
                                                     <i class="fa fa-star"></i>
                                                 </h:commandLink>
                                             </ui:repeat>
-                                            <ui:repeat value="#{searchDrinkCtrl.getEmptyStars()}" var="emptyStars">
-                                                <h:commandLink action="#{searchDrinkCtrl.updateRating(emptyStars)}">
+                                            <ui:repeat value="#{chosenDrinkCtrl.getEmptyStars()}" var="emptyStars">
+                                                <h:commandLink action="#{chosenDrinkCtrl.updateRating(emptyStars)}">
                                                     <i class="fa fa-star-o"></i>
                                                 </h:commandLink>
                                             </ui:repeat>
                                         </div>
-                                        #{searchDrinkCtrl.getAvgRating()}
+                                        #{chosenDrinkCtrl.getAvgRating()}
                                     </ui:define>       
                                     <ui:define name="drinkdescription">
                                         <h:outputText value="#{chosenDrinkBB.comment}" />
@@ -91,9 +94,9 @@ and open the template in the editor.
                                     </ui:define>
                                 </ui:decorate>
                             </h:panelGroup>
-                        </div>
                     </div>
                 </h:form>
+                <div class="col-md-4"></div>
             </ui:define>
         </ui:composition>
     </body>

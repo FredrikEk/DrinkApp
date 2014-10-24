@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.core;
 
 import java.io.Serializable;
@@ -28,17 +22,17 @@ public class DrinkStepId implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
+        if(obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if(getClass() != obj.getClass()) {
             return false;
         }
         final DrinkStepId other = (DrinkStepId) obj;
         if (!Objects.equals(this.drink, other.drink)) {
             return false;
         }
-        if (this.stepNr != other.stepNr) {
+        if(this.stepNr != other.stepNr) {
             return false;
         }
         return true;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nu.drinkapp.core;
 
 import nu.drinkapp.wrappers.ITypeBook;
@@ -13,8 +8,6 @@ import nu.drinkapp.wrappers.IDrinkIngredientBook;
 import nu.drinkapp.wrappers.IFavouriteBook;
 import nu.drinkapp.wrappers.IRatingBook;
 import nu.drinkapp.wrappers.IStepBook;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -46,8 +39,6 @@ public class Bar implements IBar {
     private IFavouriteBook favouriteBook;
 
     public Bar() {
-        //initTestData();
-        Logger.getAnonymousLogger().log(Level.INFO, "Shop alive");
     }
 
     public static IBar newInstance() {

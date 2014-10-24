@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package nu.drinkapp.bb;
 
 import nu.drinkapp.core.DrinkIngredient;
 import nu.drinkapp.core.Ingredient;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -27,9 +19,7 @@ public class IngredientBB implements Serializable{
 
     @PostConstruct
     public void post(){
-        LOG.log(Level.INFO, "The ingredient is alive ");
     }
-    private static final Logger LOG = Logger.getLogger(RegisterBB.class.getName());
     
     public IngredientBB() {
         
@@ -59,6 +49,5 @@ public class IngredientBB implements Serializable{
     
     public String getQuantity(){
         return this.quantity;
-    }
-    
+    } 
 }
