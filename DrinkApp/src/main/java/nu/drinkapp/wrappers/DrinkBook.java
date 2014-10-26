@@ -95,7 +95,7 @@ public class DrinkBook extends AbstractDAO<Drink, Long>
                                               "(SELECT di.DRINKNAME AS Drinkname, COUNT(*) AS nrOfIngredients \n" +
                                               "FROM DrinkIngredient di \n" +
                                               "GROUP BY di.DRINKNAME) ipd, Drink d \n" +
-                                        "WHERE da.drinkname LIKE '%" + drinkname + "%' AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
+                                        "WHERE da.drinkname LIKE '%[" + drinkname + "]%' AND da.drinkname = ipd.DRINKNAME AND d.drinkname = da.drinkname \n" +
                                         "ORDER BY Counters ASC");
         return tq.getResultList();
 
