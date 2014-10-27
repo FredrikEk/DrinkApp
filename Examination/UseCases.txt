@@ -1,12 +1,7 @@
 Working Use-Cases DrinkApp
 
-Main page
-* Search for drinks by name
-* Search for drinks by ingredients
-* Search for drinks by name and ingredients
-* Register account
-
 Authenticated user
+* Register account
 * Log In
 * Log Out
 * Change password/email under profile
@@ -22,6 +17,11 @@ name while browsing for drinks
 * Unfavourite your added drinks
 * Rate Drinks
 * Validation in all forms
+
+Main page
+* Search for drinks by name
+* Search for drinks by ingredients
+* Search for drinks by name and ingredient
 
 Misc
 * All passwords are hashed and salted, BCrypt.
