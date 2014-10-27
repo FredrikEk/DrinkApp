@@ -204,25 +204,34 @@ Our plan was to make it possible for an admin to edit and remove not only his ow
 \begin{itemize}
 \item Search for drinks by name
 \item Search for drinks by ingredients
-\item Search for drinks by name and ingredients
-\item Register account
+\item Search for drinks by name and ingredient
 \end{itemize}
 
 \subsection{Authenticated user}
 
 \begin{itemize}
+\item Register account
 \item Log In
-\item Log Out
 \item Change password/email under profile
 \item Add Drinks to the database with name, ingredients, types, steps och comment
 \item Watch your drinks under My Drinks
-\item Enter a Drinks page to share it with your friends on facebook using the url (Dont need to be logged in to see a drinks page)
+\item Enter a Drinks page to share it with your friends on example facebook using the url (Dont need to be logged in to see a drinks page)
 \item Edit your own Drinks under My Drinks
 \item Delete your own Drinks under My drink
-\item Add drinks to My Favourite Drinks by pressing the heart button next to the drink name while browsing for drinks
+\item Add drinks to My Favourite Drinks by pressing the heart button next to the drinkname while browsing for drinks
 \item Watch your favourite drinks under My Favourite Drinks
 \item Unfavourite your added drinks
 \item Rate Drinks
+\item Validation in all forms
+\item Log Out
+\item Log in with wrong password - fail
+\end{itemize}
+
+\subsection{Misc}
+
+\begin{itemize}
+\item All passwords are hashed and salted, BCrypt.
+\item Extendted protection against SQL-, HTML-, JavaScript-, XSS- based attacks
 \end{itemize}
 
 \section{Selected approach}
