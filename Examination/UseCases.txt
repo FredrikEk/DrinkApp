@@ -20,3 +20,9 @@ Authenticated user
 name while browsing for drinks
 * Watch your favourite drinks under My Favourite Drinks
 * Unfavourite your added drinks
+* Rate Drinks
+* Validation in all forms
+
+Misc
+* All passwords are hashed and salted, BCrypt.
+* Extendted protection against SQL-, HTML-, JavaScript-, XSS- based attacks
