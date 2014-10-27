@@ -3,12 +3,11 @@ Working Use-Cases DrinkApp
 Authenticated user
 * Register account
 * Log In
-* Log Out
 * Change password/email under profile
 * Add Drinks to the database with name, ingredients, types, steps och comment
 * Watch your drinks under My Drinks
 * Enter a Drinks page to share it with your friends on example facebook using the url 
-(Dont need to be logged in to see a drinks page)
+(Dont need to be logged in to see a drinks page, will show later)
 * Edit your own Drinks under My Drinks
 * Delete your own Drinks under My drink
 * Add drinks to My Favourite Drinks by pressing the heart button next to the drink
@@ -17,6 +16,8 @@ name while browsing for drinks
 * Unfavourite your added drinks
 * Rate Drinks
 * Validation in all forms
+* Log Out
+* Log in with wrong password - fail
 
 Main page
 * Search for drinks by name
